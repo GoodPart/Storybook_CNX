@@ -1,0 +1,307 @@
+/* //progress-step  */
+.progress-step {
+    width: 100%;
+    height: 90px;
+    background-color: gray;
+}
+
+.progress-step .wrap {
+    padding: 16px 0;
+    height: inherit
+}
+
+.progress-step ol {
+    display: flex;
+}
+
+.progress-step ol li {
+    position: relative;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.progress-step ol li .symbol {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-color: transparent;
+}
+/* .progress-step ol li .symbol */
+.progress-step ol li .symbol p {
+    z-index: 200;
+    position: relative;
+    width: 18px;
+    height: 18px;
+    border-width: 2px;
+    border-radius: 9px;
+    border-style: dotted;
+    border-color: #ddd;
+    color: #666;
+    font-size: 12px;
+    transition: all .3s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+}
+.progress-step ol li .symbol p:empty:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 8px;
+    height: 8px;
+    border-radius: 4px;
+    transform: rotate(720deg) translate(-50%, -50%) ;
+    background-color: dodgerblue;
+    transition: all .2s linear, rotate .6s .6s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.progress-step ol li .symbol:after {
+    z-index: 100;
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateY(-15px);
+    width: 100%;
+    height: 2px;
+    background-color: #ddd;
+}
+
+.progress-step ol li .symbol:before {
+    z-index: 200;
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateY(-15px);
+    width: 0;
+    height: 2px;
+    background-color: dodgerblue;
+
+}
+
+/* //타이틀 */
+.progress-step ol li .title {
+    margin-top: 8px;
+
+    
+
+}
+.progress-step ol li .title span {
+    /* @include text-style($style : "paragraph-04"); */
+    font-size: 14px;
+    color: gray;
+}
+
+.progress-step ol li:first-child .symbol p {
+    width: inherit;
+    height: inherit;
+    border-width: 2px;
+    border-radius: 15px;
+    border-style: solid;
+    border-color: transparent;
+    background-color: #fff;
+    font-size: 18px;
+    box-shadow: 4px 4px 6px 0px #0000001A, 0px 0px 4px 0px #00000026;
+}
+.progress-step ol li:first-child .symbol p:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 12px;
+    height: 12px;
+    border-radius: 6px;
+    transform: translate(-50%, -50%);
+    background-color: dodgerblue;
+}
+
+.progress-step ol li:first-child .symbol + .title span {
+    color: dodgerblue;
+    font-weight: 700;
+}
+
+.progress-step ol li:last-child .symbol:after {
+    display: none
+}
+
+/* //각 스탭 체크 */
+.progress-step ol li.check .symbol p {
+    width: inherit;
+    height: inherit;
+    border-width: 2px;
+    border-radius: 15px;
+    border-style: solid;
+    border-color: transparent;
+    /* background-color: dodgerblue; */
+    font-size: 16px;
+    color: #fff;
+    box-shadow: 4px 4px 6px 0px #0000001A, 0px 0px 4px 0px #00000026;
+
+}
+.progress-step ol li.check .symbol p::before {
+    width: 16px;
+    height: 10px;
+    border-radius: 0;
+    border-bottom: 2px solid #fff;
+    border-left: 2px solid #fff;
+    transform: translate(-50%, -70%) rotate(-45deg);
+    background-color: transparent;
+}
+
+.progress-step ol li.check .symbol:before {
+    width: 100%;
+    animation-name: progress-step;
+    animation-duration: 1s;
+    animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+    animation-fill-mode: forwards;
+    animation-direction: normal;
+}
+
+
+.progress-step ol li.check .title span {
+    color: dodgerblue;
+    font-weight: 400 !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.progress-step ol li.check+li:not(:last-child .check) .symbol p {
+    width: inherit;
+    height: inherit;
+    border-width: 2px;
+    border-radius: 20px;
+    border-style: solid;
+    border-color: transparent;
+    background-color: #fff;
+    color: dodgerblue;
+    font-weight: 700;
+    box-shadow: 4px 4px 6px 0px #0000001A, 0px 0px 4px 0px #00000026;
+}
+
+.progress-step ol li.check+li:not(:last-child .check) .symbol p:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 12px;
+    height: 12px;
+    border-radius: 6px;
+    transform: translate(-50%, -50%);
+    background-color: dodgerblue;
+}
+
+
+.progress-step ol li.check+li:not(:last-child .check) .symbol +.title span {
+    font-weight: 700;
+    color: dodgerblue;
+}
+
+
+.progress-step.indexing {
+    background-color: transparent;
+
+    
+}
+
+.progress-step.indexing ol li {
+}
+.progress-step.indexing ol li .symbol {
+    width: 40px;
+    height: 40px;
+}
+
+.progress-step.indexing ol li .symbol p {
+    /* @include text-style($style : "paragraph-02", $weight : 700); */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 20px;
+    background-color: #fff;
+}
+
+.progress-step.indexing ol li .symbol p:after {
+    display: none
+}
+
+
+.progress-step.indexing ol li:first-child .symbol p {
+    background-color: #fff;
+    border-color: transparent;
+    width: 40px;
+    height: 40px;
+    color: dodgerblue;
+    font-weight: 700;
+}
+
+.progress-step.indexing ol li:first-child .symbol +.title span {
+    color: dodgerblue;
+    font-weight: 700;
+}
+
+/* //각 스탭 체크 */
+.progress-step.indexing ol li.check .symbol p {
+    background-color: dodgerblue;
+    color: #fff;
+    width: 30px;
+    height: 30px;
+    font-weight: 700;
+}
+.progress-step.indexing ol li.check .symbol p:after{
+    width: 16px;
+    height: 10px;
+    border-radius: 0;
+    border-bottom: 2px solid #fff;
+    border-left: 2px solid #fff;
+    transform: translate(-50%, -70%) rotate(-45deg);
+    background-color: transparent;
+}
+
+.progress-step.indexing ol li.check .symbol:before {
+    width: 100%;
+    animation-name: progress-step;
+    animation-duration: 1s;
+    animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+    animation-fill-mode: forwards;
+    animation-direction: normal;
+}
+
+.progress-step.indexing ol li.check .title span {
+    color: dodgerblue;
+    font-weight: 400 !important;
+}
+
+@keyframes progress-step {
+    0% {
+        width: 0;
+    }
+
+    100% {
+        width: 100%;
+    }
+}
+@keyframes progress-step--half {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 50%;
+    }
+}

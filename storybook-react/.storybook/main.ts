@@ -1,0 +1,29 @@
+import type { StorybookConfig } from '@storybook/react-vite';
+
+const config: StorybookConfig = {
+  "stories": [
+    // "../src/**/*.mdx",
+    "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"
+  ],
+  "addons": [
+    "@storybook/addon-essentials",
+    "@storybook/addon-onboarding",
+    "@chromatic-com/storybook",
+    "@storybook/experimental-addon-test"
+  ],
+  "framework": {
+    "name": "@storybook/react-vite",
+    "options": {}
+  },
+  "refs" : {
+    // "react" : {
+    //   "title" : 'React',
+    //   "url" : "http://localhost:6007"
+    // },
+    // "core" : {
+    //   "title" : 'Core',
+    //   "url" : "http://localhost:6006"
+    // },
+  }
+};
+export default config;

@@ -1,0 +1,32 @@
+{
+  "name": "cnx_template_team_02",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "storybook build",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@babel/core": "^7.26.9",
+    "@chromatic-com/storybook": "^3.2.6",
+    "@mdx-js/react": "^3.1.0",
+    "@storybook/addon-docs": "^8.6.11",
+    "@storybook/addon-essentials": "^8.6.11",
+    "@storybook/addon-interactions": "^8.6.11",
+    "@storybook/blocks": "^8.6.11",
+    "@storybook/html": "^8.6.11",
+    "@storybook/html-vite": "^8.6.11",
+    "@storybook/test": "^8.6.11",
+    "storybook": "^8.6.11",
+    "vite": "^6.1.1"
+  },
+  "dependencies": {
+    "swiper": "^11.2.5"
+  }
+}
