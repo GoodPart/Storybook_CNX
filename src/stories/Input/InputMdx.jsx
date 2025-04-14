@@ -1,17 +1,14 @@
 import React, {useState, Suspense} from "react"
-import { Source, Subtitle, Title } from "@storybook/blocks"
 
 
 /* import of React */
-import * as ButtonReact from "../../../storybook-react/src/stories/Button.tsx?raw"
-// import * as ButtonCss from "../../../storybook-core/src/stories/Button/button.css?raw"
-// import * as ButtonJS from "../../../storybook-core/src/stories/Button/button.js?raw"
+import * as InputReact from "../../../storybook-react/src/stories/Input/Input.tsx?raw"
 
 /* import of Core */
 import * as ButtonHtml from "../../../storybook-core/src/stories/Button/button.html?raw"
 import * as ButtonCss from "../../../storybook-core/src/stories/Button/button.css?raw"
 import * as ButtonJS from "../../../storybook-core/src/stories/Button/button.js?raw"
-import { Button } from "../../../storybook-react/src/stories/Button"
+import { Button } from "../../../storybook-react/src/stories/Button.tsx"
 
 
 import {MdxCodeBlock} from "../../shared/components/Mdx/Mdx.tsx"
@@ -21,14 +18,13 @@ export default function MdxWrap() {
 
     const handleChange = (e)=> {
         const {name, value} = e.target;
-        setRadioCheck(value)
+        setRadioCheck(value);
     }
 
     return (
         <div>
             <iframe
-                src="http://localhost:6007/iframe.html?viewMode=story&id=button-components-button--primary&globals="
-                // src="http://localhost:6007/iframe.html?viewMode=story&id=button--primary&globals="
+                src="http://localhost:6007/iframe.html?viewMode=story&id=input-components-input--default&globals="
                 width="100%"
             ></iframe>
 
@@ -39,14 +35,12 @@ export default function MdxWrap() {
             <div style={{position : "relative"}}>
                 <div style={radioCheck === "React" ? {display : "block"} : {display : "none"}}>
                     <div>
-                        <MdxCodeBlock title={"JSX"} code={ButtonReact.default} />
+                        <MdxCodeBlock title={"JSX"} code={InputReact.default} />
                     </div>
                 </div>
                 <div style={radioCheck === "Core" ? {display : "block"} : {display : "none"}}>
                     <div>
-                        <MdxCodeBlock title={"HTML"} code={ButtonHtml.default} />
-                        <MdxCodeBlock title={"CSS"} code={ButtonCss.default} />
-                        <MdxCodeBlock title={"JAVASCRIPT"} code={ButtonJS.default} />
+                        <MdxCodeBlock title={"Undefined"} code="none" />
                     </div>
                 </div>
             </div>

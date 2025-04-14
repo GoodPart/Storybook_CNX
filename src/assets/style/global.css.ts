@@ -1,5 +1,7 @@
-import { style } from "@vanilla-extract/css";
+import { globalStyle, style } from "@vanilla-extract/css";
 
-export const container = style({
-    // background : 'coral'
+globalStyle('html, body', {
+    all : 'unset',
+    fontFamily : "inherit",
+    fontSize : "inherit",
 })
