@@ -1,22 +1,9 @@
-export const templateMdx = (fileName) =>
-`import MdxWrap from "./${fileName}Mdx.jsx"
 
-
-# ${fileName}
-기본 ${fileName} 컴포넌트입니다.<br />
-다양한 프레임워크별 코드를 확인할 수 있습니다.
-
-<div className="component-wrap">
-    <MdxWrap />
-</div>
-`
-
-export const templateJsx = (fileName) => `
 import React, {useState, Suspense} from "react"
 import {MdxCodeBlock} from "../../shared/components/Mdx/Mdx.tsx"
 
 
-export default function ${fileName}() {
+export default function Card() {
     const [radioCheck, setRadioCheck] = useState('React');
 
     const handleChange = (e)=> {
@@ -62,4 +49,3 @@ export default function ${fileName}() {
         </div>
     )
 }
-`

@@ -2,7 +2,7 @@ import { Button } from './button.js';
 import buttonHtml from './button.html?raw';
 import buttonCss from './button.css?raw';
 import buttonJs from './button.js?raw';
-import './button.css';
+import './button.scss';
 
 // 메타데이터 설정
 export default {

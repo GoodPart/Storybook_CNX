@@ -1,7 +1,6 @@
 import { Source, Subtitle } from "@storybook/blocks";
 import React from "react";
 
-import { MdxCodeBlockStyle, h2Color } from "./Mdx.css";
 import { Title } from "../Title/Title.tsx";
 
 

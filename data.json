@@ -1,0 +1,58 @@
+{
+ "stories" : [
+    {
+        "name" : "Button",
+        "path" : "./src/stories/",
+        "data" : {
+            "type" : [
+                {
+                    "name" : "Next",
+                    "path" : {
+                        "port" : "6006",
+                        "componentLocation" : "input-components-input--default" 
+                    },
+                    "code" : [{
+                        "extention" : "tsx",
+                        "location" : "storybook-react/src/stories/Button.tsx"
+                    }]
+                },
+                {
+                    "name" : "Vue",
+                    "path" : {
+                        "port" : "6007",
+                        "componentLocation" : "button-components-button--default" 
+                    },
+                    "code" : [{
+                        "extention" : "vue",
+                        "location" : "storybook-vue/src/stories/Button.vue"
+                    }]
+                },
+                {
+                    "name" : "Core",
+                    "path" : {
+                        "port" : "6008",
+                        "componentLocation" : "button-components-button--default" 
+                    },
+                    "code" : [
+                        {
+                            "extention" : "html",
+                            "location" : "storybook-core/src/stories/button.html"
+                        },
+                        {
+                            "extention" : "css",
+                            "location" : "storybook-core/src/stories/button.css"
+                        },
+                        {
+                            "extention" : "js",
+                            "location" : "storybook-core/src/stories/button.js"
+                        },
+                ]
+                },
+                
+
+            ]
+            
+        }
+    }
+ ]   
+}
