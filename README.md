@@ -1,0 +1,123 @@
+# Storybook CNX
+프레임워크별 컴포넌트에 대한  결과물을 하나의 UI에서 확인할 수 있도록 함.<Br />
+이는 Storybook에 [Composition](https://storybook.js.org/docs/sharing/storybook-composition)을 사용함.
+
+<br />
+
+## Install
+
+**./Storybook_CNX**
+```javascript
+npm i
+```
+
+**./Storybook_CNX/storybook-{OTHER-FRAMEWORK}**
+```javascript
+npm i
+```
+자식 스토리북 설치에 추가사항이 있다면 READ.ME파일 수정.
+
+<br />
+
+
+## Useage
+아래 사용법중 하나를 사용.
+
+#### 1. 한번에 실행
+./Storybook_CNX에서 아래 커맨드를 통해 실행가능
+```javascript
+npm run start
+```
+
+> 자식 스토리북이 병렬로 실행되고, 마지막(5초 뒤) 최 상단 스토리북이 실행됨. 경우에 따라 정상적으로 보이지 않을때가 있음.
+그럴땐 `각자 실행`법을 사용
+
+#### 2. 두번 시도 실행
+./Storybook_CNX에서 아래 커맨드를 순서대로 진행하여 실행가능
+```javascript
+npm run dev
+
+// 실행 완료 확인 후
+
+npm run storybook
+```
+
+> 자식 스토리북을 병렬로 실행하고, 정상 실행 확인 후 최상단 스토리북을 실행하는 방식.<br />
+이를 위해, 최상단 `package.json/scripts/devs` 수정이 필요.
+
+
+#### 3. 각자 실행
+자식 스토리북애서 아래 커맨드를 실행한뒤, 최상단 스토리북에서 같은 커맨드를 실행하면 됨.
+```javascript
+npm run storybook
+```
+
+<br />
+
+
+## Port number rull
+> 최상위 스토리 : 6008<br />
+자식 스토리 : 6007, 6006 ...
+
+<br />
+
+## 스토리지별 환경
+
+<table>
+  <thead>
+    <tr>
+      <th>위치</th>
+      <th>설명</th>
+      <th>프레임워크</th>
+      <th>스타일</th>
+      <th>비고</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Root Storybook</td>
+      <td>최상단 스토리북</td>
+      <td>react-vite</td>
+      <td>vanilla extract</td>
+      <td>최상단에 MDX파일에 대한 스타일링을 위해 vanilla extract을 사용함</td>
+    </tr>
+    <tr>
+      <td>../React Storybook</td>
+      <td>리엑트 스토리북</td>
+      <td>react-vite</td>
+      <td>vanilla extract, SCSS</td>
+      <td>둘다 사용할 수 있도록 함</td>
+    </tr>
+    <tr>
+      <td>../Core Storybook</td>
+      <td>코어 스토리북</td>
+      <td>html-vite</td>
+      <td>SCSS</td>
+      <td>정적 작업물을 위한 스토리북으로, scss를 사용함</td>
+    </tr>
+  </tbody>
+</table>
+
+자세한 스팩은 각 스토리북의 `package.json` 참고.
+
+<br />
+
+## 가이드 파일 생성법
+최상단 스토리는 각 스토리북의 결과물을 한눈에 확인하기 위함.<br />
+따라서, 각 스토리북에 대한 정의를 약속된 템플릿을 통해 확인할 수 있어야 함.
+<br />
+
+아래 파일을 이용해 기본 템플릿을 생성할 수 있다.
+> Storybook_CNX/generator.ts
+
+```ts
+npm run generate:template 필요_컴포넌트_이름
+
+ex) 컴포넌트 이기때문에 첫 글자는 대문자를 사용
+npm run generate:template Card
+```
+
+생성된 템플릿은 아래 경로에 생성됨
+```json
+Storybook_CNX/src/stories/
+```
