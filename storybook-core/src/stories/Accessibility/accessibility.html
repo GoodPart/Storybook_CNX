@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>접근성 테스트 컴포넌트</title>
+  <link rel="stylesheet" href="./accessibility.css">
+</head>
+<body>
+  <div class="accessibility-component">
+    <!-- 1. 이미지에 alt 속성 누락 (위반) -->
+    <section class="card">
+      <h2>이미지 접근성 테스트</h2>
+      <div class="image-container">
+        <img src="https://picsum.photos/300/200?random=1">
+        <img src="https://picsum.photos/300/200?random=2" alt="올바른 대체 텍스트가 있는 이미지">
+      </div>
+    </section>
+
+    <!-- 2. 낮은 색상 대비 (위반) -->
+    <section class="card">
+      <h2>색상 대비 테스트</h2>
+      <p class="low-contrast">이 텍스트는 배경과 색상 대비가 충분하지 않습니다.</p>
+      <p class="high-contrast">이 텍스트는 적절한 색상 대비를 가집니다.</p>
+    </section>
+
+    <!-- 3. 빈 링크와 버튼 (위반) -->
+    <section class="card">
+      <h2>링크와 버튼 테스트</h2>
+      <div class="button-container">
+        <a href="#" class="empty-link"></a>
+        <a href="#" class="valid-link">올바른 텍스트가 있는 링크</a>
+        <button class="empty-button"></button>
+        <button class="valid-button">올바른 텍스트가 있는 버튼</button>
+      </div>
+    </section>
+
+    <!-- 4. 헤딩 레벨 건너뛰기 (위반) -->
+    <section class="card">
+      <h2>헤딩 구조 테스트</h2>
+      <div class="headings">
+        <h2>두 번째 수준 헤딩</h2>
+        <h5>다섯 번째 수준 헤딩 (h3, h4를 건너뜀)</h5>
+      </div>
+    </section>
+
+    <!-- 5. 폼 레이블 누락 (위반) -->
+    <section class="card">
+      <h2>폼 접근성 테스트</h2>
+      <form class="test-form">
+        <div class="form-group">
+          <label for="name">이름:</label>
+          <input type="text" id="name">
+        </div>
+        <div class="form-group">
+          <!-- 레이블 없는 입력 필드 -->
+          <input type="email" placeholder="이메일 주소">
+        </div>
+        <div class="form-group">
+          <label for="message">메시지:</label>
+          <textarea id="message"></textarea>
+        </div>
+      </form>
+    </section>
+
+    <!-- 6. 잘못된 ARIA 역할 (위반) -->
+    <section class="card">
+      <h2>ARIA 역할 테스트</h2>
+      <div role="invalid-role">잘못된 ARIA 역할을 가진 요소</div>
+      <div role="button" tabindex="0">올바른 ARIA 역할을 가진 요소</div>
+    </section>
+
+    <!-- 7. 토글 기능 (접근성 준수) -->
+    <section class="card">
+      <h2>토글 컴포넌트 테스트</h2>
+      <div class="toggle-container">
+        <button aria-expanded="false" aria-controls="toggle-content" class="toggle-button">
+          내용 펼치기/접기
+        </button>
+        <div id="toggle-content" class="toggle-content">
+          <p>이 내용은 토글 버튼으로 표시하거나 숨길 수 있습니다.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 접근성 검사 버튼 추가 -->
+    <div class="container">
+      <div class="a11y-test-section">
+        <button id="runA11yTest" class="a11y-test-button">접근성 검사 실행</button>
+        <div id="a11yTestResult" class="a11y-test-result"></div>
+      </div>
+      
+      <h2>색상 대비 테스트</h2>
+    </div>
+  </div>
+  <script src="./accessibility.js"></script>
+  <script>
+    document.getElementById('runA11yTest').addEventListener('click', async function() {
+      const resultElement = document.getElementById('a11yTestResult');
+      resultElement.innerHTML = '접근성 검사 실행 중...<br>잠시만 기다려주세요.';
+      
+      try {
+        // 서버로 검사 요청 보내기
+        const response = await fetch('/run-a11y-test', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            componentPath: 'stories/Accessibility/accessibility.html'
+          })
+        });
+        
+        if (response.ok) {
+          const result = await response.json();
+          // 결과 표시
+          resultElement.innerHTML = `
+            <h3>접근성 검사 결과</h3>
+            <p>위반 사항: ${result.violations} 개</p>
+            <p>통과 항목: ${result.passes} 개</p>
+            <p><a href="${result.reportUrl}" target="_blank">상세 보고서 보기</a></p>
+          `;
+        } else {
+          resultElement.innerHTML = '접근성 검사 실행 중 오류가 발생했습니다.';
+        }
+      } catch (error) {
+        resultElement.innerHTML = '서버 연결 중 오류가 발생했습니다.';
+        console.error('Error:', error);
+      }
+    });
+  </script>
+</body>
+</html> 
