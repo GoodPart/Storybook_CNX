@@ -121,3 +121,13 @@ npm run generate:template Card
 ```json
 Storybook_CNX/src/stories/
 ```
+
+<br />
+
+## 생성된 템플릿 작성에 관하여
+스토리북에서 doc는 mdx파일을 사용해 작성됨.<br />
+기본 기능을 사용한 mdx파일을 작성해도 좋지만, 스타일링과 가시성 이슈로 mdx파일 내부에서 jsx파일을 불러옴.<br />
+
+따라서, 기본적인 doc는 mdx파일이 맞고, 세세한 수정과 스타일링을 하려면 같은 레벨에 000Mdx.jsx파일을에 작성.
+
+---- 작성중... ----
