@@ -1,0 +1,11 @@
+// tsconfig.json
+{
+    "compilerOptions": {
+      "jsx": "react",
+      "module": "ESNext",             // ESM 방식
+      "moduleResolution": "node",
+      "resolveJsonModule": true,      // ← JSON import 허용
+      "esModuleInterop": true,
+      "target": "ESNext"
+    }
+  }

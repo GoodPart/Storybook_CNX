@@ -1,7 +1,7 @@
 import { Source, Subtitle } from "@storybook/blocks";
 import React from "react";
 
-import { Title } from "../Title/Title.tsx";
+import { Title } from "../Title/Title";
 
 
 type MdxCodeBlockProps = {
