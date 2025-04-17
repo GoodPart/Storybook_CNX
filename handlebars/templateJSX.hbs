@@ -1,0 +1,49 @@
+import React, {useState, Suspense} from "react"
+import {MdxCodeBlock} from "../../shared/components/Mdx/Mdx.tsx"
+import {mdxViewItem, mdxViewStyle, mdxWrapStyle, mdxSwicherGroup} from "../../shared/components/Mdx/Mdx.css"
+import { Button } from "../../../storybook-react/src/stories/Button"
+
+
+{{#each data}}
+{/* location of {{name}} source */}
+{{#each code}}
+import * as {{../name}}{{extention}} from "../../../{{location}}?raw";
+{{/each}}
+{{/each}}
+
+export default function MdxWrap() {
+    const [radioCheck, setRadioCheck] = useState('React');
+
+    const handleChange = (e)=> {
+        const {name, value} = e.target;
+        setRadioCheck(value);
+    }
+    return (
+        <div className={mdxWrapStyle}>
+            <div className={mdxViewStyle}>
+              {{#each data}}
+              <iframe
+                  className={`${mdxViewItem} ${radioCheck != "{{name}}" ? 'hide' : ''}`}
+                  src="http://localhost:{{path.port}}/iframe.html?id={{path.componentLocation}}&viewMode=story&refId=react&globals="
+                  width="100%"
+              ></iframe>
+              {{/each}}
+            </div>
+            <div className={mdxSwicherGroup} >
+              {{#each data}}
+              <Button label={"{{name}}"} primary={radioCheck == '{{name}}'} onClick={handleChange} value={"{{name}}"}>{{name}}</Button>
+              {{/each}}
+            </div>
+
+            <div>
+              {{#each data}}
+              <div className={radioCheck == "{{name}}" ? `${mdxViewItem}` : `${mdxViewItem} hide`}>
+                {{#each code}}
+                <MdxCodeBlock title={"{{extention}}"} code={ {{../name}}{{extention}}.default} />
+                {{/each}}
+              </div>
+              {{/each}}
+            </div>
+        </div>
+    )
+}
