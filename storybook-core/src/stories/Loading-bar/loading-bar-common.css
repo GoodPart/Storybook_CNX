@@ -1,0 +1,49 @@
+/* 공통 스타일 */
+.loading-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.9);
+  z-index: 9999;
+}
+
+/* 다크모드 지원 */
+@media (prefers-color-scheme: dark) {
+  .loading-container {
+    background-color: rgba(30, 30, 30, 0.9);
+  }
+}
+
+/* 스크린리더 전용 텍스트 */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* 로딩 컨테이너 내부 래퍼 */
+.loading-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+/* Storybook 뷰 테스트용 스타일(실사용X) */
+.innerZoomElementWrapper .loading-container {
+  position: relative;
+  height: auto;
+} 

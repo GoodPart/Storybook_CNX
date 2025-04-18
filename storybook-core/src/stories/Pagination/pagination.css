@@ -1,0 +1,67 @@
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px;
+}
+
+.pagination-list {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 4px;
+}
+
+.pagination-button,
+.pagination-link {
+  min-width: 36px;
+  height: 36px;
+  padding: 0 8px;
+  border: 1px solid #ddd;
+  background: white;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333;
+  transition: all 0.2s;
+}
+
+.pagination-button:hover:not([disabled]),
+.pagination-link:hover:not(.current) {
+  background: #f5f5f5;
+  border-color: #4A90E2;
+}
+
+.pagination-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pagination-link.current {
+  background: #4A90E2;
+  color: white;
+  border-color: #4A90E2;
+}
+
+.pagination-ellipsis {
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+}
+
+/* 포커스 스타일 */
+.pagination-button:focus,
+.pagination-link:focus {
+  outline: 2px solid #4A90E2;
+  outline-offset: 2px;
+}
+
+/* 반응형 */
+@media (max-width: 480px) {
+  .pagination-list li:not(:first-child):not(:last-child):not(.pagination-ellipsis) {
+    display: none;
+  }
+} 

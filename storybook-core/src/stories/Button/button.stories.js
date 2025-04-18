@@ -6,7 +6,7 @@ import './button.scss';
 
 // 메타데이터 설정
 export default {
-  title: 'Button',
+  title: 'Atom/Button/variant',
   tags: ['autodocs'], // 자동 문서화 활성화
   parameters: {
     docs: {

@@ -1,0 +1,42 @@
+@import './loading-bar-common.css';
+
+/* 원형 로딩바 */
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* 다크모드 지원 */
+@media (prefers-color-scheme: dark) {
+  .spinner {
+    border-color: #333333;
+    border-top-color: #64b5f6;
+  }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* 애니메이션 감소 설정 - 사용자 선호도 반영 */
+@media (prefers-reduced-motion: reduce) {
+  .spinner {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    border-top-color: #3498db;
+    transform: rotate(45deg);
+  }
+  
+  /* 다크모드와 애니메이션 감소 모두 적용 */
+  @media (prefers-color-scheme: dark) {
+    .spinner {
+      border-top-color: #64b5f6;
+    }
+  }
+} 

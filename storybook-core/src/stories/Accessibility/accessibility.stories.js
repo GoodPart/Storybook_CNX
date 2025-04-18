@@ -5,7 +5,7 @@ import accessibilityJs from './accessibility.js?raw';
 import './accessibility.css';
 
 export default {
-  title: 'Components/Accessibility',
+  title: 'Atom/Accessibility/variant',
   tags: ['autodocs'],
   parameters: {
     docs: {

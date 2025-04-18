@@ -3,11 +3,11 @@ import { RangeSlider2 } from './range.ts';
 import rangeHtml from './range.html?raw';
 import rangeCss from './range.css?raw';
 // import rangeJs from './range.js?raw';
-import './range.css';
+import './range.scss';
 
 // 메타데이터 설정
 export default {
-  title: 'Range',
+  title: 'Atom/Range/variant',
   tags: ['autodocs'], // 자동 문서화 활성화
   parameters: {
     docs: {

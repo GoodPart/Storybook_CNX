@@ -1,0 +1,47 @@
+@import './loading-bar-common.css';
+
+/* 선형 로딩바 */
+.linear-activity {
+  width: 80%;
+  max-width: 500px;
+  height: 4px;
+  background-color: #e0e0e0;
+  margin: 20px auto;
+  overflow: hidden;
+  position: relative;
+}
+
+.linear-activity-line {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  background-color: #0d47a1;
+  animation: linear-move 2s infinite linear;
+}
+
+/* 다크모드 지원 */
+@media (prefers-color-scheme: dark) {
+  .linear-activity {
+    background-color: #424242;
+  }
+  
+  .linear-activity-line {
+    background-color: #64b5f6;
+  }
+}
+
+@keyframes linear-move {
+  0% { left: -50%; }
+  100% { left: 100%; }
+}
+
+/* 애니메이션 감소 설정 - 사용자 선호도 반영 */
+@media (prefers-reduced-motion: reduce) {
+  .linear-activity-line {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    width: 100%;
+    left: 0;
+  }
+} 

@@ -2,12 +2,12 @@ import { Step } from './step.ts';
 import stepHtml from './step.html?raw';
 import stepCss from './step.css?raw';
 // import buttonJs from './button.js?raw';
-import './step.css';
+import './step.scss';
 
 
 // 메타데이터 설정
 export default {
-  title: 'Step',
+  title: 'Atom/Step/variant',
 //   tags: ['autodocs'], // 자동 문서화 활성화
   parameters: {
     docs: {

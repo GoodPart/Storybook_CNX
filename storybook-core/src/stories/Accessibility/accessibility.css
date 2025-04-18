@@ -14,11 +14,6 @@
   padding: 20px;
 }
 
-h2 {
-  color: #333;
-  margin-top: 0;
-  margin-bottom: 16px;
-}
 
 /* 이미지 컨테이너 */
 .image-container {
@@ -114,18 +109,7 @@ h2 {
 }
 
 /* ARIA 역할 테스트 */
-[role] {
-  padding: 12px;
-  margin-bottom: 8px;
-  background-color: #f0f0f0;
-  border-radius: 4px;
-}
 
-[role="button"] {
-  cursor: pointer;
-  background-color: #2196F3;
-  color: white;
-}
 
 /* 토글 컴포넌트 */
 .toggle-container {

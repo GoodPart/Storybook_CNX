@@ -1,0 +1,130 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Components/ThumbSlider/Guide" />
+
+# ThumbSlider Component Guide
+
+하나의 swiper 작성만으로 썸네일 swiper를 생성해주는 component입니다.
+
+## 설치 방법
+
+```bash
+npm install swiper
+```
+
+## 사용 방법
+
+### HTML 기본 구조
+
+```html
+<div class="thumbswiper">
+  <swiper-container class="thumbswiper_mainswiper">
+    <swiper-slide>
+      <img src="이미지경로" alt="이미지설명">
+    </swiper-slide>
+    <!-- 추가 슬라이드 -->
+  </swiper-container>
+</div>
+```
+
+### JavaScript 초기화
+
+```javascript
+import { ThumbSlider } from './thumb-slider.js';
+
+const sliderElement = document.querySelector('.thumbswiper');
+new ThumbSlider(sliderElement);
+```
+
+## 옵션
+
+### .thumbswiper에 적용되는 옵션
+
+<table>
+  <tr>
+    <th>옵션</th>
+    <th>타입</th>
+    <th>옵션값</th>
+    <th>설명</th>
+  </tr>
+  <tr>
+    <td>`thumb-slide-show`</td>
+    <td>`number`</td>
+    <td>`.thumbswiper_mainswiper`의 `swiper-slide`갯수 `(default)`</td>
+    <td>썸네일 슬라이더에 한 번에 표시될 슬라이드의 개수를 설정합니다.</td>
+  </tr>
+  <tr>
+    <td>`thumb-slide-position`</td>
+    <td>
+    `string`
+    </td>
+    <td>
+    `top`: thumb slide가 상단에 위치<br/>
+    `bottom (default)`: thumb slide가 하단에 위치<br/>
+    `left`: thumb slide가 왼쪽에 위치<br/>
+    `right`: thumb slide가 오른쪽에 위치<br/>
+    </td>
+    <td>썸네일 슬라이더의 위치를 설정합니다.</td>
+  </tr>
+  <tr>
+    <td>`thumb-navigation`</td>
+    <td>
+    `string`
+    </td>
+    <td>
+    `none (default)`: 네비게이션 버튼 없음<br/>
+    `main`: 메인 슬라이더에만 네비게이션 버튼 표시<br/>
+    `thumb`: 썸네일 슬라이더에만 네비게이션 버튼 표시<br/>
+    `all`: 메인 슬라이더와 썸네일 슬라이더 모두에 네비게이션 버튼 표시
+    </td>
+    <td>네비게이션 버튼 표시 옵션을 설정합니다.</td>
+  </tr>
+</table>
+
+### swiper-container에 적용되는 옵션
+
+<table>
+  <tr>
+    <th>옵션</th>
+    <th>타입입</th>
+    <th>옵션값값</th>
+    <th>설명</th>
+  </tr>
+  <tr>
+    <td>`thumb-swiper`</td>
+    <td>`string`</td>
+    <td>`.thumbswiper_thumbswiper (default)`</td>
+    <td>자동 생성될 썸네일 슬라이더의 클래스명을 지정합니다.<br/>해당 옵션은 swiper에서 제공하는 thumbSlide와의 연결을 위한 옵션으로 사용됩니다.</td>
+  </tr>
+</table>
+
+## 예시
+
+### 기본 사용법
+```html
+<div class="thumbswiper">
+  <swiper-container class="thumbswiper_mainswiper">
+    <swiper-slide><img src="image1.jpg" alt="Image 1"></swiper-slide>
+    <swiper-slide><img src="image2.jpg" alt="Image 2"></swiper-slide>
+    <swiper-slide><img src="image3.jpg" alt="Image 3"></swiper-slide>
+  </swiper-container>
+</div>
+```
+
+### 커스텀 옵션 사용
+```html
+<div class="thumbswiper" 
+     thumb-slide-show="6" 
+     thumb-slide-position="left" 
+     thumb-navigation="all">
+  <swiper-container class="thumbswiper_mainswiper" thumbs-swiper=".custom-thumb-swiper">
+    <!-- 슬라이드 내용 -->
+  </swiper-container>
+</div>
+```
+
+## 주의사항
+
+1. Swiper.js가 필요하므로 반드시 설치해야 합니다.
+2. 썸네일 슬라이더는 메인 슬라이더의 내용을 자동으로 복사하여 생성됩니다.
+3. `thumb-slide-position`이 `left` 또는 `right`인 경우, 썸네일 슬라이더의 높이가 메인 슬라이더의 높이에 맞춰 자동으로 조정됩니다.

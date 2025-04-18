@@ -1,0 +1,113 @@
+.toast {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 300px;
+  max-width: 400px;
+  padding: 16px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  animation: slideIn 0.3s ease-out;
+
+  &-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    z-index: 9999;
+  }
+
+  &.success {
+    border-left: 4px solid #4CAF50;
+
+    .toast-icon {
+      background: #E8F5E9;
+      color: #4CAF50;
+    }
+  }
+
+  &.error {
+    border-left: 4px solid #F44336;
+
+    .toast-icon {
+      background: #FFEBEE;
+      color: #F44336;
+    }
+  }
+
+  &.warning {
+    border-left: 4px solid #FF9800;
+
+    .toast-icon {
+      background: #FFF3E0;
+      color: #FF9800;
+    }
+  }
+
+  &-icon {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 16px;
+  }
+
+  &-content {
+    flex: 1;
+  }
+
+  &-title {
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  &-message {
+    font-size: 14px;
+    color: #666;
+  }
+
+  &-close {
+    padding: 4px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: #999;
+    cursor: pointer;
+    transition: color 0.2s;
+
+    &:hover {
+      color: #666;
+    }
+  }
+
+  &.hiding {
+    animation: slideOut 0.3s ease-out forwards;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+} 
