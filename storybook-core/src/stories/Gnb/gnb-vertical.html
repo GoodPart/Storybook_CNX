@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>수직형 GNB 메뉴</title>
+    <link rel="stylesheet" href="gnb-vertical.css">
+</head>
+<body>
+    <nav class="gnb-vertical" role="navigation" aria-label="수직 네비게이션">
+        <ul class="gnb-vertical-menu">
+            <li class="gnb-vertical-item">
+                <a href="#" class="gnb-vertical-link">메뉴 1</a>
+            </li>
+            <li class="gnb-vertical-item">
+                <a href="#" class="gnb-vertical-link">메뉴 2</a>
+            </li>
+            <li class="gnb-vertical-item">
+                <a href="#" class="gnb-vertical-link">메뉴 3</a>
+            </li>
+        </ul>
+        
+            <!-- 큰 드롭다운 메뉴 영역 -->
+            <div class="gnb-vertical-dropdown">
+                <!-- 메뉴 1의 드롭다운 콘텐츠 -->
+                <div class="gnb-vertical-dropdown-content" data-menu="0">
+                    <div class="gnb-vertical-dropdown-wrapper">
+                        <div class="gnb-vertical-dropdown-section">
+                            <h3 class="gnb-vertical-dropdown-title">카테고리 1-1</h3>
+                            <ul class="gnb-vertical-dropdown-list">
+                                <li><a href="#">서브메뉴 1-1-1</a></li>
+                                <li><a href="#">서브메뉴 1-1-2</a></li>
+                                <li><a href="#">서브메뉴 1-1-3</a></li>
+                            </ul>
+                        </div>
+                        <div class="gnb-vertical-dropdown-section">
+                            <h3 class="gnb-vertical-dropdown-title">카테고리 1-2</h3>
+                            <ul class="gnb-vertical-dropdown-list">
+                                <li><a href="#">서브메뉴 1-2-1</a></li>
+                                <li><a href="#">서브메뉴 1-2-2</a></li>
+                                <li><a href="#">서브메뉴 1-2-3</a></li>
+                            </ul>
+                        </div>
+                        <div class="gnb-vertical-dropdown-section">
+                            <h3 class="gnb-vertical-dropdown-title">카테고리 1-3</h3>
+                            <ul class="gnb-vertical-dropdown-list">
+                                <li><a href="#">서브메뉴 1-3-1</a></li>
+                                <li><a href="#">서브메뉴 1-3-2</a></li>
+                                <li><a href="#">서브메뉴 1-3-3</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 메뉴 2의 드롭다운 콘텐츠 -->
+                <div class="gnb-vertical-dropdown-content" data-menu="1">
+                    <div class="gnb-vertical-dropdown-wrapper">
+                        <div class="gnb-vertical-dropdown-section">
+                            <h3 class="gnb-vertical-dropdown-title">카테고리 2-1</h3>
+                            <ul class="gnb-vertical-dropdown-list">
+                                <li><a href="#">서브메뉴 2-1-1</a></li>
+                                <li><a href="#">서브메뉴 2-1-2</a></li>
+                                <li><a href="#">서브메뉴 2-1-3</a></li>
+                            </ul>
+                        </div>
+                        <div class="gnb-vertical-dropdown-section">
+                            <h3 class="gnb-vertical-dropdown-title">카테고리 2-2</h3>
+                            <ul class="gnb-vertical-dropdown-list">
+                                <li><a href="#">서브메뉴 2-2-1</a></li>
+                                <li><a href="#">서브메뉴 2-2-2</a></li>
+                                <li><a href="#">서브메뉴 2-2-3</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 메뉴 3의 드롭다운 콘텐츠 -->
+                <div class="gnb-vertical-dropdown-content" data-menu="2">
+                    <div class="gnb-vertical-dropdown-wrapper">
+                        <div class="gnb-vertical-dropdown-section">
+                            <h3 class="gnb-vertical-dropdown-title">카테고리 3-1</h3>
+                            <ul class="gnb-vertical-dropdown-list">
+                                <li><a href="#">서브메뉴 3-1-1</a></li>
+                                <li><a href="#">서브메뉴 3-1-2</a></li>
+                                <li><a href="#">서브메뉴 3-1-3</a></li>
+                            </ul>
+                        </div>
+                        <div class="gnb-vertical-dropdown-section">
+                            <h3 class="gnb-vertical-dropdown-title">카테고리 3-2</h3>
+                            <ul class="gnb-vertical-dropdown-list">
+                                <li><a href="#">서브메뉴 3-2-1</a></li>
+                                <li><a href="#">서브메뉴 3-2-2</a></li>
+                                <li><a href="#">서브메뉴 3-2-3</a></li>
+                            </ul>
+                        </div>
+                        <div class="gnb-vertical-dropdown-section">
+                            <h3 class="gnb-vertical-dropdown-title">카테고리 3-3</h3>
+                            <ul class="gnb-vertical-dropdown-list">
+                                <li><a href="#">서브메뉴 3-3-1</a></li>
+                                <li><a href="#">서브메뉴 3-3-2</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 테스트용 추가 콘텐츠 - 드롭다운이 표시되는지 확인하기 위한 용도 -->
+    <div class="test-dropdown">
+        <h2>드롭다운 테스트 영역</h2>
+        <p>이 영역 위에 드롭다운 메뉴가 표시되어야 합니다.</p>
+    </div>
+
+    <script src="gnb-vertical.js"></script>
+</body>
+</html>
+

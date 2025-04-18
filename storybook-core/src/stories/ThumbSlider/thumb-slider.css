@@ -1,0 +1,50 @@
+.thumbswiper {
+  width:100%;
+  max-width:800px;
+  margin:0 auto;
+  display:flex;
+  flex-direction:column;
+  position: relative;
+  swiper-container {
+    width:100%;
+    height:fit-content;
+    img {
+      width:100%;
+      height:100%;
+      object-fit: cover;
+    }
+    &:nth-child(2) {
+      swiper-slide {
+        cursor: pointer;
+        img {
+          width:100%;
+          height:100%;
+          object-fit: cover;
+        }
+      }
+    }
+  }
+  &.thumb-top {
+    flex-direction:column-reverse;
+  }
+  &.thumb-left {
+    flex-direction:row-reverse;
+    gap:5px;
+    swiper-container {
+      width:80%;
+      &:nth-child(2) {
+        width:20%;
+      }
+    }
+  }
+  &.thumb-right {
+    flex-direction:row;
+    gap:5px;
+    swiper-container {
+      width:80%;
+      &:nth-child(2) {
+        width:20%;
+      }
+    }
+  }
+}

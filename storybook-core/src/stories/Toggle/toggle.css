@@ -1,0 +1,70 @@
+.toggle-container {
+  padding: 16px;
+}
+
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.toggle input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-slider {
+  position: relative;
+  width: 48px;
+  height: 24px;
+  background-color: #ccc;
+  border-radius: 24px;
+  transition: background-color 0.2s;
+}
+
+.toggle-slider::before {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.2s;
+}
+
+.toggle input:checked + .toggle-slider {
+  background-color: #4A90E2;
+}
+
+.toggle input:checked + .toggle-slider::before {
+  transform: translateX(24px);
+}
+
+.toggle input:focus + .toggle-slider {
+  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.3);
+}
+
+.toggle-label {
+  font-size: 16px;
+  user-select: none;
+}
+
+/* 호버 효과 */
+.toggle:hover .toggle-slider {
+  background-color: #b3b3b3;
+}
+
+.toggle:hover input:checked + .toggle-slider {
+  background-color: #357abd;
+}
+
+/* 비활성화 상태 */
+.toggle.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+} 

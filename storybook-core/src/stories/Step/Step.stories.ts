@@ -2,7 +2,7 @@ import { Step } from './step.ts';
 import stepHtml from './step.html?raw';
 import stepCss from './step.css?raw';
 // import buttonJs from './button.js?raw';
-import './step.css';
+import './step.scss';
 
 
 // 메타데이터 설정

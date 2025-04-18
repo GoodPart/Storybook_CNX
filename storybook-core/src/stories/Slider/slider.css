@@ -1,0 +1,62 @@
+.slider-container {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.slider-wrapper {
+  display: flex;
+  transition: transform 0.3s ease-in-out;
+}
+
+.slide {
+  flex: 0 0 100%;
+}
+
+.slide img {
+  width: 100%;
+  height: auto;
+}
+
+.slider-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+.prev-button,
+.next-button {
+  background: #4A90E2;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.prev-button:focus,
+.next-button:focus {
+  outline: 2px solid #4A90E2;
+  outline-offset: 2px;
+}
+
+.slider-pagination {
+  display: flex;
+  gap: 8px;
+}
+
+.slider-pagination button {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid #4A90E2;
+  background: white;
+  cursor: pointer;
+}
+
+.slider-pagination button[aria-selected="true"] {
+  background: #4A90E2;
+  color: white;
+} 

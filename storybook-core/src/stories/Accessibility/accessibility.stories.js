@@ -5,7 +5,7 @@ import accessibilityJs from './accessibility.js?raw';
 import './accessibility.css';
 
 export default {
-  title: 'Components/Accessibility',
+  title: 'Accessibility',
   tags: ['autodocs'],
   parameters: {
     docs: {

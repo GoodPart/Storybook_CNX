@@ -1,0 +1,223 @@
+/* 기본 스타일 초기화 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f9fa;
+    padding: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul, li {
+    list-style: none;
+}
+
+/* GNB 수직 메뉴 스타일 */
+.gnb-vertical {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    min-height: 60px;
+    z-index: 1000;
+}
+
+.gnb-vertical-container {
+    position: relative;
+}
+
+.gnb-vertical-menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background-color: #fff;
+    border-radius: 8px;
+    border-bottom: 2px solid #f0f0f0;
+    position: relative;
+    z-index: 1010;
+}
+
+.gnb-vertical-item {
+    position: relative;
+    flex: 1;
+    text-align: center;
+}
+
+.gnb-vertical-link {
+    display: block;
+    padding: 20px 15px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+    transition: all 0.3s ease;
+}
+
+.gnb-vertical-link:hover {
+    background-color: #f8f8f8;
+    color: #007bff;
+}
+
+/* 드롭다운 메뉴 스타일 */
+.gnb-vertical-dropdown {
+    position: relative;
+    width: 100%; 
+    z-index: 1000;
+}
+
+.gnb-vertical-dropdown-content {
+    position: absolute;
+    top: 0; /* 메뉴 바로 아래에 위치 */
+    left: 0;
+    right: 0;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    padding: 30px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 990; /* 메뉴보다 낮은 z-index 설정 */
+    display: none; /* 초기에는 display:none */
+}
+
+/* 활성화 상태 스타일 */
+.gnb-vertical-dropdown-content.active {
+    opacity: 1;
+    visibility: visible;
+    display: block;
+    z-index: 990;
+}
+
+/* hover로 직접 제어 */
+.gnb-vertical-item:hover ~ .gnb-vertical-dropdown .gnb-vertical-dropdown-content[data-menu="0"],
+.gnb-vertical-item[data-menu="0"]:hover ~ .gnb-vertical-dropdown .gnb-vertical-dropdown-content[data-menu="0"],
+.gnb-vertical-dropdown-content[data-menu="0"]:hover {
+    opacity: 1;
+    visibility: visible;
+    display: block;
+}
+
+.gnb-vertical-item:hover ~ .gnb-vertical-dropdown .gnb-vertical-dropdown-content[data-menu="1"],
+.gnb-vertical-item[data-menu="1"]:hover ~ .gnb-vertical-dropdown .gnb-vertical-dropdown-content[data-menu="1"],
+.gnb-vertical-dropdown-content[data-menu="1"]:hover {
+    opacity: 1;
+    visibility: visible;
+    display: block;
+}
+
+.gnb-vertical-item:hover ~ .gnb-vertical-dropdown .gnb-vertical-dropdown-content[data-menu="2"],
+.gnb-vertical-item[data-menu="2"]:hover ~ .gnb-vertical-dropdown .gnb-vertical-dropdown-content[data-menu="2"],
+.gnb-vertical-dropdown-content[data-menu="2"]:hover {
+    opacity: 1;
+    visibility: visible;
+    display: block;
+}
+
+/* 테스트용 스타일 - 항상 첫 번째 드롭다운 표시 */
+.test-show-dropdown .gnb-vertical-dropdown-content[data-menu="0"] {
+    opacity: 1;
+    visibility: visible;
+    display: block;
+}
+
+.gnb-vertical-dropdown-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.gnb-vertical-dropdown-section {
+    flex: 1;
+    min-width: 200px;
+}
+
+.gnb-vertical-dropdown-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #007bff;
+}
+
+.gnb-vertical-dropdown-list li {
+    margin-bottom: 12px;
+}
+
+.gnb-vertical-dropdown-list a {
+    display: block;
+    font-size: 14px;
+    color: #666;
+    padding: 5px 0;
+    transition: all 0.2s ease;
+}
+
+.gnb-vertical-dropdown-list a:hover {
+    color: #007bff;
+    transform: translateX(5px);
+}
+
+/* 반응형 스타일 */
+@media (max-width: 992px) {
+    .gnb-vertical-dropdown-wrapper {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    
+    .gnb-vertical-dropdown-section {
+        flex: 1 1 calc(50% - 30px);
+    }
+}
+
+@media (max-width: 768px) {
+    .gnb-vertical-menu {
+        flex-direction: column;
+    }
+    
+    .gnb-vertical-item {
+        text-align: left;
+        border-bottom: 1px solid #eee;
+    }
+    
+    .gnb-vertical-link {
+        padding: 15px 20px;
+    }
+    
+    .gnb-vertical-dropdown-content {
+        position: static;
+        box-shadow: none;
+        padding: 0 20px;
+        border-top: 1px solid #eee;
+        display: none;
+        transform: none;
+    }
+    
+    .gnb-vertical-dropdown-content.active {
+        display: block;
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    .gnb-vertical-dropdown-wrapper {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .gnb-vertical-dropdown-section {
+        flex: 1 1 100%;
+    }
+} 

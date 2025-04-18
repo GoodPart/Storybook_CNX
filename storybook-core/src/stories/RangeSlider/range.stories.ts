@@ -3,7 +3,7 @@ import { RangeSlider2 } from './range.ts';
 import rangeHtml from './range.html?raw';
 import rangeCss from './range.css?raw';
 // import rangeJs from './range.js?raw';
-import './range.css';
+import './range.scss';
 
 // 메타데이터 설정
 export default {

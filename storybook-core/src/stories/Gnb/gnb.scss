@@ -1,0 +1,254 @@
+.gnb {
+	position: relative;
+	width: 100%;
+	background-color: #ffffff;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	z-index: 100;
+
+	&-container {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 0 1rem;
+		height: 64px;
+	}
+
+	&-logo {
+		display: flex;
+		align-items: center;
+		height: 40px;
+
+		img {
+			height: 100%;
+			width: auto;
+		}
+	}
+
+	&-menu {
+		display: flex;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+
+		&-item {
+			position: relative;
+			margin: 0 0.5rem;
+		}
+
+		&-link,
+		&-button {
+			display: inline-block;
+			padding: 0.5rem 1rem;
+			color: #333;
+			text-decoration: none;
+			font-size: 1rem;
+			font-weight: 500;
+			cursor: pointer;
+			border: none;
+			background: none;
+			transition: color 0.2s;
+
+			&:hover,
+			&:focus {
+				color: #0066cc;
+				outline: none;
+			}
+
+			&:focus-visible {
+				outline: 2px solid #0066cc;
+				outline-offset: 2px;
+			}
+		}
+
+		&-button {
+			display: flex;
+			align-items: center;
+
+			&[aria-expanded="true"] {
+				.gnb-arrow {
+					transform: rotate(45deg);
+				}
+
+				& + .gnb-submenu {
+					display: block; /* 버튼이 활성화되었을 때 보이도록 처리 */
+				}
+			}
+		}
+	}
+
+	&-arrow {
+		display: inline-block;
+		margin-left: 0.5rem;
+		font-size: 16px;
+		transition: transform 0.3s;
+	}
+
+	/* 서브메뉴 스타일 */
+	&-submenu {
+		position: absolute;
+		top: 100%;
+		left: 0;
+		min-width: 200px;
+		background-color: #fff;
+		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+		border-radius: 4px;
+		padding: 0;
+		margin: 0;
+		list-style: none;
+		z-index: 101;
+		overflow: hidden;
+		transition: height 0.3s;
+		display: none;
+
+		&-item {
+			margin: 0;
+
+			&:first-child {
+				padding-top: 10px;
+			}
+
+			&:last-child {
+				padding-bottom: 10px;
+			}
+
+			a {
+				display: block;
+				padding: 0.5rem 1rem;
+				color: #333;
+				text-decoration: none;
+				transition: background-color 0.2s;
+
+				&:hover,
+				&:focus {
+					background-color: #f5f5f5;
+					color: #0066cc;
+				}
+			}
+		}
+	}
+
+	/* 모바일 메뉴 토글 버튼 */
+	&-mobile-toggle {
+		display: none;
+		background: none;
+		border: none;
+		cursor: pointer;
+		padding: 0.5rem;
+	}
+
+	&.mobile-open {
+		.hamburger-icon {
+			background-color: transparent;
+
+			&::before {
+				transform: rotate(45deg);
+				top: 0;
+			}
+
+			&::after {
+				transform: rotate(-45deg);
+				bottom: 0;
+			}
+		}
+
+		.gnb-menu {
+			@media (max-width: 768px) {
+				max-height: 500px;
+			}
+		}
+	}
+
+	&.dark {
+		.gnb-menu {
+			@media (max-width: 768px) {
+				background-color: #222;
+			}
+		}
+	}
+}
+
+.hamburger-icon {
+	display: block;
+	position: relative;
+	width: 24px;
+	height: 2px;
+	background-color: #333;
+
+	&::before,
+	&::after {
+		content: '';
+		position: absolute;
+		width: 24px;
+		height: 2px;
+		background-color: #333;
+		transition: transform 0.2s;
+	}
+
+	&::before {
+		top: -6px;
+	}
+
+	&::after {
+		bottom: -6px;
+	}
+}
+
+/* 반응형 스타일 */
+@media (max-width: 768px) {
+	.gnb {
+		&-mobile-toggle {
+			display: block;
+		}
+
+		&-menu {
+			position: absolute;
+			top: 64px;
+			left: 0;
+			right: 0;
+			flex-direction: column;
+			background-color: #fff;
+			box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+			max-height: 0;
+			overflow: hidden;
+			transition: max-height 0.3s ease-out;
+
+			&-item {
+				margin: 0;
+				width: 100%;
+			}
+
+			&-link,
+			&-button {
+				width: 100%;
+				padding: 0.75rem 1.5rem;
+			}
+
+			&-button {
+				justify-content: space-between;
+			}
+		}
+
+		&-submenu {
+			position: static;
+			box-shadow: none;
+			border-radius: 0;
+			width: 100%;
+
+			&-item {
+				&:first-child {
+					padding-top: 0;
+				}
+				
+				&:last-child {
+					padding-bottom: 0;
+				}
+
+				a {
+					padding-left: 2.5rem;
+				}
+			}
+		}
+	}
+} 
