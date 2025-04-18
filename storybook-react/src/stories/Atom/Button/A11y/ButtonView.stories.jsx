@@ -5,7 +5,7 @@ import ButtonView from './ButtonView';
  * Button/Components/Button 컴포넌트의 접근성 검사 결과를 표시하는 스토리
  */
 export default {
-  title: 'Button/A11y',
+  title: 'atom/Button/A11y',
   component: ButtonView,
   parameters: {
     layout: 'fullscreen',

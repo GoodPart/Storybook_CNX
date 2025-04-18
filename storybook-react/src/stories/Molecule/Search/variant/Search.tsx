@@ -1,5 +1,5 @@
-import { Button } from "../../Button/Components/Button";
-import Input from "../../Input/Input";
+import { Button } from "../../../Atom/Button/variant/Button";
+import Input from "../../../Atom/Input/variant/Input";
 
 import { searchCss } from "./search.css";
 

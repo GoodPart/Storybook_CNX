@@ -50,11 +50,11 @@ const config = {
   },
   "refs" : {
     "react" : {
-      "title" : 'React',
+      "title" : 'Story React',
       "url" : "http://localhost:6007",
     },
     "core" : {
-      "title" : 'Core',
+      "title" : 'Story Core',
       "url" : "http://localhost:6006"
     },
   }

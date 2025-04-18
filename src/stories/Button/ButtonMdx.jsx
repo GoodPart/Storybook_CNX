@@ -3,15 +3,13 @@ import { Source, Subtitle, Title } from "@storybook/blocks"
 
 
 /* import of React */
-import * as ButtonReact from "../../../storybook-react/src/stories/Button.tsx?raw"
-// import * as ButtonCss from "../../../storybook-core/src/stories/Button/button.css?raw"
-// import * as ButtonJS from "../../../storybook-core/src/stories/Button/button.js?raw"
+import * as ButtonReact from "../../../storybook-react/src/stories/Atom/Button/variant/Button.tsx?raw"
 
 /* import of Core */
 import * as ButtonHtml from "../../../storybook-core/src/stories/Button/button.html?raw"
 import * as ButtonCss from "../../../storybook-core/src/stories/Button/button.css?raw"
 import * as ButtonJS from "../../../storybook-core/src/stories/Button/button.js?raw"
-import { Button } from "../../../storybook-react/src/stories/Button"
+import { Button } from "../../../storybook-react/src/stories/Atom/Button/variant/Button.tsx"
 
 
 import {MdxCodeBlock} from "../../shared/components/Mdx/Mdx.tsx"
@@ -27,8 +25,7 @@ export default function MdxWrap() {
     return (
         <div>
             <iframe
-                src="http://localhost:6007/iframe.html?viewMode=story&id=button-components-button--primary&globals="
-                // src="http://localhost:6007/iframe.html?viewMode=story&id=button--primary&globals="
+                src="http://localhost:6007/iframe.html?viewMode=story&id=atom-button-variant--primary&globals="
                 width="100%"
             ></iframe>
 
