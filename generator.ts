@@ -45,18 +45,18 @@ you should write component name`),
                     name : "React",
                     path : {
                         port : "6007",
-                        componentLocation : "input-components-input--default" 
+                        componentLocation : "atom-input-variant--default" 
                     },
                     code : [{
                         extention : "tsx",
-                        location : "storybook-react/src/stories/Input/Input.tsx"
+                        location : "storybook-react/src/stories/Atom/Input/variant/Input.tsx"
                     }]
                 },
                 {
                     name : "Core",
                     path : {
                         port : "6006",
-                        componentLocation : "input-components-input--default" 
+                        componentLocation : "atom-input-component--default" 
                     },
                     code : [
                         {

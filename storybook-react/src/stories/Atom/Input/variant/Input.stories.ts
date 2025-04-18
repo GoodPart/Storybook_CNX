@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import Input from './Input.tsx';
+import Input from './Input.js';
 
 const meta = {
-    title : 'Input/Components/Input',
+    title : 'Atom/Input/variant',
     component : Input,
     parameters: {
        layout: 'centered',

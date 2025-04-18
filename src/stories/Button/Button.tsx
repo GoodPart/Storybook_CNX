@@ -1,5 +1,5 @@
 import React from 'react';
-import * as Bt from "../../../storybook-react/src/stories/Button";
+import * as Bt from "../../../storybook-react/src/stories/Atom/Button";
 import buttonStories from '../../../storybook-core/src/stories/Button/button.stories';
 
 // export const Button = () => <Bt />

@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import Search from './Search';
 
 const meta = {
-    title: 'Page/Search',
+    title: 'Molecule/Search/variant',
     component: Search,
     parameters: {
       layout: 'centered',

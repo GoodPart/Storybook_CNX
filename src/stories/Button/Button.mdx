@@ -1,11 +1,6 @@
 
 import React, {useState} from 'react';
-import { Canvas, Meta, Story, Controls, Source, Stories } from '@storybook/blocks';
-import * as ButtonStories from "./Button.stories.ts"
-import * as ButtonCoreStories from "./ButtonCore.stories.ts"
 
-import * as ButtonCode from "../../../storybook-react/src/stories/Button.tsx?raw";
-import * as ButtonCoreCodeHTML from "../../../storybook-core/src/stories/Button/button.html?raw";
 import MdxWrap from "./ButtonMdx.jsx"
 
 
@@ -18,21 +13,3 @@ import MdxWrap from "./ButtonMdx.jsx"
 </div>
 
 
-
-
-
-
-
-{/* <div style={{display: "flex", width : "100%"}}>
-    <div style={{width : "100%"}}>
-        <h1>React</h1>
-        <Source code={ButtonCode.default} />
-    </div>
-    <div style={{display : "none"}}>
-        <h1>Core</h1>
-        <iframe
-            src="http://localhost:6006/iframe.html?viewMode=story&id=button--primary&globals="
-        ></iframe>
-        <Source code={ButtonCoreCodeHTML.default} />
-    </div>
-</div> */}
