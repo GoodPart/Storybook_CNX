@@ -5,7 +5,7 @@ import tabMenuJs from './tab-menu.js?raw';
 import './tab-menu.scss';
 
 export default {
-  title: 'TabMenu',
+  title: 'Atom/TabMenu/variant',
   tags: ['autodocs'],
   parameters: {
     docs: {

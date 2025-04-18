@@ -3,7 +3,7 @@ import paginationCss from './pagination.css?raw';
 import './pagination.scss';
 
 export default {
-  title: 'Pagination',
+  title: 'Atom/Pagination/variant',
   tags: ['autodocs'],
   parameters: {
     docs: {

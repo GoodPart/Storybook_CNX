@@ -5,7 +5,7 @@ import modalJs from './modal.js?raw';
 import './modal.scss';
 
 export default {
-  title: 'Modal',
+  title: 'Atom/Modal/variant',
   tags: ['autodocs'],
   parameters: {
     docs: {

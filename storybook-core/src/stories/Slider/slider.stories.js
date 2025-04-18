@@ -5,7 +5,7 @@ import sliderJs from './slider.js?raw';
 import './slider.scss';
 
 export default {
-  title: 'Slider',
+  title: 'Atom/Slider/variant',
   tags: ['autodocs'],
   parameters: {
     docs: {

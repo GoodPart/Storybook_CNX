@@ -3,7 +3,7 @@ import toastCss from './toast.css?raw';
 import './toast.scss';
 
 export default {
-  title: 'Toast',
+  title: 'Atom/Toast/variant',
   tags: ['autodocs'],
   parameters: {
     docs: {

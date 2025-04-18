@@ -7,7 +7,7 @@ import './range.scss';
 
 // 메타데이터 설정
 export default {
-  title: 'Range',
+  title: 'Atom/Range/variant',
   tags: ['autodocs'], // 자동 문서화 활성화
   parameters: {
     docs: {

@@ -82,7 +82,7 @@ const commonArgTypes = {
 
 //Docs 설정영역
 export default {
-  title: 'LoadingBar',
+  title: 'Atom/LoadingBar/variant',
   tags: ['autodocs'],
   parameters: {
     docs: {

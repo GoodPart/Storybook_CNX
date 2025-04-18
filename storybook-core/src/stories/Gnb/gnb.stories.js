@@ -10,7 +10,7 @@ import './gnb.scss';
 import './gnb-vertical.css';
 
 export default {
-  title: 'Gnb',
+  title: 'Atom/Gnb/variant',
   tags: ['autodocs'],
   parameters: {
     docs: {

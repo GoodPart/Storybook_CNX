@@ -5,7 +5,7 @@ import accordionJs from './accordion.js?raw';
 import './accordion.scss';
 
 export default {
-  title: 'Accordion',
+  title: 'Atom/Accordion/variant',
   tags: ['autodocs'],
   parameters: {
     docs: {

@@ -3,7 +3,7 @@ import tooltipCss from './tooltip.css?raw';
 import './tooltip.scss';
 
 export default {
-  title: 'Tooltip',
+  title: 'Atom/Tooltip/variant',
   tags: ['autodocs'],
   parameters: {
     docs: {

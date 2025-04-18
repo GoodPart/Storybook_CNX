@@ -3,7 +3,7 @@ import searchCss from './search.css?raw';
 import './search.scss';
 
 export default {
-  title: 'Search',
+  title: 'Atom/Search/variant',
   tags: ['autodocs'],
   parameters: {
     docs: {

@@ -10,7 +10,7 @@ import './modalOptions.scss';
  * 스토리북 파라미터 설정
  */
 export default {
-  title: 'ModalOptions',
+  title: 'Atom/ModalOptions/variant',
   tags: ['autodocs'],
   parameters: {
     docs: {

@@ -3,7 +3,7 @@ import toggleCss from './toggle.css?raw';
 import './toggle.scss';
 
 export default {
-  title: 'Toggle',
+  title: 'Atom/Toggle/variant',
   tags: ['autodocs'],
   parameters: {
     docs: {

@@ -5,7 +5,7 @@ import dropdownJs from './dropdown.js?raw';
 import './dropdown.scss';
 
 export default {
-  title: 'Dropdown',
+  title: 'Atom/Dropdown/variant',
   tags: ['autodocs'],
   parameters: {
     docs: {

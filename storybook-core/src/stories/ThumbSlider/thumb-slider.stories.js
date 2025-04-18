@@ -5,7 +5,7 @@ import thumbsliderJs from './thumb-slider.js?raw';
 import './thumb-slider.scss';
 
 export default {
-  title: 'ThumbSlider',
+  title: 'Atom/ThumbSlider/variant',
   tags: ['autodocs'],
   parameters: {
     docs: {
