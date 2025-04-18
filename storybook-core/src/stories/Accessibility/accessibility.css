@@ -1,0 +1,202 @@
+/* 접근성 테스트 컴포넌트 스타일 */
+.accessibility-component {
+  font-family: Arial, sans-serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+h2 {
+  color: #333;
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+/* 이미지 컨테이너 */
+.image-container {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.image-container img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+/* 색상 대비 테스트 */
+.low-contrast {
+  /* 접근성 위반: 낮은 색상 대비 */
+  color: #aaa;
+  background-color: #f8f8f8;
+  padding: 10px;
+}
+
+.high-contrast {
+  /* 접근성 준수: 높은 색상 대비 */
+  color: #333;
+  background-color: #f8f8f8;
+  padding: 10px;
+}
+
+/* 링크와 버튼 */
+.button-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.empty-link, .empty-button {
+  display: inline-block;
+  width: 36px;
+  height: 36px;
+  background-color: #f0f0f0;
+  border-radius: 4px;
+}
+
+.empty-button {
+  border: none;
+  cursor: pointer;
+}
+
+.valid-link, .valid-button {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: #4CAF50;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.valid-button {
+  border: none;
+  cursor: pointer;
+}
+
+/* 헤딩 구조 */
+.headings {
+  background-color: #f9f9f9;
+  padding: 16px;
+  border-radius: 4px;
+}
+
+/* 폼 스타일 */
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.form-group textarea {
+  min-height: 100px;
+}
+
+/* ARIA 역할 테스트 */
+[role] {
+  padding: 12px;
+  margin-bottom: 8px;
+  background-color: #f0f0f0;
+  border-radius: 4px;
+}
+
+[role="button"] {
+  cursor: pointer;
+  background-color: #2196F3;
+  color: white;
+}
+
+/* 토글 컴포넌트 */
+.toggle-container {
+  margin-bottom: 16px;
+}
+
+.toggle-button {
+  background-color: #673AB7;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.toggle-content {
+  display: none;
+  padding: 16px;
+  background-color: #f5f0ff;
+  border-radius: 4px;
+  margin-top: 8px;
+}
+
+.toggle-content.active {
+  display: block;
+}
+
+/* 접근성 검사 섹션 스타일 */
+.a11y-test-section {
+  margin: 20px 0;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f8f9fa;
+}
+
+.a11y-test-button {
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.a11y-test-button:hover {
+  background-color: #0069d9;
+}
+
+.a11y-test-button:focus {
+  outline: 3px solid #80bdff;
+}
+
+.a11y-test-result {
+  margin-top: 15px;
+  padding: 10px;
+  border-radius: 4px;
+  min-height: 20px;
+}
+
+.a11y-test-result h3 {
+  margin-top: 0;
+  color: #212529;
+}
+
+.a11y-test-result a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.a11y-test-result a:hover {
+  text-decoration: underline;
+} 

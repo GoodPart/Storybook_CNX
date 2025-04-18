@@ -2,11 +2,14 @@
   "name": "cnx_template_team_02",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "storybook build",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "a11y-report": "node scripts/a11y-report.js",
+    "a11y-check": "node scripts/simple-a11y.js"
   },
   "keywords": [],
   "author": "",
@@ -23,6 +26,8 @@
     "@storybook/html": "^8.6.11",
     "@storybook/html-vite": "^8.6.11",
     "@storybook/test": "^8.6.11",
+    "chalk": "^5.4.1",
+    "jsdom": "^26.1.0",
     "sass": "^1.86.3",
     "storybook": "^8.6.11",
     "vite": "^6.1.1"

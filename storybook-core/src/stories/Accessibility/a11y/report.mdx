@@ -1,0 +1,103 @@
+# accessibility.html 접근성 테스트 보고서
+
+<div style="background-color: #f8f9fa; padding: 12px; border-radius: 4px; margin: 12px 0; border-left: 5px solid #3498db;">
+  <h2 style="margin: 0 0 8px 0;">요약</h2>
+  <ul style="margin: 0; padding-left: 20px;">
+    <li><strong>검사 대상:</strong> `src/stories/Accessibility/accessibility.html`</li>
+    <li><strong>검사 일시:</strong> 2025. 4. 16. 오전 11:03:18</li>
+    <li><strong>위반 항목:</strong> <span style="color: #e74c3c; font-weight: bold;">6개</span></li>
+    <li><strong>통과 항목:</strong> <span style="color: #27ae60; font-weight: bold;">2개</span></li>
+  </ul>
+</div>
+## 위반 항목
+<div style="background-color: #fff8f8; border-left: 5px solid #e67e22; padding: 12px; margin: 8px 0; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+  <h3 style="margin: 0 0 8px 0;">1. image-alt</h3>
+  <ul style="margin: 0 0 8px 0; padding-left: 20px; line-height: 1.4;">
+    <li><strong>중요도:</strong> serious</li>
+    <li><strong>설명:</strong> 모든 이미지는 적절한 대체 텍스트(alt 속성)를 가져야 합니다.</li>
+    <li><strong>해결 방법:</strong> 이미지에 대체 텍스트 제공</li>
+    <li><strong>참고 링크:</strong> <a href="https://dequeuniversity.com/rules/axe/4.4/image-alt" target="_blank" style="color: #3498db; text-decoration: none;">자세히 보기</a></li>
+  </ul>
+  <h4 style="margin: 8px 0 4px 0;">영향받는 요소 1</h4>
+  <div style="background-color: #f5f5f5; padding: 8px; border-radius: 4px; font-family: monospace; overflow-x: auto; border: 1px solid #ddd; margin: 4px 0 8px 0;">
+    &lt;img src="https://picsum.photos/300/200?random=1"&gt;
+  </div>
+  <p style="margin: 4px 0;"><strong>실패 요약:</strong> 이 이미지에 alt 속성을 추가하세요.</p>
+</div>
+<div style="background-color: #fff8f8; border-left: 5px solid #e67e22; padding: 12px; margin: 8px 0; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+  <h3 style="margin: 0 0 8px 0;">2. link-name</h3>
+  <ul style="margin: 0 0 8px 0; padding-left: 20px; line-height: 1.4;">
+    <li><strong>중요도:</strong> serious</li>
+    <li><strong>설명:</strong> 모든 링크와 버튼은 접근 가능한 이름을 가져야 합니다.</li>
+    <li><strong>해결 방법:</strong> 링크와 버튼에 접근 가능한 이름 제공</li>
+    <li><strong>참고 링크:</strong> <a href="https://dequeuniversity.com/rules/axe/4.4/link-name" target="_blank" style="color: #3498db; text-decoration: none;">자세히 보기</a></li>
+  </ul>
+  <h4 style="margin: 8px 0 4px 0;">영향받는 요소 1</h4>
+  <div style="background-color: #f5f5f5; padding: 8px; border-radius: 4px; font-family: monospace; overflow-x: auto; border: 1px solid #ddd; margin: 4px 0 8px 0;">
+    &lt;a href="#" class="empty-link"&gt;&lt;/a&gt;
+  </div>
+  <p style="margin: 4px 0;"><strong>실패 요약:</strong> 이 요소에 텍스트 내용이나 aria-label 속성을 추가하세요.</p>
+</div>
+<div style="background-color: #fff8f8; border-left: 5px solid #e67e22; padding: 12px; margin: 8px 0; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+  <h3 style="margin: 0 0 8px 0;">3. link-name</h3>
+  <ul style="margin: 0 0 8px 0; padding-left: 20px; line-height: 1.4;">
+    <li><strong>중요도:</strong> serious</li>
+    <li><strong>설명:</strong> 모든 링크와 버튼은 접근 가능한 이름을 가져야 합니다.</li>
+    <li><strong>해결 방법:</strong> 링크와 버튼에 접근 가능한 이름 제공</li>
+    <li><strong>참고 링크:</strong> <a href="https://dequeuniversity.com/rules/axe/4.4/link-name" target="_blank" style="color: #3498db; text-decoration: none;">자세히 보기</a></li>
+  </ul>
+  <h4 style="margin: 8px 0 4px 0;">영향받는 요소 1</h4>
+  <div style="background-color: #f5f5f5; padding: 8px; border-radius: 4px; font-family: monospace; overflow-x: auto; border: 1px solid #ddd; margin: 4px 0 8px 0;">
+    &lt;button class="empty-button"&gt;&lt;/button&gt;
+  </div>
+  <p style="margin: 4px 0;"><strong>실패 요약:</strong> 이 요소에 텍스트 내용이나 aria-label 속성을 추가하세요.</p>
+</div>
+<div style="background-color: #fff8f8; border-left: 5px solid #e74c3c; padding: 12px; margin: 8px 0; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+  <h3 style="margin: 0 0 8px 0;">4. label</h3>
+  <ul style="margin: 0 0 8px 0; padding-left: 20px; line-height: 1.4;">
+    <li><strong>중요도:</strong> critical</li>
+    <li><strong>설명:</strong> 모든 폼 요소는 접근 가능한 레이블을 가져야 합니다.</li>
+    <li><strong>해결 방법:</strong> 폼 요소에 레이블 제공</li>
+    <li><strong>참고 링크:</strong> <a href="https://dequeuniversity.com/rules/axe/4.4/label" target="_blank" style="color: #3498db; text-decoration: none;">자세히 보기</a></li>
+  </ul>
+  <h4 style="margin: 8px 0 4px 0;">영향받는 요소 1</h4>
+  <div style="background-color: #f5f5f5; padding: 8px; border-radius: 4px; font-family: monospace; overflow-x: auto; border: 1px solid #ddd; margin: 4px 0 8px 0;">
+    &lt;input type="email" placeholder="이메일 주소"&gt;
+  </div>
+  <p style="margin: 4px 0;"><strong>실패 요약:</strong> 이 요소에 label 요소를 연결하거나 aria-label 속성을 추가하세요.</p>
+</div>
+<div style="background-color: #fff8f8; border-left: 5px solid #f1c40f; padding: 12px; margin: 8px 0; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+  <h3 style="margin: 0 0 8px 0;">5. heading-order</h3>
+  <ul style="margin: 0 0 8px 0; padding-left: 20px; line-height: 1.4;">
+    <li><strong>중요도:</strong> moderate</li>
+    <li><strong>설명:</strong> 헤딩 레벨은 순차적으로 증가해야 합니다 (예: h1 다음에 h3이 아닌 h2가 와야 함).</li>
+    <li><strong>해결 방법:</strong> 헤딩 레벨이 순차적으로 증가해야 함</li>
+    <li><strong>참고 링크:</strong> <a href="https://dequeuniversity.com/rules/axe/4.4/heading-order" target="_blank" style="color: #3498db; text-decoration: none;">자세히 보기</a></li>
+  </ul>
+  <h4 style="margin: 8px 0 4px 0;">영향받는 요소 1</h4>
+  <div style="background-color: #f5f5f5; padding: 8px; border-radius: 4px; font-family: monospace; overflow-x: auto; border: 1px solid #ddd; margin: 4px 0 8px 0;">
+    &lt;h5&gt;다섯 번째 수준 헤딩 (h3, h4를 건너뜀)&lt;/h5&gt;
+  </div>
+  <p style="margin: 4px 0;"><strong>실패 요약:</strong> 헤딩 레벨이 2에서 5으로 건너뛰었습니다. 순차적으로 증가해야 합니다.</p>
+</div>
+<div style="background-color: #fff8f8; border-left: 5px solid #e67e22; padding: 12px; margin: 8px 0; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+  <h3 style="margin: 0 0 8px 0;">6. aria-roles</h3>
+  <ul style="margin: 0 0 8px 0; padding-left: 20px; line-height: 1.4;">
+    <li><strong>중요도:</strong> serious</li>
+    <li><strong>설명:</strong> ARIA 역할은 유효한 값을 사용해야 합니다.</li>
+    <li><strong>해결 방법:</strong> 유효한 ARIA 역할 사용</li>
+    <li><strong>참고 링크:</strong> <a href="https://dequeuniversity.com/rules/axe/4.4/aria-roles" target="_blank" style="color: #3498db; text-decoration: none;">자세히 보기</a></li>
+  </ul>
+  <h4 style="margin: 8px 0 4px 0;">영향받는 요소 1</h4>
+  <div style="background-color: #f5f5f5; padding: 8px; border-radius: 4px; font-family: monospace; overflow-x: auto; border: 1px solid #ddd; margin: 4px 0 8px 0;">
+    &lt;div role="invalid-role"&gt;잘못된 ARIA 역할을 가진 요소&lt;/div&gt;
+  </div>
+  <p style="margin: 4px 0;"><strong>실패 요약:</strong> "invalid-role"은(는) 유효한 ARIA 역할이 아닙니다.</p>
+</div>
+## 통과 항목
+<div style="background-color: #f1fff1; border-left: 5px solid #27ae60; padding: 8px 12px; margin: 6px 0; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+  <p style="margin: 0;"><strong>aria-state-and-properties:</strong> 모든 ARIA 상태 및 속성이 올바르게 사용되었습니다.</p>
+</div>
+<div style="background-color: #f1fff1; border-left: 5px solid #27ae60; padding: 8px 12px; margin: 6px 0; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+  <p style="margin: 0;"><strong>keyboard-accessibility:</strong> 모든 대화형 요소가 키보드로 접근 가능합니다.</p>
+</div>

@@ -1,0 +1,281 @@
+/* 접근성 테스트 컴포넌트 스타일 */
+.accessibility-component {
+  font-family: Arial, sans-serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+}
+
+.accessibility-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.accessibility-level {
+  background-color: #3f51b5;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.accessibility-description {
+  margin-bottom: 30px;
+}
+
+.accessibility-description h2 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.accessibility-description p {
+  line-height: 1.5;
+}
+
+.accessibility-footer {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+  color: #666;
+  font-size: 14px;
+}
+
+/* 카드 스타일 */
+.card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+/* 이미지 컨테이너 */
+.image-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.image-container img {
+  max-width: 300px;
+  height: auto;
+  border-radius: 4px;
+}
+
+/* 색상 대비 테스트 */
+.low-contrast {
+  /* 접근성 위반: 낮은 색상 대비 */
+  color: #aaa;
+  background-color: #f8f8f8;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.high-contrast {
+  /* 접근성 준수: 높은 색상 대비 */
+  color: #333;
+  background-color: #f8f8f8;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+/* 링크와 버튼 */
+.button-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.empty-link, .empty-button {
+  display: inline-block;
+  width: 36px;
+  height: 36px;
+  background-color: #f0f0f0;
+  border-radius: 4px;
+}
+
+.empty-button {
+  border: none;
+  cursor: pointer;
+}
+
+.valid-link, .valid-button {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: #4CAF50;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.valid-button {
+  border: none;
+  cursor: pointer;
+}
+
+/* ARIA 버튼 */
+.aria-button {
+  padding: 8px 16px;
+  background-color: #2196F3;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* 헤딩 구조 */
+.headings {
+  background-color: #f9f9f9;
+  padding: 16px;
+  border-radius: 4px;
+}
+
+/* 폼 스타일 */
+.test-form {
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.form-group textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* 체크박스 스타일 */
+.form-group input[type="checkbox"] {
+  width: auto;
+  margin-right: 8px;
+}
+
+.form-group input[type="checkbox"] + label,
+.form-group input[type="checkbox"] + span {
+  display: inline;
+  font-weight: normal;
+}
+
+/* 제출 버튼 */
+.submit-button {
+  background-color: #3f51b5;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.submit-button:hover {
+  background-color: #303f9f;
+}
+
+/* 성공 메시지 */
+.success-message {
+  margin-top: 16px;
+  padding: 10px;
+  background-color: #e8f5e9;
+  border-left: 4px solid #4caf50;
+  color: #2e7d32;
+}
+
+/* 토글 컴포넌트 */
+.toggle-container {
+  margin-bottom: 16px;
+}
+
+.toggle-button {
+  background-color: #673AB7;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.toggle-content {
+  display: none;
+  padding: 16px;
+  background-color: #f5f0ff;
+  border-radius: 4px;
+  margin-top: 8px;
+}
+
+.toggle-content.active {
+  display: block;
+}
+
+/* 키보드 접근성 테스트 */
+.keyboard-a11y-container {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.a11y-button {
+  background-color: #00BCD4;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.keyboard-trap {
+  padding: 10px 16px;
+  background-color: #FF5722;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.keyboard-accessible {
+  padding: 10px 16px;
+  background-color: #8BC34A;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.keyboard-accessible:focus {
+  outline: 3px solid #4CAF50;
+}
+
+/* A11y 위반 요소 구분용 스타일 */
+[role="invalid-role"] {
+  padding: 12px;
+  margin-bottom: 8px;
+  background-color: #fff3e0;
+  border-left: 4px solid #FF9800;
+  border-radius: 4px;
+}
+
+[role="region"] {
+  padding: 12px;
+  margin-bottom: 8px;
+  background-color: #e8f5e9;
+  border-left: 4px solid #4CAF50;
+  border-radius: 4px;
+} 

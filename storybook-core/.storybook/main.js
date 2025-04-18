@@ -2,6 +2,9 @@
 module.exports = {
   stories: [
     "../src/stories/**/*.stories.@(js|jsx|ts|tsx)",
+    "!../src/stories/**/a11y/**",
+    "!../src/stories/a11y/**",
+    "!../stories/a11y/**"
   ],
   framework: {
     name: "@storybook/html-vite",
