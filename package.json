@@ -14,6 +14,8 @@
     "raw-loader": "^4.0.2",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
+    "style-dictionary": "^4.3.3",
+    "token-transformer": "^0.0.33",
     "vite": "^6.2.0"
   },
   "scripts": {
@@ -22,8 +24,10 @@
     "storybook": "storybook dev -p 6008",
     "react-storybook": "cd storybook-react && npm run storybook",
     "html-storybook": "cd storybook-core && npm run storybook",
-    "generate:template": "node generator.ts",
-    "wait-for-servers": "sleep 5"
+    "wait-for-servers": "sleep 5",
+    "generate:template": "node generator.js",
+    "transfer-token_json": "npx token-transformer design_token.json ./src/shared/design_token/token.json", 
+    "generate:token_style" : "style-dictionary build --config ./style-dictionary.config.js"
   },
   "dependencies": {
     "@storybook/addon-actions": "^8.6.12",
