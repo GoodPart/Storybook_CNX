@@ -1,3 +1,4 @@
+import a11yReport from './a11y/report.mdx?raw';
 import { Accordion } from './accordion.js';
 import accordionHtml from './accordion.html?raw';
 import accordionCss from './accordion.css?raw';

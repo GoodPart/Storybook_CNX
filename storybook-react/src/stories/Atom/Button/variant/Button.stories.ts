@@ -58,3 +58,18 @@ export const React: Story = {
     label: "Button"
   }
 };
+
+export const ViolateAccessibility: Story = {
+  args: {
+    primary: true,
+    label: '접근성 위반 버튼',
+    violateAccessibility: true,
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: '이 버튼은 의도적으로 접근성 위반 요소를 포함하고 있습니다. 스크린 리더 접근성, 색상 대비, 이미지 alt 속성 등 여러 접근성 문제가 있습니다.',
+      },
+    },
+  }
+};

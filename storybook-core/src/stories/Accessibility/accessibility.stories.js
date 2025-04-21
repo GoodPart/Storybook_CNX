@@ -86,27 +86,3 @@ export const Default = {
     }
   }
 };
-
-// 접근성 보고서 스토리 추가
-export const AccessibilityReport = {
-  render: () => {
-    const container = document.createElement('div');
-    container.className = 'a11y-report';
-    container.innerHTML = `
-      <div style="padding: 20px; font-family: 'Arial', sans-serif;">
-        <h1 style="color: #333; border-bottom: 1px solid #eee; padding-bottom: 10px;">접근성 보고서</h1>
-        <div style="line-height: 1.6;">
-          <pre style="white-space: pre-wrap; word-break: break-word;">${a11yReport}</pre>
-        </div>
-      </div>
-    `;
-    return container;
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: '컴포넌트 접근성 검사 결과입니다.'
-      }
-    }
-  }
-};
