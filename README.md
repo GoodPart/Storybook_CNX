@@ -15,13 +15,13 @@ npm i
 ```javascript
 npm i
 ```
-자식 스토리북 설치에 추가사항이 있다면 READ.ME파일 수정.
+자식 스토리북 설치에 추가사항이 있다면 `README.md`파일 수정.
 
 <br />
 
 
-## Useage
-아래 사용법중 하나를 사용.
+## usage
+아래 실행 방법중 하나를 사용.
 
 #### 1. 한번에 실행
 ./Storybook_CNX에서 아래 커맨드를 통해 실행가능
@@ -30,15 +30,14 @@ npm run start
 ```
 
 > 자식 스토리북이 병렬로 실행되고, 마지막(5초 뒤) 최 상단 스토리북이 실행됨. 경우에 따라 정상적으로 보이지 않을때가 있음.
-그럴땐 `각자 실행`법을 사용
+그럴땐 `다른 실행`법을 사용
 
 #### 2. 두번 시도 실행
 ./Storybook_CNX에서 아래 커맨드를 순서대로 진행하여 실행가능
 ```javascript
 npm run dev
 
-// 실행 완료 확인 후
-
+//npm run dev 실행 완료 확인 후
 npm run storybook
 ```
 
@@ -105,19 +104,36 @@ npm run storybook
 ## 멀티 Docs 템플릿 파일 생성법
 최상단 스토리는 각 스토리북의 결과물을 한눈에 확인하기 위함.<br />
 따라서, 각 스토리북에 대한 정의를 약속된 템플릿을 통해 확인할 수 있어야 함.
-<br />
-
 아래 파일을 이용해 기본 템플릿을 생성할 수 있다.
 > Storybook_CNX/generator.ts
+
+생성된 템플릿은 아래 경로에 생성됨
+```json
+Storybook_CNX/src/stories/
+```
+
+<br />
+
+## 템플릿 생성 커맨드
+해당 커맨드 실행전 생성할 템플릿의 정의가 필요함.
+```ts
+npm run generate:template
+```
+<br />
 
 
 ### DataSet
 생성할 템플릿에 적용될 데이터를 작성해야함.
 ```ts
-/* 기본 data 설정 */
+
+/* 
+  // Storybook_CNX/generator.ts
+
+  기본 data 설정 
+*/
 const data = {
-    name : comfirmAnswer,
-    path : path+comfirmAnswer,
+    name : comfirmAnswer, // 컴포넌트의 이름
+    path : path+comfirmAnswer, // 컴포넌트에 대한 멀티Docs 템플릿 경로
     data :  [
         {
             name : "React",
@@ -156,7 +172,8 @@ const data = {
 ```
 
 <br />
-아래 `data`는 `객체배열`로 해당 배열의 길이만큼 생성되는 템플릿의 언어변경 탭의 갯수를 제어할 수 있음.
+
+아래 `data.data`는 `객체배열`로 배열의 길이만큼 생성되는 템플릿의 언어변경 탭의 갯수를 제어할 수 있음.
 
 ```ts
 data.data : [{...}]
@@ -164,7 +181,7 @@ data.data : [{...}]
 
 <br />
 
-`data.data`의 파라미터마다의 특징이다. - 작성중... 25_04_18
+`data.data`의 파라미터마다의 특징이다.
 
 <table>
   <thead>
@@ -185,34 +202,58 @@ data.data : [{...}]
     <tr>
       <td>path</td>
       <td>자식 스토리북의 포트와 노출시킬 `variant`를 선언함</td>
-      <td>String</td>
-      <td>해당 variant에 `iframe`명을 확인하여 예시와 같게 작성</td>
+      <td>object</td>
+      <td>
+      <table>
+        <thead>
+          <th>이름</th>
+          <th>설명</th>
+          <th>타입</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>port</td>
+            <td>컴포넌트가 존재하는 자식스토리의 포트번호</td>
+            <td>String</td>
+          </tr>
+          <tr>
+            <td>componentLocation</td>
+            <td>멀티 Docs에 iframe 형태로 노출될 컴포넌트명, 아래 예시 참고</td>
+            <td>String</td>
+          </tr>
+        <tbody>
+      </table>
+      </td>
+    </tr>
+    <tr>
+      <td>code</td>
+      <td>코드삽입을 위한 컴포넌트 위치와 확장자, 기준 ->'Storybook_CNX/'</td>
+      <td>object</td>
+      <td>
+      <table>
+        <thead>
+          <th>이름</th>
+          <th>설명</th>
+          <th>타입</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>extention</td>
+            <td>파일의 확장자</td>
+            <td>String</td>
+          </tr>
+          <tr>
+            <td>location</td>
+            <td>코드의 위치/컴포넌트</td>
+            <td>String</td>
+          </tr>
+        <tbody>
+      </table>
+      </td>
     </tr>
     
   </tbody>
 </table>
 
 
-
-
-```ts
-npm run generate:template 필요_컴포넌트_이름
-
-ex) 컴포넌트 이름 입력
-npm run generate:template card
-```
-
-생성된 템플릿은 아래 경로에 생성됨
-```json
-Storybook_CNX/src/stories/
-```
-
 <br />
-
-## 생성된 템플릿 작성에 관하여
-스토리북에서 doc는 mdx파일을 사용해 작성됨.<br />
-기본 기능을 사용한 mdx파일을 작성해도 좋지만, 스타일링과 가시성 이슈로 mdx파일 내부에서 jsx파일을 불러옴.<br />
-
-따라서, 기본적인 doc는 mdx파일이 맞고, 세세한 수정과 스타일링을 하려면 같은 레벨에 000Mdx.jsx파일을에 작성.
-
----- 작성중... ----
