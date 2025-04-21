@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Header } from "../../../Molecule/Header/component/Header";
+import { Header } from "../../../Molecule/Header/variant/Header";
 import "./page.css";
 
 type User = {

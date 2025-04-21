@@ -1,6 +1,7 @@
 // Use vanilla-extract
 import { InputCss } from "./Input.css";
-
+import { theme } from "../../../../../../src/assets/style/theme/theme.css";
+ 
 interface InputProps {
     placeholder : string;
     value? : string;
@@ -13,10 +14,10 @@ interface InputProps {
 
 export default function Input({type, themeColor, disabled, size, placeholder}:InputProps) {
     return (
-        <input className={InputCss({
+        <input className={`${theme} ${InputCss({
             size : size,
             themeColor : themeColor,
-        })} 
+        })}`} 
             type={type} 
             placeholder={placeholder}
             defaultValue={''} 

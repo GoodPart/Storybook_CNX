@@ -7,13 +7,16 @@ import { Button } from "../../../storybook-react/src/stories/Atom/Button/variant
 {/* location of React source */}
 import * as Reacttsx from "../../../storybook-react/src/stories/Atom/Input/variant/Input.tsx?raw";
 {/* location of Core source */}
+import * as Corehtml from "../../../storybook-core/src/stories/Input/input.html?raw";
+import * as Corecss from "../../../storybook-core/src/stories/Input/input.css?raw";
+import * as Corejs from "../../../storybook-core/src/stories/Input/input.js?raw";
 
 export default function MdxWrap() {
     const [radioCheck, setRadioCheck] = useState('React');
 
     const handleChange = (e)=> {
-        const {name, value} = e.target;
-        setRadioCheck(value);
+      const {name, value} = e.target;
+      setRadioCheck(value);
     }
     return (
         <div className={mdxWrapStyle}>
@@ -25,7 +28,7 @@ export default function MdxWrap() {
               ></iframe>
               <iframe
                   className={`${mdxViewItem} ${radioCheck != "Core" ? 'hide' : ''}`}
-                  src="http://localhost:6006/iframe.html?id=atom-input-component--default&viewMode=story&refId=react&globals="
+                  src="http://localhost:6006/iframe.html?id=atom-input-variant--default&viewMode=story&refId=react&globals="
                   width="100%"
               ></iframe>
             </div>
@@ -39,6 +42,9 @@ export default function MdxWrap() {
                 <MdxCodeBlock title={"tsx"} code={ Reacttsx.default} />
               </div>
               <div className={radioCheck == "Core" ? `${mdxViewItem}` : `${mdxViewItem} hide`}>
+                <MdxCodeBlock title={"html"} code={ Corehtml.default} />
+                <MdxCodeBlock title={"css"} code={ Corecss.default} />
+                <MdxCodeBlock title={"js"} code={ Corejs.default} />
               </div>
             </div>
         </div>

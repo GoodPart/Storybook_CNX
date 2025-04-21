@@ -1,0 +1,19 @@
+@use "../../../../src/shared/design_token/_variables" as theme;
+
+input {
+    padding: 4px 12px;
+    border-radius: 12px;
+    border-style: solid;
+    border-width: 1px;
+
+    &:disabled {
+        border-color: theme.$color-primary-primary-600;
+    }
+    
+    &.primary {
+        border-color: theme.$color-primary-primary-600;
+    }
+    &.warring {
+        border-color: theme.$color-red-red-600;
+    }
+}

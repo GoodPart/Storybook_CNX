@@ -1,16 +1,20 @@
 import { recipe } from "@vanilla-extract/recipes"
+import { createTheme, style } from "@vanilla-extract/css"
 
+// import Token from "../../../../../../src/shared/design_token/token.json";
+import {vars} from "../../../../../../src/assets/style/theme/theme.css";
 
 
 export const InputCss = recipe({
     base : {
+        // content : vars.color.primary,
         padding : '4px 12px',
         borderRadius : "12px",
         borderStyle : "solid",
         borderWidth : "1px",
         selectors : {
             '&:disabled' : {
-                borderColor : '#aaa',
+                borderColor : `${vars.color.disabled}`,
                 cursor: "default"
             }
         }
@@ -28,10 +32,10 @@ export const InputCss = recipe({
                 borderColor : "transparent"                
             },
             primary : {
-                borderColor : "blue"
+                borderColor : `${vars.color.primary}`
             },
             warring : {
-                borderColor : "#FF4000"
+                borderColor : `${vars.color.warring}`
             }
         },
         size : {
