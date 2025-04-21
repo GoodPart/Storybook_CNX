@@ -1,7 +1,9 @@
-import fs from "fs";
-import Handlebars from "handlebars";
-import * as readline from "node:readline/promises"
-import { stdin as input, stdout as output } from 'node:process'
+const fs = require("fs");
+const Handlebars = require("handlebars");
+const readline = require("readline/promises")
+const { stdin: input, stdout: output } = require('node:process');
+// const JsonData = require("data.json")
+
 
 
 const templateSourceMdx = fs.readFileSync("./handlebars/templateMdx.hbs", 'utf-8');
@@ -56,7 +58,7 @@ you should write component name`),
                     name : "Core",
                     path : {
                         port : "6006",
-                        componentLocation : "atom-input-component--default" 
+                        componentLocation : "atom-input-variant--default" 
                     },
                     code : [
                         {

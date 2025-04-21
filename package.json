@@ -22,7 +22,7 @@
     "storybook": "storybook dev -p 6008",
     "react-storybook": "cd storybook-react && npm run storybook",
     "html-storybook": "cd storybook-core && npm run storybook",
-    "generate:template": "node generator.ts",
+    "generate:template": "node generator.js",
     "wait-for-servers": "sleep 5"
   },
   "dependencies": {
