@@ -1,13 +1,10 @@
 import { recipe } from "@vanilla-extract/recipes"
-import { createTheme, style } from "@vanilla-extract/css"
 
-// import Token from "../../../../../../src/shared/design_token/token.json";
-import {vars} from "../../../../../../src/assets/style/theme/theme.css";
+import {vars} from "../../../../../../src/shared/assets/style/theme/theme.css";
 
 
 export const InputCss = recipe({
     base : {
-        // content : vars.color.primary,
         padding : '4px 12px',
         borderRadius : "12px",
         borderStyle : "solid",

@@ -1,6 +1,6 @@
 // Use vanilla-extract
 import { InputCss } from "./Input.css";
-import { theme } from "../../../../../../src/assets/style/theme/theme.css";
+import { theme } from "../../../../../../src/shared/assets/style/theme/theme.css";
  
 interface InputProps {
     placeholder : string;

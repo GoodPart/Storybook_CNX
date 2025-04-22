@@ -1,6 +1,6 @@
 import { createTheme, style } from "@vanilla-extract/css"
 
-import Token from "../../../shared/design_token/token.json";
+import Token from "../../../design_token/token.json";
 
 export const [theme, vars] = createTheme({
     color : {
