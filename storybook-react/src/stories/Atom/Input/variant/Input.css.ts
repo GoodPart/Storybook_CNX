@@ -1,5 +1,6 @@
 import { recipe } from "@vanilla-extract/recipes"
 
+import {vars} from "../../../../../../src/shared/assets/style/theme/theme.css";
 
 
 export const InputCss = recipe({
@@ -10,7 +11,7 @@ export const InputCss = recipe({
         borderWidth : "1px",
         selectors : {
             '&:disabled' : {
-                borderColor : '#aaa',
+                borderColor : `${vars.color.disabled}`,
                 cursor: "default"
             }
         }
@@ -28,10 +29,10 @@ export const InputCss = recipe({
                 borderColor : "transparent"                
             },
             primary : {
-                borderColor : "blue"
+                borderColor : `${vars.color.primary}`
             },
             warring : {
-                borderColor : "#FF4000"
+                borderColor : `${vars.color.warring}`
             }
         },
         size : {

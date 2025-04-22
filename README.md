@@ -200,32 +200,6 @@ data.data : [{...}]
       <td>해당 명칭은 템플릿에서 버튼의 이름으로 사용됨</td>
     </tr>
     <tr>
-      <td>path</td>
-      <td>자식 스토리북의 포트와 노출시킬 `variant`를 선언함</td>
-      <td>object</td>
-      <td>
-      <table>
-        <thead>
-          <th>이름</th>
-          <th>설명</th>
-          <th>타입</th>
-        </thead>
-        <tbody>
-          <tr>
-            <td>port</td>
-            <td>컴포넌트가 존재하는 자식스토리의 포트번호</td>
-            <td>String</td>
-          </tr>
-          <tr>
-            <td>componentLocation</td>
-            <td>멀티 Docs에 iframe 형태로 노출될 컴포넌트명, 아래 예시 참고</td>
-            <td>String</td>
-          </tr>
-        <tbody>
-      </table>
-      </td>
-    </tr>
-    <tr>
       <td>code</td>
       <td>코드삽입을 위한 컴포넌트 위치와 확장자, 기준 ->'Storybook_CNX/'</td>
       <td>object</td>
@@ -251,9 +225,43 @@ data.data : [{...}]
       </table>
       </td>
     </tr>
+    <tr>
+      <td>path</td>
+      <td>자식 스토리북의 포트와 노출시킬 `variant`를 선언함</td>
+      <td>object</td>
+      <td>
+      <table>
+        <thead>
+          <th>이름</th>
+          <th>설명</th>
+          <th>타입</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>port</td>
+            <td>컴포넌트가 존재하는 자식스토리의 포트번호</td>
+            <td>String</td>
+          </tr>
+          <tr>
+            <td>componentLocation</td>
+            <td>iframe 형태로 노출될 컴포넌트명으로, 해당컴포넌트에 variant:'Default'에서 주소를 확인하면 됨. <span style="color : gray;">http://localhost:6007/index.html?path=/story/<strong style="color : coral;">atom-button-variant--primary</strong></span></td>
+            <td>String</td>
+          </tr>
+        <tbody>
+      </table>
+      </td>
+    </tr>
     
   </tbody>
 </table>
 
+---
 
 <br />
+
+## 폴더 구조
+
+
+## A11y
+
+## usage

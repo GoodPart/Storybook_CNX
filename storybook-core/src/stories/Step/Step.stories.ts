@@ -1,4 +1,4 @@
-import { Step } from './step.ts';
+import { Step } from './step';
 import stepHtml from './step.html?raw';
 import stepCss from './step.css?raw';
 // import buttonJs from './button.js?raw';
