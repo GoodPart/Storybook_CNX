@@ -2,8 +2,6 @@ const fs = require("fs");
 const Handlebars = require("handlebars");
 const readline = require("readline/promises")
 const { stdin: input, stdout: output } = require('node:process');
-const JsonData = require("data.json")
-
 
 
 const templateSourceMdx = fs.readFileSync("./handlebars/templateMdx.hbs", 'utf-8');
