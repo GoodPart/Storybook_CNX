@@ -1,21 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import './Button-report.css';
+import './Header-report.css';
 
 /**
- * Button/variant/Button 컴포넌트의 접근성 검사 결과를 표시하는 컴포넌트
+ * Header/variant/Header 컴포넌트의 접근성 검사 결과를 표시하는 컴포넌트
  */
-const ButtonView = () => {
+const HeaderView = () => {
   const [results, setResults] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // 컴포넌트 마운트 시 Button-data.json 파일을 동적으로 가져옵니다
+  // 컴포넌트 마운트 시 Header-data.json 파일을 동적으로 가져옵니다
   useEffect(() => {
     const fetchData = async () => {
       try {
         // 접근성 검사 결과 파일을 가져옵니다
         // React에서는 동적 import를 사용하여 JSON 파일을 가져올 수 있습니다
-        const data = await import('./Button-data.json')
+        const data = await import('./Header-data.json')
           .then(module => module.default || module)
           .catch(err => {
             console.error('접근성 데이터를 가져오는데 실패했습니다:', err);
@@ -48,7 +48,7 @@ const ButtonView = () => {
           <p>
             {error}
           </p>
-          <pre className="a11y-code">npm run a11y Button/variant/Button</pre>
+          <pre className="a11y-code">npm run a11y Header/variant/Header</pre>
           <p>명령어를 실행하여 접근성 검사를 먼저 진행해 주세요.</p>
         </div>
       </div>
@@ -65,7 +65,7 @@ const ButtonView = () => {
           <p>
             접근성 검사 결과 데이터를 찾을 수 없습니다. 다음 명령어를 실행하여 검사를 진행하세요:
           </p>
-          <pre className="a11y-code">npm run a11y Button/variant/Button</pre>
+          <pre className="a11y-code">npm run a11y Header/variant/Header</pre>
         </div>
       </div>
     );
@@ -76,7 +76,7 @@ const ButtonView = () => {
 
   return (
     <div className="a11y-report">
-      <h1>Button/variant/Button 컴포넌트 접근성 검사 결과</h1>
+      <h1>Header/variant/Header 컴포넌트 접근성 검사 결과</h1>
       <p className="a11y-timestamp">검사 일시: {timestamp}</p>
       
       <h2>요약</h2>
@@ -144,4 +144,4 @@ const ButtonView = () => {
   );
 };
 
-export default ButtonView;
+export default HeaderView;

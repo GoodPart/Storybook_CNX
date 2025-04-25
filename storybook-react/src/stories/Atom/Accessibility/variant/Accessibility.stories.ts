@@ -4,7 +4,7 @@ import { fn } from '@storybook/test';
 import { Accessibility } from './Accessibility';
 
 const meta = {
-  title: 'Accessibility/Components/Accessibility',
+  title: 'Atom/Accessibility/variant',
   component: Accessibility,
   parameters: {
     layout: 'centered',

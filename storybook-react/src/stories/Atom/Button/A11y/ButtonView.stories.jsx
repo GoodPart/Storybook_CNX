@@ -2,10 +2,10 @@ import React from 'react';
 import ButtonView from './ButtonView';
 
 /**
- * Button/Components/Button 컴포넌트의 접근성 검사 결과를 표시하는 스토리
+ * Button/variant/Button 컴포넌트의 접근성 검사 결과를 표시하는 스토리
  */
 export default {
-  title: 'atom/Button/A11y',
+  title: 'Atom/Button/a11y',
   component: ButtonView,
   parameters: {
     layout: 'fullscreen',
