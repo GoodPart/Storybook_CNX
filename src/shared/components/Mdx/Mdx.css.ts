@@ -31,8 +31,6 @@ globalStyle(`${mdxViewItem}.hide`, {
 })
 globalStyle(`iframe.${mdxViewItem}`, {
     border : "none",
-    // borderStyle : "solid",
-    // borderColor : "#eee",
     boxSizing : "border-box",
     display : "block",
     height : "inherit"

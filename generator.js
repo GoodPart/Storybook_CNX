@@ -29,7 +29,7 @@ const questions1 = [
 
 const questions2 = [
     {
-        type: 'checkbox',
+        type: 'input',
         name: 'item',
         message: 'variant를 모두 골라주세요:',
         choices: ['default', 'primary', 'warring', 'disabled',]
@@ -40,10 +40,11 @@ async function run() {
     const answer1 = await inquirer.default.prompt(questions1)
     console.log(`${answer1.item}을 선택했습니다.`)
 
-    const answer2 = await inquirer.default.prompt(questions2)
-    console.log(`${answer2.item}을 선택했습니다.`)
+    let answer2 = await inquirer.default.prompt(questions2)
+    let newAnswer2 = answer2.item.trim().split(/\s+/);
+    console.log(`${newAnswer2}을 선택했습니다.`)
 
-    await getParams(answer1.item, answer2.item)
+    await getParams(answer1.item, newAnswer2)
 }
 run()
 
