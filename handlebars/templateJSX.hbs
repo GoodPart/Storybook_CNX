@@ -15,7 +15,12 @@ import * as {{../name}}{{extention}} from "../../../{{location}}?raw";
 export default function MdxWrap() {
     const [radioCheck, setRadioCheck] = useState('React');
     const [port, setPort] = useState("6007");
-    const [variantValue, setVariantValue] = useState("default");
+    {{#each variants}}
+    {{#if @first}}
+    const [variantValue, setVariantValue] = useState("{{this}}");
+    {{/if}}
+    {{/each}}
+    const [fullScreen, setFullScreen] = useState(false);
 
     const switcher = (target) => {
           switch (target) {
@@ -45,7 +50,8 @@ export default function MdxWrap() {
     }, [variantValue, radioCheck])
     return (
         <div className={mdxWrapStyle}>
-            <div className={mdxViewStyle}>
+            <div className={`${mdxViewStyle} ${fullScreen ? "full" : ""}`}>
+              <Button label={fullScreen ? "축소" : "확대"} primary={!fullScreen} onClick={() => setFullScreen(!fullScreen) }/>
               {{#each data}}
               <iframe
                   className={`${mdxViewItem} ${radioCheck != "{{name}}" ? 'hide' : ''}`}
