@@ -1,41 +1,35 @@
 {
- "stories" : [
-    {
-        "name" : "Button",
-        "path" : "./src/stories/",
-        "data" :  [
-            {
-                "name" : "React",
-                "path" : {
-                    "port" : "6007",
-                    "componentLocation" : "input-components-input--default" 
-                },
-                "code" : [{
-                    "extention" : "tsx",
-                    "location" : "storybook-react/src/stories/Input.tsx"
-                }]
+    "data" :  [
+        {
+            "name" : "React",
+            "path" : {
+                "port" : "6007",
+                "componentLocation" : "atom-input-variant" 
             },
-            {
-                "name" : "Core",
-                "path" : {
-                    "port" : "6006",
-                    "componentLocation" : "input-components-input--default" 
+            "code" : [{
+                "extention" : "tsx",
+                "location" : "storybook-react/src/stories/atom/input/variant/input.tsx"
+            }]
+        },
+        {
+            "name" : "Core",
+            "path" : {
+                "port" : "6006",
+                "componentLocation" : "atom-input-variant" 
+            },
+            "code" : [
+                {
+                    "extention" : "html",
+                    "location" : "storybook-core/src/stories/input/input.html"
                 },
-                "code" : [
-                    {
-                        "extention" : "html",
-                        "location" : "storybook-core/src/stories/input.html"
-                    },
-                    {
-                        "extention" : "css",
-                        "location" : "storybook-core/src/stories/input.css"
-                    },
-                    {
-                        "extention" : "js",
-                        "location" : "storybook-core/src/stories/input.js"
-                    }
-            ]
-            }
+                {
+                    "extention" : "css",
+                    "location" : "storybook-core/src/stories/input/input.css"
+                },
+                {
+                    "extention" : "js",
+                    "location" : "storybook-core/src/stories/input/input.js"
+                }
         ]
     }
  ]   

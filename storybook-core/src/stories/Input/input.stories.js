@@ -9,6 +9,7 @@ export default {
   title: 'Atom/Input/variant',
   tags: ['autodocs'], // 자동 문서화 활성화
   parameters: {
+    layout : "centered",
     docs: {
       description: {
         component: '다양한 스타일과 크기를 지원하는 버튼 컴포넌트입니다.'
@@ -35,17 +36,15 @@ export default {
     variant: {
       control: 'radio',
       description: '타입별 색상',
-      options : ['primary', 'warring']
+      options : ['default','primary', 'warring']
     },
     backgroundColor: {
       control: 'color',
       description: '버튼의 배경색'
     },
     size: {
-      control: { 
-        type: 'select',
-        options: ['small', 'medium', 'large']
-      },
+      control: 'radio',
+      options: ['s', 'm', 'l', "xl"],
       description: '버튼의 크기',
       defaultValue: 'medium'
     },
@@ -62,11 +61,13 @@ export const Default = {
     const container = document.createElement("div");
     container.innerHTML = inputHtml;
     container.children[0].classList.add(args.variant)
+    container.children[0].classList.add(args.size)
     return container
   },
   args: {
     label: "주요 버튼123222",
-    variant : "primary"
+    variant : "default",
+    size : "s"
   },
   parameters: {
     docs: {
@@ -77,32 +78,53 @@ export const Default = {
   }
 };
 
-// // 다양한 상태의 버튼 예제
-// export const Secondary = {
-//   render: (args) => new Button(args),
-//   args: {
-//     label: '보조 버튼'
-//   }
-// };
+export const Warring = {
+  args: {
+    label: "주요 버튼123222",
+    variant: "warring",
+    size : "s"
+  },
 
-// export const Large = {
-//   render: (args) => new Button({
-//     ...args,
-//     size: 'large'
-//   }),
-//   args: {
-//     size: 'large',
-//     label: '큰 버튼'
-//   }
-// };
+  render: args => {
+    const container = document.createElement("div");
+    container.innerHTML = inputHtml;
+    container.children[0].classList.add(args.variant);
+    container.children[0].classList.add(args.size)
 
-// export const Small = {
-//   render: (args) => new Button({
-//     ...args,
-//     size: 'small'
-//   }),
-//   args: {
-//     size: 'small',
-//     label: '작은 버튼'
-//   }
-// }; 
+    return container;
+  },
+
+  parameters: {
+    docs: {
+      story: {
+        inline: true
+      }
+    }
+  }
+};
+
+export const Primary = {
+  args: {
+    label: "주요 버튼123222",
+    variant: "primary",
+    size : "s"
+    
+  },
+
+  render: args => {
+    const container = document.createElement("div");
+    container.innerHTML = inputHtml;
+    container.children[0].classList.add(args.variant);
+    container.children[0].classList.add(args.size)
+
+    return container;
+  },
+
+  parameters: {
+    docs: {
+      story: {
+        inline: true
+      }
+    }
+  }
+};

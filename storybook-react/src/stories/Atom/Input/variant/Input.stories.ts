@@ -25,3 +25,25 @@ export const Default:Story = {
         disabled : false
     }
 }
+
+export const Primary: Story = {
+    args: {
+        placeholder: "Search",
+        type: "text",
+        value: "",
+        themeColor: "primary",
+        size: "s",
+        disabled: false
+    }
+};
+
+export const Warring: Story = {
+    args: {
+        placeholder: "Search",
+        type: "text",
+        value: "",
+        themeColor: "warring",
+        size: "s",
+        disabled: false
+    }
+};

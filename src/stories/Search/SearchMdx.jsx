@@ -5,12 +5,9 @@ import { Button } from "../../../storybook-react/src/stories/Atom/Button/variant
 
 import { theme } from "../../shared/assets/style/theme/theme.css.ts"
 
-{{#each data}}
-{/* location of {{name}} source */}
-{{#each code}}
-import * as {{../name}}{{extention}} from "../../../{{location}}?raw";
-{{/each}}
-{{/each}}
+{/* location of React source */}
+import * as Reacttsx from "../../../storybook-react/src/stories/Molecule/Search/variant/Search.tsx?raw";
+{/* location of Core source */}
 
 export default function MdxWrap() {
     const [radioCheck, setRadioCheck] = useState('React');
@@ -19,10 +16,10 @@ export default function MdxWrap() {
 
     const switcher = (target) => {
           switch (target) {
-            {{#each data}}
-              case "{{name}}":
-              return {{path.port}}
-            {{/each}}
+              case "React":
+              return 6007
+              case "Core":
+              return 6006
             default:
               break;
           }
@@ -46,46 +43,40 @@ export default function MdxWrap() {
     return (
         <div className={mdxWrapStyle}>
             <div className={mdxViewStyle}>
-              {{#each data}}
               <iframe
-                  className={`${mdxViewItem} ${radioCheck != "{{name}}" ? 'hide' : ''}`}
-                  src={`http://localhost:{{path.port}}/iframe.html?id={{path.componentLocation}}--${variantValue}&viewMode=story&refId=react&globals=`}
+                  className={`${mdxViewItem} ${radioCheck != "React" ? 'hide' : ''}`}
+                  src={`http://localhost:6007/iframe.html?id=molecule-search-variant--${variantValue}&viewMode=story&refId=react&globals=`}
                   width="100%"
               ></iframe>
-              {{/each}}
+              <iframe
+                  className={`${mdxViewItem} ${radioCheck != "Core" ? 'hide' : ''}`}
+                  src={`http://localhost:6006/iframe.html?id=molecule-search-variant--${variantValue}&viewMode=story&refId=react&globals=`}
+                  width="100%"
+              ></iframe>
               
               <div className={mdxVariantGroup}>
                 <ul className={mdxVariantWrap}>
-                  {{#each variants}}
                   <li className={`${theme} ${mdxVariantItem}`}>
-                    <input type="radio" name="variant" id="{{this}}" onChange={variantChange} value={"{{this}}"}  checked={variantValue == '{{this}}'}/><label htmlFor="{{this}}">{{this}}</label>
+                    <input type="radio" name="variant" id="default" onChange={variantChange} value={"default"}  checked={variantValue == 'default'}/><label htmlFor="default">default</label>
                   </li>  
-                  {{/each}}
                 </ul>
               </div>
               
             </div>
             <div className={mdxSwicherGroup} >
-              {{#each data}}
-              <Button label={"{{name}}"} primary={radioCheck == '{{name}}'} onClick={handleChange} value={"{{name}}"}>{{name}}</Button>
-              {{/each}}
-              {{#each data}}
-              {{#if @first}}
+              <Button label={"React"} primary={radioCheck == 'React'} onClick={handleChange} value={"React"}>React</Button>
+              <Button label={"Core"} primary={radioCheck == 'Core'} onClick={handleChange} value={"Core"}>Core</Button>
               <div className={mdxVariantLinkGroup}>
-                <a href={`http://localhost:${port}/?path=/story/{{path.componentLocation}}--${variantValue}`} target="_blank">[{radioCheck}]{variantValue}컴포넌트 바로가기</a>
+                <a href={`http://localhost:${port}/?path=/story/molecule-search-variant--${variantValue}`} target="_blank">[{radioCheck}]{variantValue}컴포넌트 바로가기</a>
               </div>
-              {{/if}}
-              {{/each}}
             </div>
 
             <div>
-              {{#each data}}
-              <div className={radioCheck == "{{name}}" ? `${mdxViewItem}` : `${mdxViewItem} hide`}>
-                {{#each code}}
-                <MdxCodeBlock title={"{{extention}}"} code={ {{../name}}{{extention}}.default} />
-                {{/each}}
+              <div className={radioCheck == "React" ? `${mdxViewItem}` : `${mdxViewItem} hide`}>
+                <MdxCodeBlock title={"tsx"} code={ Reacttsx.default} />
               </div>
-              {{/each}}
+              <div className={radioCheck == "Core" ? `${mdxViewItem}` : `${mdxViewItem} hide`}>
+              </div>
             </div>
         </div>
     )

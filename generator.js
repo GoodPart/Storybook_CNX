@@ -1,6 +1,7 @@
 const fs = require("fs");
 const Handlebars = require("handlebars");
 const readline = require("readline/promises")
+const inquirer = require("inquirer");
 const { stdin: input, stdout: output } = require('node:process');
 
 
@@ -16,7 +17,41 @@ Handlebars.registerHelper('gt', (a, b) => a > b);
 Handlebars.registerHelper('length', (arr) => (Array.isArray(arr) ? arr.length : 0));
 /* handlebars에 분기 처리에 사용 */
 
-async function getParams() {
+
+const questions1 = [
+    {
+        type: 'list',
+        name: 'item',
+        message: '형태를 골라주세요:',
+        choices: ['Atom', 'Molecule', 'Page']
+    }
+];
+
+const questions2 = [
+    {
+        type: 'checkbox',
+        name: 'item',
+        message: 'variant를 모두 골라주세요:',
+        choices: ['default', 'primary', 'warring', 'disabled',]
+    }
+];
+
+async function run() {
+    const answer1 = await inquirer.default.prompt(questions1)
+    console.log(`${answer1.item}을 선택했습니다.`)
+
+    const answer2 = await inquirer.default.prompt(questions2)
+    console.log(`${answer2.item}을 선택했습니다.`)
+
+    await getParams(answer1.item, answer2.item)
+}
+run()
+
+
+
+
+
+async function getParams(type, variant) {
     const rl = readline.createInterface({input, output})
     const answer = await rl.question(`\n
 🚀 템플릿 생성에 필요한 컴포넌트 명을 입력하세요. :`)
@@ -31,6 +66,9 @@ async function getParams() {
 you should write component name`),
         rl.close()
     }else {
+
+
+        
         /*
             사용자로부터 값을 받는 다면 아래 로직 진행
         */
@@ -40,36 +78,37 @@ you should write component name`),
         const data = {
             name : comfirmAnswer,
             path : path+comfirmAnswer,
+            variants : variant,
             data :  [
                 {
                     name : "React",
                     path : {
                         port : "6007",
-                        componentLocation : "atom-input-variant--default" 
+                        componentLocation : `${type.toLocaleLowerCase()}-${answer}-variant` 
                     },
                     code : [{
                         extention : "tsx",
-                        location : "storybook-react/src/stories/Atom/Input/variant/Input.tsx"
-                    }]
+                        location : `storybook-react/src/stories/${type}/${comfirmAnswer}/variant/${comfirmAnswer}.tsx`
+                    }],
                 },
                 {
                     name : "Core",
                     path : {
                         port : "6006",
-                        componentLocation : "atom-input-variant--default" 
+                        componentLocation : `${type.toLocaleLowerCase()}-${answer}-variant` 
                     },
                     code : [
                         {
                             extention : "html",
-                            location : "storybook-core/src/stories/Input/input.html"
+                            location : `storybook-core/src/stories/${comfirmAnswer}/${answer}.html`
                         },
                         {
                             extention : "css",
-                            location : "storybook-core/src/stories/Input/input.css"
+                            location : `storybook-core/src/stories/${comfirmAnswer}/${answer}.css`
                         },
                         {
                             extention : "js",
-                            location : "storybook-core/src/stories/Input/input.js"
+                            location : `storybook-core/src/stories/${comfirmAnswer}/${answer}.js`
                         }
                 ]
                 }
@@ -148,4 +187,5 @@ function createMdx(data) {
 }
 
 // 실행
-getParams()
+// getParams()
+
