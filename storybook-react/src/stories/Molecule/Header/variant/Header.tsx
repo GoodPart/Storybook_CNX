@@ -1,4 +1,4 @@
-import { Button } from "../../../Atom/Button/variant/Button";
+import Button from "../../../Atom/Button/variant/Button";
 import "./header.css";
 
 type User = {
@@ -50,17 +50,18 @@ export const Header = ({
             <span className="welcome">
               Welcome, <b>{user.name}</b>!
             </span>
-            <Button size="small" onClick={onLogout} label="Log out" />
+            <Button size="s" onClick={onLogout} variant="default">Log out</Button>
           </>
         ) : (
           <>
-            <Button size="small" onClick={onLogin} label="Log in" />
+            <Button size="s" onClick={onLogin} variant="primary">Log in</Button>
             <Button
-              primary
-              size="small"
+              size="s"
               onClick={onCreateAccount}
-              label="Sign up"
-            />
+              variant="warring"
+            >
+              Sign up
+            </Button>
           </>
         )}
       </div>

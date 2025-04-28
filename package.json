@@ -9,6 +9,7 @@
     "@storybook/html-vite": "^8.6.11",
     "@storybook/react-vite": "^8.6.12",
     "@vanilla-extract/vite-plugin": "^5.0.1",
+    "chromatic": "^11.28.2",
     "globals": "^15.15.0",
     "playwright": "^1.51.1",
     "raw-loader": "^4.0.2",
