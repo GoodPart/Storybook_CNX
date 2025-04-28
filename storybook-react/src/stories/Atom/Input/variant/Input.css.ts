@@ -37,16 +37,16 @@ export const InputCss = recipe({
         },
         size : {
             s : {
-                height : '24px'
+                height : `${vars.size.s}`
             },
             m : {
-                height : '28px'
+                height : `${vars.size.m}`
             },
             l : {
-                height : '32px'
+                height : `${vars.size.l}`
             },
             xl : {
-                height : '36px'
+                height : `${vars.size.xl}`
             },
         },
 

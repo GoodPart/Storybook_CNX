@@ -6,11 +6,10 @@ import Button from "../../../storybook-react/src/stories/Atom/Button/variant/But
 import { theme } from "../../shared/assets/style/theme/theme.css.ts"
 
 {/* location of React source */}
-import * as Reacttsx from "../../../storybook-react/src/stories/Atom/Button/variant/Button.tsx?raw";
 {/* location of Core source */}
-import * as Corehtml from "../../../storybook-core/src/stories/Button/button.html?raw";
-import * as Corecss from "../../../storybook-core/src/stories/Button/button.css?raw";
-import * as Corejs from "../../../storybook-core/src/stories/Button/button.js?raw";
+import * as Corehtml from "../../../storybook-core/src/stories/Slider/slider.html?raw";
+import * as Corecss from "../../../storybook-core/src/stories/Slider/slider.css?raw";
+import * as Corejs from "../../../storybook-core/src/stories/Slider/slider.js?raw";
 
 export default function MdxWrap() {
     const [radioCheck, setRadioCheck] = useState('React');
@@ -50,12 +49,12 @@ export default function MdxWrap() {
               <Button onClick={() => setFullScreen(!fullScreen) }>{fullScreen ? "축소" : "확대"}</Button>
               <iframe
                   className={`${mdxViewItem} ${radioCheck != "React" ? 'hide' : ''}`}
-                  src={`http://localhost:6007/iframe.html?id=atom-button-variant--${variantValue}&viewMode=story&refId=react&globals=`}
+                  src={`http://localhost:6007/iframe.html?id=atom-slider-variant--${variantValue}&viewMode=story&refId=react&globals=`}
                   width="100%"
               ></iframe>
               <iframe
                   className={`${mdxViewItem} ${radioCheck != "Core" ? 'hide' : ''}`}
-                  src={`http://localhost:6006/iframe.html?id=atom-button-variant--${variantValue}&viewMode=story&refId=react&globals=`}
+                  src={`http://localhost:6006/iframe.html?id=atom-slider-variant--${variantValue}&viewMode=story&refId=react&globals=`}
                   width="100%"
               ></iframe>
               
@@ -63,12 +62,6 @@ export default function MdxWrap() {
                 <ul className={mdxVariantWrap}>
                   <li className={`${theme} ${mdxVariantItem}`}>
                     <input type="radio" name="variant" id="default" onChange={variantChange} value={"default"}  checked={variantValue == 'default'}/><label htmlFor="default">default</label>
-                  </li>  
-                  <li className={`${theme} ${mdxVariantItem}`}>
-                    <input type="radio" name="variant" id="primary" onChange={variantChange} value={"primary"}  checked={variantValue == 'primary'}/><label htmlFor="primary">primary</label>
-                  </li>  
-                  <li className={`${theme} ${mdxVariantItem}`}>
-                    <input type="radio" name="variant" id="icon" onChange={variantChange} value={"icon"}  checked={variantValue == 'icon'}/><label htmlFor="icon">icon</label>
                   </li>  
                 </ul>
               </div>
@@ -78,13 +71,12 @@ export default function MdxWrap() {
               <Button onClick={handleChange} value={"React"}>React</Button>
               <Button onClick={handleChange} value={"Core"}>Core</Button>
               <div className={mdxVariantLinkGroup}>
-                <a href={`http://localhost:${port}/?path=/story/atom-button-variant--${variantValue}`} target="_blank">[{radioCheck}]{variantValue}컴포넌트 바로가기</a>
+                <a href={`http://localhost:${port}/?path=/story/atom-slider-variant--${variantValue}`} target="_blank">[{radioCheck}]{variantValue}컴포넌트 바로가기</a>
               </div>
             </div>
 
             <div>
               <div className={radioCheck == "React" ? `${mdxViewItem}` : `${mdxViewItem} hide`}>
-                <MdxCodeBlock title={"tsx"} code={ Reacttsx.default} />
               </div>
               <div className={radioCheck == "Core" ? `${mdxViewItem}` : `${mdxViewItem} hide`}>
                 <MdxCodeBlock title={"html"} code={ Corehtml.default} />

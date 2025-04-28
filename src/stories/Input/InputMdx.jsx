@@ -1,7 +1,7 @@
 import React, {useState, Suspense, useEffect} from "react"
 import {MdxCodeBlock} from "../../shared/components/Mdx/Mdx.tsx"
 import {mdxViewItem, mdxViewStyle, mdxWrapStyle, mdxSwicherGroup, mdxVariantItem, mdxVariantWrap,mdxVariantGroup, mdxVariantLinkGroup} from "../../shared/components/Mdx/Mdx.css"
-import { Button } from "../../../storybook-react/src/stories/Atom/Button/variant/Button.tsx"
+import Button from "../../../storybook-react/src/stories/Atom/Button/variant/Button.tsx"
 
 import { theme } from "../../shared/assets/style/theme/theme.css.ts"
 

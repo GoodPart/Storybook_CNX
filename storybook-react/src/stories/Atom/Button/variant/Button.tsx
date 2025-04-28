@@ -1,31 +1,36 @@
 
-import './button.css';
+import {ButtonCss} from "./Button.css.ts";
+import { theme } from '../../../../../../src/shared/assets/style/theme/theme.css';
 
-export interface ButtonProps {
-  primary?: boolean;
-  backgroundColor?: string;
-  size?: 'small' | 'medium' | 'large';
-  label: string;
+interface ButtonProps {
+  variant : "default" | "primary" | "warring";
+  size?: 's' | 'm' | 'l'| 'xl';
+  icon? : React.ReactElement;
+  children: string;
+  disabled? : boolean;
   onClick?: () => void;
 }
 
 /** Primary UI component for user interaction */
-export  const Button = ({
-  primary = false,
-  size = 'medium',
-  backgroundColor,
-  label,
+export default  function Button({
+  variant,
+  size,
+  icon,
+  disabled,
   ...props
-}: ButtonProps) => {
-  const mode = primary ? 'storybook-button--primary' : 'storybook-button--secondary';
+}: ButtonProps) {
   return (
     <button
       type="button"
-      className={['storybook-button', `storybook-button--${size}`, mode].join(' ')}
-      style={{ backgroundColor }}
+      className={`${theme} ${ButtonCss({
+        variant : variant,
+        size : size,
+        icon : icon ? true : false
+      })}`}
+      disabled={disabled}
       {...props}
     >
-      {label}
+      {icon}{props.children}
     </button>
   );
 };

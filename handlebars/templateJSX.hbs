@@ -1,7 +1,7 @@
 import React, {useState, Suspense, useEffect} from "react"
 import {MdxCodeBlock} from "../../shared/components/Mdx/Mdx.tsx"
 import {mdxViewItem, mdxViewStyle, mdxWrapStyle, mdxSwicherGroup, mdxVariantGroup, mdxVariantItem, mdxVariantWrap, mdxVariantLinkGroup} from "../../shared/components/Mdx/Mdx.css"
-import { Button } from "../../../storybook-react/src/stories/Atom/Button/variant/Button.tsx"
+import Button from "../../../storybook-react/src/stories/Atom/Button/variant/Button.tsx"
 
 import { theme } from "../../shared/assets/style/theme/theme.css.ts"
 
@@ -51,7 +51,7 @@ export default function MdxWrap() {
     return (
         <div className={mdxWrapStyle}>
             <div className={`${mdxViewStyle} ${fullScreen ? "full" : ""}`}>
-              <Button label={fullScreen ? "축소" : "확대"} primary={!fullScreen} onClick={() => setFullScreen(!fullScreen) }/>
+              <Button onClick={() => setFullScreen(!fullScreen) }>{fullScreen ? "축소" : "확대"}</Button>
               {{#each data}}
               <iframe
                   className={`${mdxViewItem} ${radioCheck != "{{name}}" ? 'hide' : ''}`}
@@ -73,7 +73,7 @@ export default function MdxWrap() {
             </div>
             <div className={mdxSwicherGroup} >
               {{#each data}}
-              <Button label={"{{name}}"} primary={radioCheck == '{{name}}'} onClick={handleChange} value={"{{name}}"}>{{name}}</Button>
+              <Button onClick={handleChange} value={"{{name}}"}>{{name}}</Button>
               {{/each}}
               {{#each data}}
               {{#if @first}}
