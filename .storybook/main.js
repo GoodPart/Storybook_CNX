@@ -53,11 +53,13 @@ const config = {
   "refs" : {
     "react" : {
       "title" : 'Story React',
-      "url" : "http://localhost:6007",
+      // "url" : "http://localhost:6007",
+      "url" : "https://680f166c503340b7f8dc673c-bhuvuypnys.chromatic.com/"
     },
     "core" : {
       "title" : 'Story Core',
-      "url" : "http://localhost:6006"
+      // "url" : "http://localhost:6006"
+      "url" : "https://6811cce941aa148a7430baf9-qxnuyahwcv.chromatic.com/"
     },
   }
 };
