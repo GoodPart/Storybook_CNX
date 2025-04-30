@@ -37,6 +37,7 @@ const config = {
     // "@chromatic-com/storybook",
     '@storybook/addon-actions',
     '@storybook/addon-knobs',
+    "@storybook/addon-designs"
   ],
   "framework": {
     "name": "@storybook/react-vite",

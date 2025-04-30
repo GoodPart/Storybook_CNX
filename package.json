@@ -1,6 +1,7 @@
 {
   "name": "storybook",
   "devDependencies": {
+    "@storybook/addon-designs": "^8.2.1",
     "@storybook/addon-docs": "^8.6.12",
     "@storybook/addon-essentials": "^8.6.12",
     "@storybook/addon-onboarding": "^8.6.12",

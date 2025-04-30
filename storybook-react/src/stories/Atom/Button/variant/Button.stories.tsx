@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 
-import Iconimg from "../../../../assets/react.svg"
+import Iconimg from "../../../../assets/arrow-left.svg"
 
 import Button from './Button';
 
@@ -10,6 +10,7 @@ const meta = {
   component: Button,
   parameters: {
     layout: 'centered',
+    
   },
   tags: ['autodocs'],
   args: { onClick: fn() },
@@ -22,9 +23,10 @@ export const Default: Story = {
   args: {
     variant : "default",
     children: "React",
-    size : "s",
-    disabled : true
+    size : "m",
+    disabled : false
   },
+  
 };
 
 export const Primary: Story = {
@@ -37,8 +39,14 @@ export const Primary: Story = {
 export const Icon: Story = {
   args: {
     variant: "primary",
-    children: "Icon",
-    size: "s",
+    children: "Button",
+    size: "m",
     icon : <img src={Iconimg} width={16} />,
+  },
+  parameters : {
+    design : {
+      type : "figma",
+      url : "https://www.figma.com/design/GHz252c4xWEAoJVQojoGxK/Design-System-CNX?node-id=459-2843&m=dev"
+    }
   }
 };
