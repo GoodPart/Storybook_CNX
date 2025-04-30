@@ -1,4 +1,5 @@
-@use "../../../../shared/design_token/variables" as theme;
+// @use "../../../../shared/design_token/variables" as theme;
+@use "../../../../../design_token/variables" as theme;
 input {
     padding: 4px 12px;
     border-radius: 12px;

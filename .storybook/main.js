@@ -49,6 +49,7 @@ const config = {
       ]
     }
   },
+  
   "refs" : {
     "react" : {
       "title" : 'Story React',

@@ -1,16 +1,23 @@
 import React, {useState, Suspense, useEffect} from "react"
-import {MdxCodeBlock} from "../../shared/components/Mdx/Mdx.tsx"
-import {mdxViewItem, mdxViewStyle, mdxWrapStyle, mdxSwicherGroup, mdxVariantItem, mdxVariantWrap,mdxVariantGroup, mdxVariantLinkGroup} from "../../shared/components/Mdx/Mdx.css"
-import Button from "../../../storybook-react/src/stories/Atom/Button/variant/Button.tsx"
+// import {MdxCodeBlock} from "../../shared/components/Mdx/Mdx.tsx"
+import { MdxCodeBlock } from "../../../shared/components/Mdx/Mdx.tsx"
+import {mdxViewItem, mdxViewStyle, mdxWrapStyle, mdxSwicherGroup, mdxVariantItem, mdxVariantWrap,mdxVariantGroup, mdxVariantLinkGroup} from "../../../shared/components/Mdx/Mdx.css"
+// import Button from "../../../storybook-react/src/stories/Atom/Button/variant/Button.tsx"
+import Button from "../../../shared/components/component/react/atom/Button/Button.tsx"
 
-import { theme } from "../../shared/assets/style/theme/theme.css.ts"
+import { theme } from "../../../shared/assets/style/theme/theme.css.ts"
 
 {/* location of React source */}
-import * as Reacttsx from "../../../storybook-react/src/stories/Atom/Input/variant/Input.tsx?raw";
+// import * as Reacttsx from "../../../storybook-react/src/stories/Atom/Input/variant/Input.tsx?raw";
+import * as Reacttsx from "../../../shared/components/component/react/atom/Input/Input.tsx?raw";
 {/* location of Core source */}
-import * as Corehtml from "../../../storybook-core/src/stories/Input/input.html?raw";
-import * as Corecss from "../../../storybook-core/src/stories/Input/input.css?raw";
-import * as Corejs from "../../../storybook-core/src/stories/Input/input.js?raw";
+// import * as Corehtml from "../../../storybook-core/src/stories/Input/input.html?raw";
+// import * as Corecss from "../../../storybook-core/src/stories/Input/input.css?raw";
+// import * as Corejs from "../../../storybook-core/src/stories/Input/input.js?raw";
+import * as Corehtml from ".././../../shared/components/component/core/atom/Input/input.html?raw";
+import * as Corecss from ".././../../shared/components/component/core/atom/Input/input.scss?raw";
+import * as Corejs from ".././../../shared/components/component/core/atom/Input/input.js?raw";
+
 
 export default function MdxWrap() {
     const [radioCheck, setRadioCheck] = useState('React');

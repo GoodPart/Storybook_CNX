@@ -1,4 +1,6 @@
-import Button from "../../../Atom/Button/variant/Button";
+import React from "react";
+// import Button from "../../../Atom/Button/variant/Button";
+import Button from "../../atom/Button/Button";
 import "./header.css";
 
 type User = {

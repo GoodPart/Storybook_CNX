@@ -1,8 +1,11 @@
 // import { Button } from './input.js';
-import inputHtml from './input.html?raw';
+// import inputHtml from './input.html?raw';
 // import inputCss from './input.css?raw';
 // import buttonJs from './button.js?raw';
-import './input.scss';
+// import './input.scss';
+
+import inputHtml from "../../../../shared/components/component/core/atom/Input/input.html?raw"
+import '../../../../shared/components/component/core/atom/Input/input.scss'
 
 // 메타데이터 설정
 export default {

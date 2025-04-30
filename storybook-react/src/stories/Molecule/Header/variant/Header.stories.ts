@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 
-import { Header } from './Header';
+// import { Header } from './Header';
+import {Header} from "../../../../../../shared/components/component/react/molecule/Header/Header";
 
 const meta = {
   title: 'Molecule/Header/variant',

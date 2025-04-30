@@ -1,5 +1,8 @@
-import Button from "../../../Atom/Button/variant/Button";
-import Input from "../../../Atom/Input/variant/Input";
+import React from "react";
+// import Button from "../../../Atom/Button/variant/Button";
+// import Input from "../../../Atom/Input/variant/Input";
+import Button from "../../atom/Button/Button";
+import Input from "../../atom/Input/Input";
 
 import { searchCss } from "./search.css";
 

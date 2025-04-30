@@ -1,12 +1,16 @@
 import React, {useState, Suspense, useEffect} from "react"
-import {MdxCodeBlock} from "../../shared/components/Mdx/Mdx.tsx"
-import {mdxViewItem, mdxViewStyle, mdxWrapStyle, mdxSwicherGroup, mdxVariantGroup, mdxVariantItem, mdxVariantWrap, mdxVariantLinkGroup} from "../../shared/components/Mdx/Mdx.css"
-import Button from "../../../storybook-react/src/stories/Atom/Button/variant/Button.tsx"
+import {MdxCodeBlock} from "../../../shared/components/Mdx/Mdx.tsx"
+// import Button from "../../../storybook-react/src/stories/Atom/Button/variant/Button.tsx"
+import Button from "../../../shared/components/component/react/atom/Button/Button.tsx"
 
-import { theme } from "../../shared/assets/style/theme/theme.css.ts"
+import {mdxViewItem, mdxViewStyle, mdxWrapStyle, mdxSwicherGroup, mdxVariantGroup, mdxVariantItem, mdxVariantWrap, mdxVariantLinkGroup} from "../../../shared/components/Mdx/Mdx.css"
+
+// import { theme } from "../../shared/assets/style/theme/theme.css.ts"
+import { theme } from "../../../shared/assets/style/theme/theme.css.ts"
 
 {/* location of React source */}
-import * as Reacttsx from "../../../storybook-react/src/stories/Atom/Button/variant/Button.tsx?raw";
+// import * as Reacttsx from "../../../storybook-react/src/stories/Atom/Button/variant/Button.tsx?raw";
+import * as Reacttsx from "../../../shared/components/component/react/atom/Button/Button.tsx?raw";
 {/* location of Core source */}
 import * as Corehtml from "../../../storybook-core/src/stories/Button/button.html?raw";
 import * as Corecss from "../../../storybook-core/src/stories/Button/button.css?raw";
