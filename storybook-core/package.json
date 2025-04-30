@@ -9,7 +9,8 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "a11y-report": "node scripts/a11y-report.js",
-    "a11y-check": "node scripts/simple-a11y.js"
+    "a11y-check": "node scripts/simple-a11y.js",
+    "chromatic": "npx chromatic --project-token=chpt_e1b1cb7bcf5d418"
   },
   "keywords": [],
   "author": "",

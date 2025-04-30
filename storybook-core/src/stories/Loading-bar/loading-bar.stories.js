@@ -145,97 +145,97 @@ export default {
 };
 
 // 스토리 정의
-export const CircleSpinner = {
-  render: (args) => {
-    // 다크모드 토글 적용
-    toggleDarkMode(args.darkMode);
+// export const CircleSpinner = {
+//   render: (args) => {
+//     // 다크모드 토글 적용
+//     toggleDarkMode(args.darkMode);
     
-    const container = document.createElement('div');
-    container.innerHTML = loadingBarSpinner;
+//     const container = document.createElement('div');
+//     container.innerHTML = loadingBarSpinner;
     
-    const loadingBarElement = container;
-    new LoadingBar(loadingBarElement, {
-      backgroundColor: args.backgroundColor,
-      elementColor: args.elementColor,
-      animationSpeed: args.animationSpeed,
-      percentage: args.percentage,
-      loadingVisible: args.loadingVisible
-    });
+//     const loadingBarElement = container;
+//     new LoadingBar(loadingBarElement, {
+//       backgroundColor: args.backgroundColor,
+//       elementColor: args.elementColor,
+//       animationSpeed: args.animationSpeed,
+//       percentage: args.percentage,
+//       loadingVisible: args.loadingVisible
+//     });
     
-    return container;
-  },
-  argTypes: {
-    ...commonArgTypes,
-    elementColor: {
-      control: { type: 'color' },
-      description: '스피너 테두리 색상',
-      defaultValue: '#3498db',
-      table: {
-        category: '스타일'
-      }
-    }
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: '원형으로 회전하는 기본 스피너 로딩 애니메이션입니다.'
-      },
-      story: {
-        inline: true
-      },
-      source: {
-        code: `
-          // HTML
-          ${loadingBarSpinner}
+//     return container;
+//   },
+//   argTypes: {
+//     ...commonArgTypes,
+//     elementColor: {
+//       control: { type: 'color' },
+//       description: '스피너 테두리 색상',
+//       defaultValue: '#3498db',
+//       table: {
+//         category: '스타일'
+//       }
+//     }
+//   },
+//   parameters: {
+//     docs: {
+//       description: {
+//         story: '원형으로 회전하는 기본 스피너 로딩 애니메이션입니다.'
+//       },
+//       story: {
+//         inline: true
+//       },
+//       source: {
+//         code: `
+//           // HTML
+//           ${loadingBarSpinner}
           
-          // 이미지 로딩 진행률을 퍼센티지로 표시하는 코드
-          // 1. 로딩바 초기화
-          const container = document.querySelector('.loading-container');
-          const loadingBar = new LoadingBar(container, {
-            percentage: true
-          });
+//           // 이미지 로딩 진행률을 퍼센티지로 표시하는 코드
+//           // 1. 로딩바 초기화
+//           const container = document.querySelector('.loading-container');
+//           const loadingBar = new LoadingBar(container, {
+//             percentage: true
+//           });
           
-          // 2. 이미지 로딩 진행률 추적
-          const images = document.querySelectorAll('img');
-          let loadedCount = 0;
-          const totalCount = images.length || 1;
+//           // 2. 이미지 로딩 진행률 추적
+//           const images = document.querySelectorAll('img');
+//           let loadedCount = 0;
+//           const totalCount = images.length || 1;
           
-          // 3. 이미지 로딩 상태 확인 및 이벤트 등록
-          images.forEach(img => {
-            if (img.complete) {
-              loadedCount++;
-            } else {
-              img.addEventListener('load', () => {
-                loadedCount++;
-                updateProgress();
-              });
-              img.addEventListener('error', () => {
-                loadedCount++;
-                updateProgress();
-              });
-            }
-          });
+//           // 3. 이미지 로딩 상태 확인 및 이벤트 등록
+//           images.forEach(img => {
+//             if (img.complete) {
+//               loadedCount++;
+//             } else {
+//               img.addEventListener('load', () => {
+//                 loadedCount++;
+//                 updateProgress();
+//               });
+//               img.addEventListener('error', () => {
+//                 loadedCount++;
+//                 updateProgress();
+//               });
+//             }
+//           });
           
-          // 4. 진행률 업데이트 함수
-          function updateProgress() {
-            const progress = Math.round((loadedCount / totalCount) * 100);
-            loadingBar.updateProgress(progress);
+//           // 4. 진행률 업데이트 함수
+//           function updateProgress() {
+//             const progress = Math.round((loadedCount / totalCount) * 100);
+//             loadingBar.updateProgress(progress);
             
-            if (progress >= 100) {
-              setTimeout(() => loadingBar.hide(), 1000);
-            }
-          }
+//             if (progress >= 100) {
+//               setTimeout(() => loadingBar.hide(), 1000);
+//             }
+//           }
           
-          // 5. 초기 진행률 업데이트
-          updateProgress();
+//           // 5. 초기 진행률 업데이트
+//           updateProgress();
           
-          // CSS
-          ${spinnerCss}
-        `
-      }
-    }
-  }
-};
+//           // CSS
+//           ${spinnerCss}
+//         `
+//       }
+//     }
+//   }
+// };
 
 export const DotLoading = {
   render: (args) => {
