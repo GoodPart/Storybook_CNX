@@ -350,17 +350,46 @@ async function saveA11yReport(
     const cleanComponentName = componentName.replace(/[\\\/\s]+$/, "").trim();
     const pathParts = cleanComponentName.split("/").map((part) => part.trim());
 
-    // 제일 상위 메뉴 이름 (예: 'Button')
-    const mainComponentName = pathParts[0];
+    // 경로 구조 분석: Button/variant/Button 형식 예상
+    if (pathParts.length < 2) {
+      throw new Error('잘못된 컴포넌트 경로입니다. "컴포넌트/variant/컴포넌트이름" 형식이 필요합니다.');
+    }
 
-    // 마지막 부분이 실제 컴포넌트 이름 (예: 'Button')
+    // 컴포넌트 이름 (첫 번째 부분, 예: Button)
+    const componentName1stPart = pathParts[0];
+    
+    // 실제 컴포넌트 이름 (경로의 마지막 부분)
     const actualComponentName = pathParts[pathParts.length - 1];
 
-    // a11y 폴더 경로 (Components 폴더와 같은 레벨)
-    // 예: src/stories/Accessibility 안에 Components와 a11y 폴더가 같은 레벨로 존재
+    // 기본 경로 설정
     const storiesPath = path.join(process.cwd(), "src", "stories");
-    const mainComponentPath = path.join(storiesPath, mainComponentName);
-    const a11yFolderPath = path.join(mainComponentPath, "A11y"); // 대문자로 시작하는 폴더명 사용
+    
+    // 실제 컴포넌트 부모 폴더 찾기 (Atom, Molecule, Pages 등)
+    // 가능한 부모 폴더 목록
+    const possibleParentFolders = ["Atom", "Molecule", "Organism", "Pages", "Template"];
+    
+    let componentParentFolder = null;
+    for (const parent of possibleParentFolders) {
+      const possiblePath = path.join(storiesPath, parent, componentName1stPart);
+      if (fs.existsSync(possiblePath)) {
+        componentParentFolder = parent;
+        break;
+      }
+    }
+    
+    // 부모 폴더를 찾지 못한 경우 기본값으로 Molecule 사용
+    if (!componentParentFolder) {
+      console.log(chalk.default.yellow(`컴포넌트 부모 폴더를 찾을 수 없습니다. 기본값 'Molecule'을 사용합니다.`));
+      componentParentFolder = "Molecule";
+    }
+    
+    // a11y 폴더 경로: src/stories/[Atom|Molecule|...]/Button/a11y
+    const componentTypePath = path.join(storiesPath, componentParentFolder);
+    const componentPath = path.join(componentTypePath, componentName1stPart);
+    const a11yFolderPath = path.join(componentPath, "a11y"); // 소문자로 폴더명 사용
+
+    console.log(chalk.default.yellow(`a11y 폴더 경로: ${a11yFolderPath}`));
+    console.log(chalk.default.yellow(`(${componentParentFolder}/${componentName1stPart} 폴더 내에 생성)`));
 
     // 폴더 생성 (재귀적으로)
     await mkdir(a11yFolderPath, { recursive: true });
@@ -395,8 +424,7 @@ async function saveA11yReport(
     );
     fs.writeFileSync(jsonFilePath, jsonData);
 
-    // A11yView 컴포넌트 복사 - 자동 생성되는 파일(동적 로드)
-    // src/stories/Accessibility/A11y/A11yView.jsx 파일이 없으면 복사
+    // a11y 컴포넌트 생성 - 자동 생성되는 파일(동적 로드)
     const viewComponentSource = path.join(
       a11yFolderPath,
       `${actualComponentName}View.jsx`
@@ -563,7 +591,7 @@ import ${actualComponentName}View from './${actualComponentName}View';
  * ${componentName} 컴포넌트의 접근성 검사 결과를 표시하는 스토리
  */
 export default {
-  title: '${mainComponentName}/A11y',
+  title: '${componentParentFolder}/${componentName1stPart}/a11y',
   component: ${actualComponentName}View,
   parameters: {
     layout: 'fullscreen',
@@ -587,12 +615,12 @@ A11yReport.storyName = '${actualComponentName} 검사 결과';`;
     console.log(chalk.default.green(`- 마크다운 파일: ${mdFilePath}`));
     console.log(
       chalk.default.yellow(
-        `A11y 폴더 위치: ${a11yFolderPath} (Components 폴더와 같은 레벨)`
+        `a11y 폴더 위치: ${a11yFolderPath} (${componentParentFolder}/${componentName1stPart} 폴더 내에 생성됨)`
       )
     );
     console.log(
       chalk.default.blue(
-        `스토리북에서 볼 수 있는 경로: ${mainComponentName}/A11y/${actualComponentName} 검사 결과`
+        `스토리북에서 볼 수 있는 경로: ${componentParentFolder}/${componentName1stPart}/a11y/${actualComponentName} 검사 결과`
       )
     );
 
@@ -612,7 +640,7 @@ A11yReport.storyName = '${actualComponentName} 검사 결과';`;
 }
 
 // 컴포넌트의 HTML 가져오기
-async function getComponentHTML(componentName, storyId = "default") {
+async function getComponentHTML(componentName, storyId = "primary") {
   let browser = null;
 
   try {
@@ -637,79 +665,96 @@ async function getComponentHTML(componentName, storyId = "default") {
 
     // 공백 제거 및 '/'로 분리된 부분 추출
     const pathParts = cleanComponentName.split("/").map((part) => part.trim());
-    // 컴포넌트 ID 형식 변환: 'Button/Components/Button' -> 'button-components-button'
-    const formattedId = pathParts.join("-").toLowerCase();
-
-    // ViolateAccessibility 파라미터를 true로 설정하여 접근성 위반 상태 강제 활성화
-    const url = `http://localhost:6007/iframe.html?args=violateAccessibility:true&id=${formattedId}--${storyId.toLowerCase()}&viewMode=story`;
-
-    console.log(
-      chalk.default.blue(`컴포넌트 HTML을 가져오는 중... URL: ${url}`)
-    );
-
-    // 에러 핸들링 개선
-    page.on("error", (err) => {
-      console.error(chalk.default.red("페이지 오류:", err));
-    });
-
-    page.on("pageerror", (err) => {
-      console.error(chalk.default.yellow("페이지 자바스크립트 오류:"), err);
-    });
-
-    // 타임아웃 시간 및 네트워크 요청 대기
-    await page.goto(url, {
-      waitUntil: "networkidle2",
-      timeout: 30000,
-    });
-
-    // 페이지 로딩 및 렌더링 완료 대기
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-
-    // 렌더링 완료 확인 - 여러 셀렉터 시도
-    const isRendered = await page.evaluate(() => {
-      // 여러 가능한 컨테이너 셀렉터 확인
-      const selectors = [
-        ".accessibility-component",
-        ".accessibility-container",
-        ".sb-show-main", // 스토리북 기본 컨테이너
-        "body > div", // 일반적인 루트 요소
-        "body", // 최후의 수단
-      ];
-
-      for (const selector of selectors) {
-        if (document.querySelector(selector)) {
-          return { success: true, selector };
-        }
+    
+    // 컴포넌트 이름 (첫 번째 부분, 예: Button)
+    const componentName1stPart = pathParts[0];
+    
+    // 실제 컴포넌트 부모 폴더 찾기 (Atom, Molecule, Pages 등)
+    const storiesPath = path.join(process.cwd(), "src", "stories");
+    const possibleParentFolders = ["Atom", "Molecule", "Organism", "Pages", "Template"];
+    
+    let componentParentFolder = null;
+    for (const parent of possibleParentFolders) {
+      const possiblePath = path.join(storiesPath, parent, componentName1stPart);
+      if (fs.existsSync(possiblePath)) {
+        componentParentFolder = parent;
+        break;
       }
-
-      return { success: false };
-    });
-
-    if (!isRendered.success) {
-      console.error(
-        chalk.default.red("컴포넌트가 제대로 렌더링되지 않았습니다.")
-      );
-      console.error(
-        chalk.default.red("스토리북 스토리 ID와 경로를 확인하세요.")
-      );
-      // 렌더링 실패 시에도 계속 진행
+    }
+    
+    // 부모 폴더를 찾지 못한 경우 기본값으로 Molecule 사용
+    if (!componentParentFolder) {
+      console.log(chalk.default.yellow(`컴포넌트 부모 폴더를 찾을 수 없습니다. 기본값 'Molecule'을 사용합니다.`));
+      componentParentFolder = "Molecule";
+    }
+    
+    // 컴포넌트 경로를 스토리북 ID 형식으로 변환
+    // 실제 파일 경로를 확인하여 올바른 ID 생성
+    let formattedId;
+    
+    // 폴더 구조 확인
+    const variantDirPath = path.join(storiesPath, componentParentFolder, componentName1stPart, 'variant');
+    if (fs.existsSync(variantDirPath)) {
+      // 실제 스토리북 타이틀 형식을 따름: 'Atom/Accessibility/variant'
+      formattedId = `${componentParentFolder.toLowerCase()}-${componentName1stPart.toLowerCase()}-variant`;
+      console.log(chalk.default.blue(`스토리 ID 변환: ${formattedId}`));
     } else {
-      console.log(
-        chalk.default.green(
-          `컴포넌트가 렌더링되었습니다. (셀렉터: ${isRendered.selector})`
-        )
-      );
+      // 입력된 경로 그대로 사용 (기존 방식)
+      formattedId = cleanComponentName.toLowerCase().replace(/\//g, "-");
+      console.log(chalk.default.yellow(`경고: variant 폴더를 찾을 수 없어 입력 경로를 그대로 사용합니다: ${formattedId}`));
     }
 
-    // HTML 가져오기
-    const html = await page.content();
+    // 검사 순서 결정: 사용자가 storyId를 명시적으로 지정한 경우 해당 타입 먼저 검사
+    let storyResult;
+    
+    // 사용자가 명시적으로 스토리 타입을 지정한 경우 (기본값 'primary'가 아닌 경우)
+    if (storyId !== "primary") {
+      // 사용자가 지정한 스토리 타입을 먼저 시도
+      console.log(chalk.default.blue(`사용자가 지정한 '${storyId}' 스토리를 먼저 시도합니다.`));
+      storyResult = await checkStory(page, formattedId, storyId, true);
+      
+      // 사용자 지정 스토리가 실패하면 violateaccessibility 시도
+      if (!storyResult.success) {
+        console.log(chalk.default.yellow(`'${storyId}' 스토리를 찾을 수 없습니다. 'violateaccessibility' 스토리로 시도합니다.`));
+        storyResult = await checkStory(page, formattedId, "violateaccessibility", true);
+      }
+    } else {
+      // 기본 순서: violateaccessibility 먼저, 그 다음 primary
+      storyResult = await checkStory(page, formattedId, "violateaccessibility", true);
+      
+      if (!storyResult.success) {
+        console.log(chalk.default.yellow(`'violateaccessibility' 스토리를 찾을 수 없습니다. '${storyId}' 스토리로 시도합니다.`));
+        storyResult = await checkStory(page, formattedId, storyId, true);
+      }
+    }
+    
+    // 여전히 스토리를 찾지 못했으면 다른 스토리 유형 시도
+    if (!storyResult.success) {
+      // 다른 일반적인 스토리 유형 시도
+      const commonStoryTypes = ["primary", "default", "secondary", "main", "basic"];
+      
+      for (const type of commonStoryTypes) {
+        if (type !== storyId && type !== "violateaccessibility") { // 이미 시도한 유형은 건너뜀
+          console.log(chalk.default.yellow(`'${storyId}' 스토리를 찾을 수 없습니다. '${type}' 스토리로 시도합니다.`));
+          storyResult = await checkStory(page, formattedId, type, true);
+          if (storyResult.success) break;
+        }
+      }
+    }
+    
+    // 모든 스토리 유형 시도 후에도 실패한 경우
+    if (!storyResult.success) {
+      console.error(chalk.default.red("모든 일반적인 스토리 유형에서 컴포넌트를 찾을 수 없습니다."));
+      console.error(chalk.default.yellow("컴포넌트 스토리 파일에서 스토리 타입을 확인하세요."));
+      // 그래도 마지막으로 시도한 페이지로 진행
+    }
 
     // axe-core를 사용하여 접근성 검사 수행
     console.log(chalk.default.blue("axe-core를 사용하여 접근성 검사 시작..."));
     const axeResults = await checkAccessibilityWithAxe(page);
 
     return {
-      html,
+      html: storyResult.html || "",
       axeResults,
     };
   } catch (error) {
@@ -730,6 +775,96 @@ async function getComponentHTML(componentName, storyId = "default") {
         );
       }
     }
+  }
+}
+
+// 카멜 케이스를 케밥 케이스로 변환하는 함수
+function camelToKebabCase(string) {
+  return string
+    .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
+    .replace(/([A-Z])([A-Z])(?=[a-z])/g, '$1-$2')
+    .toLowerCase();
+}
+
+// 특정 스토리 타입을 검사하는 함수
+async function checkStory(page, formattedId, storyType, withViolation = false) {
+  try {
+    // URL 형식 변형 시도 - 여러 가능한 형태
+    const urlVariations = [
+      // 원래 대소문자 유지
+      `${formattedId}--${storyType}`,
+      // 소문자
+      `${formattedId}--${storyType.toLowerCase()}`,
+      // 케밥 케이스 변환 (LoggedIn -> logged-in)
+      `${formattedId}--${camelToKebabCase(storyType)}`,
+    ];
+    
+    // 각 URL 변형 시도
+    for (const formattedStoryId of urlVariations) {
+      let url = `http://localhost:6007/iframe.html?id=${formattedStoryId}&viewMode=story`;
+      
+      // 접근성 위반 파라미터 추가 여부
+      if (withViolation) {
+        url += "&args=violateAccessibility:true";
+      }
+      
+      console.log(chalk.default.blue(`스토리 확인 중... URL: ${url}`));
+      
+      // 페이지 로드
+      await page.goto(url, {
+        waitUntil: "networkidle2", 
+        timeout: 15000
+      });
+      
+      // 페이지 로딩 대기
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      
+      // 페이지 에러 확인 (스토리를 찾을 수 없음)
+      const hasError = await page.evaluate(() => {
+        return document.body.textContent.includes("Couldn't find story matching") ||
+               document.body.textContent.includes("Error: Unable to find story");
+      });
+      
+      if (!hasError) {
+        // 렌더링 확인
+        const isRendered = await page.evaluate(() => {
+          const selectors = [
+            ".sb-show-main", 
+            "body > div",
+            "body"
+          ];
+          
+          for (const selector of selectors) {
+            if (document.querySelector(selector)) {
+              return { success: true, selector };
+            }
+          }
+          
+          return { success: false };
+        });
+        
+        if (isRendered.success) {
+          console.log(chalk.default.green(`스토리를 성공적으로 찾았습니다! 사용된 ID: ${formattedStoryId}`));
+          const html = await page.content();
+          
+          return { 
+            success: true, 
+            html, 
+            storyType,
+            formattedStoryId
+          };
+        }
+      }
+      
+      console.log(chalk.default.yellow(`ID '${formattedStoryId}'로 스토리를 찾을 수 없습니다. 다른 형식 시도 중...`));
+    }
+    
+    // 모든 URL 형식을 시도해도 실패
+    console.log(chalk.default.red(`스토리 '${storyType}'를 찾을 수 없습니다. 모든 URL 형식 시도 실패.`));
+    return { success: false };
+  } catch (error) {
+    console.error(chalk.default.yellow(`스토리 '${storyType}' 검사 중 오류:`, error.message));
+    return { success: false };
   }
 }
 
@@ -830,21 +965,82 @@ async function main() {
 
     if (args.length === 0) {
       console.error(chalk.default.red("컴포넌트 이름을 입력하세요."));
-      console.log(chalk.default.yellow("사용법: npm run a11y <컴포넌트_경로>"));
+      console.log(chalk.default.yellow("사용법: npm run a11y <컴포넌트_경로> [스토리_타입]"));
       console.log(
-        chalk.default.yellow("예시: npm run a11y Button/Components/Button")
+        chalk.default.yellow("예시: npm run a11y Button/variant/Button primary")
+      );
+      console.log(
+        chalk.default.yellow("예시: npm run a11y Button/variant/Button violateAccessibility")
       );
       console.log(
         chalk.default.yellow(
-          "스토리북 경로와 동일하게 입력하세요 (예: Button/Components/Button)"
+          "중요: 실제 폴더 경로와 일치하도록 해야 합니다. 일반적으로 'Accessibility/variant/Accessibility' 형식을 사용하세요."
+        )
+      );
+      console.log(
+        chalk.default.yellow(
+          "스토리 타입을 생략하면 자동으로 'violateAccessibility', 'primary', 'default' 등의 순서로 검색합니다."
+        )
+      );
+      console.log(
+        chalk.default.yellow(
+          "컴포넌트의 실제 부모 폴더(Atom, Molecule, Pages 등)는 자동으로 찾아서 적용됩니다."
+        )
+      );
+      console.log(
+        chalk.default.yellow(
+          "결과 파일은 src/stories/[Atom|Molecule]/컴포넌트/a11y 폴더에 생성됩니다."
         )
       );
       process.exit(1);
     }
 
     // 컴포넌트 경로 - 백슬래시와 끝의 공백 제거
-    const rawComponentName = args.join("/");
-    const componentName = rawComponentName.replace(/[\\\/\s]+$/, "").trim();
+    let componentName, storyType;
+    
+    // 스토리 타입이 제공되었는지 확인
+    if (args.length >= 2) {
+      componentName = args[0].replace(/[\\\/\s]+$/, "").trim();
+      storyType = args[1].trim();
+      console.log(chalk.default.blue(`지정된 스토리 타입: ${storyType}`));
+    } else {
+      componentName = args[0].replace(/[\\\/\s]+$/, "").trim();
+      storyType = "primary"; // 기본값
+    }
+    
+    // 경로 구조 검증
+    const pathParts = componentName.split('/').filter(part => part.trim() !== '');
+    if (pathParts.length < 2) {
+      console.error(chalk.default.red("잘못된 컴포넌트 경로 형식입니다."));
+      console.log(
+        chalk.default.yellow(
+          "경로는 최소 '컴포넌트/variant' 형식이어야 합니다. 예: Button/variant/Button"
+        )
+      );
+      process.exit(1);
+    }
+    
+    // 컴포넌트 이름 (첫 번째 부분, 예: Button)
+    const componentName1stPart = pathParts[0];
+    
+    // 실제 컴포넌트 부모 폴더 찾기 (Atom, Molecule, Pages 등)
+    const storiesPath = path.join(process.cwd(), "src", "stories");
+    const possibleParentFolders = ["Atom", "Molecule", "Organism", "Pages", "Template"];
+    
+    let componentParentFolder = null;
+    for (const parent of possibleParentFolders) {
+      const possiblePath = path.join(storiesPath, parent, componentName1stPart);
+      if (fs.existsSync(possiblePath)) {
+        componentParentFolder = parent;
+        break;
+      }
+    }
+    
+    // 부모 폴더를 찾지 못한 경우 기본값으로 Molecule 사용
+    if (!componentParentFolder) {
+      console.log(chalk.default.yellow(`컴포넌트 부모 폴더를 찾을 수 없습니다. 기본값 'Molecule'을 사용합니다.`));
+      componentParentFolder = "Molecule";
+    }
 
     console.log(
       chalk.default.yellow(
@@ -856,9 +1052,14 @@ async function main() {
         `스토리북 서버가 포트 6007에서 실행 중인지 확인하세요. (npm run storybook)`
       )
     );
+    console.log(
+      chalk.default.yellow(
+        `검사 결과는 src/stories/${componentParentFolder}/${componentName1stPart}/a11y 폴더에 저장됩니다.`
+      )
+    );
 
     // 컴포넌트 HTML 가져오기 및 axe-core로 검사
-    const result = await getComponentHTML(componentName);
+    const result = await getComponentHTML(componentName, storyType);
 
     if (!result) {
       console.error(

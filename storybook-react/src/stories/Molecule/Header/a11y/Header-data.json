@@ -13,8 +13,8 @@
     "orientationAngle": 0,
     "orientationType": "portrait-primary"
   },
-  "timestamp": "2025. 4. 21. 오후 3:26:07",
-  "url": "http://localhost:6007/iframe.html?id=atom-button-variant--secondary&viewMode=story&args=violateAccessibility%3Atrue",
+  "timestamp": "2025. 4. 21. 오후 3:30:55",
+  "url": "http://localhost:6007/iframe.html?id=molecule-header-variant--login&viewMode=story&args=violateAccessibility%3Atrue",
   "toolOptions": {
     "runOnly": {
       "type": "tag",
@@ -405,26 +405,6 @@
       "nodes": []
     },
     {
-      "id": "button-name",
-      "impact": null,
-      "tags": [
-        "cat.name-role-value",
-        "wcag2a",
-        "wcag412",
-        "section508",
-        "section508.22.a",
-        "TTv5",
-        "TT6.a",
-        "EN-301-549",
-        "EN-9.4.1.2",
-        "ACT"
-      ],
-      "description": "Ensures buttons have discernible text",
-      "help": "Buttons must have discernible text",
-      "helpUrl": "https://dequeuniversity.com/rules/axe/4.8/button-name?application=axeAPI",
-      "nodes": []
-    },
-    {
       "id": "definition-list",
       "impact": null,
       "tags": [
@@ -812,23 +792,6 @@
       "nodes": []
     },
     {
-      "id": "nested-interactive",
-      "impact": null,
-      "tags": [
-        "cat.keyboard",
-        "wcag2a",
-        "wcag412",
-        "TTv5",
-        "TT6.a",
-        "EN-301-549",
-        "EN-9.4.1.2"
-      ],
-      "description": "Ensures interactive controls are not nested as they are not always announced by screen readers or can cause focus problems for assistive technologies",
-      "help": "Interactive controls must not be nested",
-      "helpUrl": "https://dequeuniversity.com/rules/axe/4.8/nested-interactive?application=axeAPI",
-      "nodes": []
-    },
-    {
       "id": "object-alt",
       "impact": null,
       "tags": [
@@ -1063,7 +1026,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<body class=\"sb-main-centered sb-show-main\">",
+          "html": "<body class=\"sb-main-fullscreen sb-show-main\">",
           "target": [
             "body"
           ]
@@ -1117,47 +1080,51 @@
           "target": [
             "table"
           ]
-        },
+        }
+      ]
+    },
+    {
+      "id": "button-name",
+      "impact": null,
+      "tags": [
+        "cat.name-role-value",
+        "wcag2a",
+        "wcag412",
+        "section508",
+        "section508.22.a",
+        "TTv5",
+        "TT6.a",
+        "EN-301-549",
+        "EN-9.4.1.2",
+        "ACT"
+      ],
+      "description": "Ensures buttons have discernible text",
+      "help": "Buttons must have discernible text",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.8/button-name?application=axeAPI",
+      "nodes": [
         {
-          "any": [],
-          "all": [
+          "any": [
             {
-              "id": "focusable-modal-open",
+              "id": "button-has-visible-text",
               "data": null,
               "relatedNodes": [],
-              "impact": "serious",
-              "message": "No focusable elements while a modal is open"
-            },
-            {
-              "id": "focusable-disabled",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "No focusable elements contained within element"
-            },
-            {
-              "id": "focusable-not-tabbable",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "No focusable elements contained within element"
+              "impact": "critical",
+              "message": "Element has inner text that is visible to screen readers"
             }
           ],
+          "all": [],
           "none": [],
           "impact": null,
-          "html": "<button type=\"button\" class=\"storybook-button storybook-button--medium storybook-button--secondary\" aria-hidden=\"true\" tabindex=\"-1\" style=\"background-color: rgb(153, 153, 153); color: rgb(136, 136, 136);\">",
+          "html": "<button type=\"button\" class=\"storybook-button storybook-button--small storybook-button--secondary\">Log out</button>",
           "target": [
             ".storybook-button"
           ]
         }
       ]
-    }
-  ],
-  "incomplete": [],
-  "violations": [
+    },
     {
       "id": "color-contrast",
-      "impact": "serious",
+      "impact": null,
       "tags": [
         "cat.color",
         "wcag2aa",
@@ -1177,36 +1144,140 @@
             {
               "id": "color-contrast",
               "data": {
-                "fgColor": "#888888",
-                "bgColor": "#999999",
-                "contrastRatio": 1.24,
-                "fontSize": "7.5pt (10px)",
+                "fgColor": "#000000",
+                "bgColor": "#ffffff",
+                "contrastRatio": 21,
+                "fontSize": "15.0pt (20px)",
                 "fontWeight": "bold",
-                "messageKey": null,
-                "expectedContrastRatio": "4.5:1"
+                "expectedContrastRatio": "3:1"
               },
-              "relatedNodes": [
-                {
-                  "html": "<button type=\"button\" class=\"storybook-button storybook-button--medium storybook-button--secondary\" aria-hidden=\"true\" tabindex=\"-1\" style=\"background-color: rgb(153, 153, 153); color: rgb(136, 136, 136);\">",
-                  "target": [
-                    ".storybook-button"
-                  ]
-                }
-              ],
+              "relatedNodes": [],
               "impact": "serious",
-              "message": "Element has insufficient color contrast of 1.24 (foreground color: #888888, background color: #999999, font size: 7.5pt (10px), font weight: bold). Expected contrast ratio of 4.5:1"
+              "message": "Element has sufficient color contrast of 21"
             }
           ],
           "all": [],
           "none": [],
-          "impact": "serious",
-          "html": "<span style=\"font-size: 10px;\">Button</span>",
+          "impact": null,
+          "html": "<h1>Acme</h1>",
           "target": [
-            ".storybook-button > span"
+            ".storybook-header > div:nth-child(1) > h1"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#333333",
+                "bgColor": "#ffffff",
+                "contrastRatio": 12.63,
+                "fontSize": "10.5pt (14px)",
+                "fontWeight": "normal",
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has sufficient color contrast of 12.63"
+            }
           ],
-          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.24 (foreground color: #888888, background color: #999999, font size: 7.5pt (10px), font weight: bold). Expected contrast ratio of 4.5:1"
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<span class=\"welcome\">Welcome, <b>Jane Doe</b>!</span>",
+          "target": [
+            ".welcome"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#333333",
+                "bgColor": "#ffffff",
+                "contrastRatio": 12.63,
+                "fontSize": "10.5pt (14px)",
+                "fontWeight": "bold",
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has sufficient color contrast of 12.63"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<b>Jane Doe</b>",
+          "target": [
+            "b"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#333333",
+                "bgColor": "#ffffff",
+                "contrastRatio": 12.63,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "bold",
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has sufficient color contrast of 12.63"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<button type=\"button\" class=\"storybook-button storybook-button--small storybook-button--secondary\">Log out</button>",
+          "target": [
+            ".storybook-button"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nested-interactive",
+      "impact": null,
+      "tags": [
+        "cat.keyboard",
+        "wcag2a",
+        "wcag412",
+        "TTv5",
+        "TT6.a",
+        "EN-301-549",
+        "EN-9.4.1.2"
+      ],
+      "description": "Ensures interactive controls are not nested as they are not always announced by screen readers or can cause focus problems for assistive technologies",
+      "help": "Interactive controls must not be nested",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.8/nested-interactive?application=axeAPI",
+      "nodes": [
+        {
+          "any": [
+            {
+              "id": "no-focusable-content",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element does not have focusable descendants"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<button type=\"button\" class=\"storybook-button storybook-button--small storybook-button--secondary\">Log out</button>",
+          "target": [
+            ".storybook-button"
+          ]
         }
       ]
     }
-  ]
+  ],
+  "incomplete": [],
+  "violations": []
 }
