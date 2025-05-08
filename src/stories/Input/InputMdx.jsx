@@ -22,17 +22,17 @@ import * as Corejs from ".././../../shared/components/component/core/atom/Input/
 export default function MdxWrap() {
     const [radioCheck, setRadioCheck] = useState('React');
     // const [port, setPort] = useState("6007");
-    const [port, setPort] = useState(`${import.meta.env.VITE_CHROMATIC_REACT_URI}`);
+    const [port, setPort] = useState(`${import.meta.env.VITE_DEPLOY_REACT_URI}`);
     const [variantValue, setVariantValue] = useState("default");
 
     const switcher = (target) => {
           switch (target) {
               case "React":
               // return 6007
-              return import.meta.env.VITE_CHROMATIC_REACT_URI
+              return import.meta.env.VITE_DEPLOY_REACT_URI
               case "Core":
               // return 6006
-              return import.meta.env.VITE_CHROMATIC_CORE_URI
+              return import.meta.env.VITE_DEPLOY_CORE_URI
             default:
               break;
           }
@@ -59,13 +59,13 @@ export default function MdxWrap() {
               <iframe
                   className={`${mdxViewItem} ${radioCheck != "React" ? 'hide' : ''}`}
                   // src={`http://localhost:6007/iframe.html?id=atom-input-variant--${variantValue}&viewMode=story&refId=react&globals=`}
-                  src={`${import.meta.env.VITE_CHROMATIC_REACT_URI}/iframe.html?id=atom-input-variant--${variantValue}&viewMode=docs&refId=react&globals=`}
+                  src={`${import.meta.env.VITE_DEPLOY_REACT_URI}/iframe.html?id=atom-input-variant--${variantValue}&viewMode=docs&refId=react&globals=`}
                   width="100%"
               ></iframe>
               <iframe
                   className={`${mdxViewItem} ${radioCheck != "Core" ? 'hide' : ''}`}
                   // src={`http://localhost:6006/iframe.html?id=atom-input-variant--${variantValue}&viewMode=story&refId=react&globals=`}
-                  src={`${import.meta.env.VITE_CHROMATIC_CORE_URI}/iframe.html?id=atom-input-variant--${variantValue}&viewMode=docs&refId=react&globals=`}
+                  src={`${import.meta.env.VITE_DEPLOY_CORE_URI}/iframe.html?id=atom-input-variant--${variantValue}&viewMode=docs&refId=react&globals=`}
                   width="100%"
               ></iframe>
               

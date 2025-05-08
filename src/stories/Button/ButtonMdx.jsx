@@ -21,7 +21,7 @@ import * as Corejs from ".././../../shared/components/component/core/atom/Button
 
 export default function MdxWrap() {
     const [radioCheck, setRadioCheck] = useState('React');
-    const [port, setPort] = useState(`${import.meta.env.VITE_LOCAL_REACT_URI}`);
+    const [port, setPort] = useState(`${import.meta.env.VITE_DEPLOY_REACT_URI}`);
     // const [port, setPort] = useState(`${import.meta.env.VITE_CHROMATIC_REACT_URI}`);
     const [variantValue, setVariantValue] = useState("default");
 
@@ -29,11 +29,11 @@ export default function MdxWrap() {
           switch (target) {
               case "React":
             //   return 6007
-            return import.meta.env.VITE_LOCAL_REACT_URI
+            return import.meta.env.VITE_DEPLOY_REACT_URI
             //   return import.meta.env.VITE_CHROMATIC_REACT_URI
               case "Core":
             //   return 6006
-            return import.meta.env.VITE_LOCAL_CORE_URI
+            return import.meta.env.VITE_DEPLOY_CORE_URI
             //   return import.meta.env.VITE_CHROMATIC_CORE_URI
             default:
               break;
@@ -60,13 +60,13 @@ export default function MdxWrap() {
             <div className={mdxViewStyle}>
               <iframe
                   className={`${mdxViewItem} ${radioCheck != "React" ? 'hide' : ''}`}
-                  src={`${import.meta.env.VITE_LOCAL_REACT_URI}/iframe.html?id=atom-button-variant--${variantValue}&viewMode=story&refId=react&globals=`}
+                  src={`${import.meta.env.VITE_DEPLOY_REACT_URI}/iframe.html?id=atom-button-variant--${variantValue}&viewMode=story&refId=react&globals=`}
                 //   src={`${import.meta.env.VITE_CHROMATIC_REACT_URI}/iframe.html?id=atom-input-variant--${variantValue}&viewMode=docs&refId=react&globals=`}
                   width="100%"
               ></iframe>
               <iframe
                   className={`${mdxViewItem} ${radioCheck != "Core" ? 'hide' : ''}`}
-                  src={`${import.meta.env.VITE_LOCAL_CORE_URI}/iframe.html?id=atom-button-variant--${variantValue}&viewMode=story&refId=react&globals=`}
+                  src={`${import.meta.env.VITE_DEPLOY_CORE_URI}/iframe.html?id=atom-button-variant--${variantValue}&viewMode=story&refId=react&globals=`}
                 //   src={`${import.meta.env.VITE_CHROMATIC_CORE_URI}/iframe.html?id=atom-input-variant--${variantValue}&viewMode=docs&refId=react&globals=`}
                   width="100%"
               ></iframe>
@@ -90,7 +90,7 @@ export default function MdxWrap() {
               <Button label={"React"} primary={radioCheck == 'React'} onClick={handleChange} value={"React"}>React</Button>
               <Button label={"Core"} primary={radioCheck == 'Core'} onClick={handleChange} value={"Core"}>Core</Button>
               <div className={mdxVariantLinkGroup}>
-                <a href={`${import.meta.env.VITE_LOCAL_REACT_URI}/?path=/story/atom-input-variant--${variantValue}`} target="_blank">[{radioCheck}]{variantValue}컴포넌트 바로가기</a>
+                <a href={`${import.meta.env.VITE_DEPLOY_REACT_URI}/?path=/story/atom-input-variant--${variantValue}`} target="_blank">[{radioCheck}]{variantValue}컴포넌트 바로가기</a>
                 {/* <a href={`${port}/?path=/story/atom-input-variant--${variantValue}`} target="_blank">[{radioCheck}]{variantValue}컴포넌트 바로가기</a> */}
               </div>
             </div>
