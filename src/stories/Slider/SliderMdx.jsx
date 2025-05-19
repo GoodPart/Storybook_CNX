@@ -10,6 +10,7 @@ import { theme } from "../../shared/assets/style/theme/theme.css.ts"
 import * as Corehtml from "../../../storybook-core/src/stories/Slider/slider.html?raw";
 import * as Corecss from "../../../storybook-core/src/stories/Slider/slider.css?raw";
 import * as Corejs from "../../../storybook-core/src/stories/Slider/slider.js?raw";
+{/* location of Vue source */}
 
 export default function MdxWrap() {
     const [radioCheck, setRadioCheck] = useState('React');
@@ -23,6 +24,8 @@ export default function MdxWrap() {
               return 6007
               case "Core":
               return 6006
+              case "Vue":
+              return 6005
             default:
               break;
           }
@@ -57,6 +60,11 @@ export default function MdxWrap() {
                   src={`http://localhost:6006/iframe.html?id=atom-slider-variant--${variantValue}&viewMode=story&refId=react&globals=`}
                   width="100%"
               ></iframe>
+              <iframe
+                  className={`${mdxViewItem} ${radioCheck != "Vue" ? 'hide' : ''}`}
+                  src={`http://localhost:6005/iframe.html?id=atom-slider-variant--${variantValue}&viewMode=story&refId=react&globals=`}
+                  width="100%"
+              ></iframe>
               
               <div className={mdxVariantGroup}>
                 <ul className={mdxVariantWrap}>
@@ -70,6 +78,7 @@ export default function MdxWrap() {
             <div className={mdxSwicherGroup} >
               <Button onClick={handleChange} value={"React"}>React</Button>
               <Button onClick={handleChange} value={"Core"}>Core</Button>
+              <Button onClick={handleChange} value={"Vue"}>Vue</Button>
               <div className={mdxVariantLinkGroup}>
                 <a href={`http://localhost:${port}/?path=/story/atom-slider-variant--${variantValue}`} target="_blank">[{radioCheck}]{variantValue}컴포넌트 바로가기</a>
               </div>
@@ -82,6 +91,8 @@ export default function MdxWrap() {
                 <MdxCodeBlock title={"html"} code={ Corehtml.default} />
                 <MdxCodeBlock title={"css"} code={ Corecss.default} />
                 <MdxCodeBlock title={"js"} code={ Corejs.default} />
+              </div>
+              <div className={radioCheck == "Vue" ? `${mdxViewItem}` : `${mdxViewItem} hide`}>
               </div>
             </div>
         </div>
