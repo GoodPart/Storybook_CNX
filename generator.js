@@ -112,7 +112,18 @@ you should write component name`),
                             location : `storybook-core/src/stories/${comfirmAnswer}/${answer}.js`
                         }
                 ]
-                }
+                },
+                {
+                    name : "Vue",
+                    path : {
+                        port : "6005",
+                        componentLocation : `${type.toLocaleLowerCase()}-${answer}-variant` 
+                    },
+                    code : [{
+                        extention : "vue",
+                        location : `storybook-vue/src/stories/${type}/${comfirmAnswer}/variant/${comfirmAnswer}.vue`
+                    }],
+                },
             ]
         };
 

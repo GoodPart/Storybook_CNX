@@ -73,7 +73,7 @@ export default function MdxWrap() {
             </div>
             <div className={mdxSwicherGroup} >
               {{#each data}}
-              <Button onClick={handleChange} value={"{{name}}"}>{{name}}</Button>
+              <Button variant={radioCheck === "{{name}}" ? "primary" : ""} onClick={handleChange} value={"{{name}}"}>{{name}}</Button>
               {{/each}}
               {{#each data}}
               {{#if @first}}
