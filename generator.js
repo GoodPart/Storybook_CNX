@@ -82,7 +82,7 @@ you should write component name`),
             variants : variant,
             data :  [
                 {
-                    name : "React",
+                    name : "REACT",
                     path : {
                         port : "6007",
                         componentLocation : `${type.toLocaleLowerCase()}-${answer}-variant` 
@@ -93,7 +93,7 @@ you should write component name`),
                     }],
                 },
                 {
-                    name : "Core",
+                    name : "CORE",
                     path : {
                         port : "6006",
                         componentLocation : `${type.toLocaleLowerCase()}-${answer}-variant` 
@@ -114,7 +114,7 @@ you should write component name`),
                 ]
                 },
                 {
-                    name : "Vue",
+                    name : "VUE",
                     path : {
                         port : "6005",
                         componentLocation : `${type.toLocaleLowerCase()}-${answer}-variant` 
