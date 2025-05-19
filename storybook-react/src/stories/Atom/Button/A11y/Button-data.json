@@ -7,14 +7,14 @@
     "name": "axe"
   },
   "testEnvironment": {
-    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/135.0.0.0 Safari/537.36",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/135.0.0.0 Safari/537.36",
     "windowWidth": 800,
     "windowHeight": 600,
     "orientationAngle": 0,
     "orientationType": "portrait-primary"
   },
-  "timestamp": "2025. 4. 18. 오후 1:20:48",
-  "url": "http://localhost:6007/iframe.html?args=violateAccessibility:true&id=button-components-button--default&viewMode=story",
+  "timestamp": "2025. 4. 21. 오후 3:26:07",
+  "url": "http://localhost:6007/iframe.html?id=atom-button-variant--secondary&viewMode=story&args=violateAccessibility%3Atrue",
   "toolOptions": {
     "runOnly": {
       "type": "tag",
@@ -693,6 +693,75 @@
       "nodes": []
     },
     {
+      "id": "link-in-text-block",
+      "impact": null,
+      "tags": [
+        "cat.color",
+        "wcag2a",
+        "wcag141",
+        "TTv5",
+        "TT13.a",
+        "EN-301-549",
+        "EN-9.1.4.1"
+      ],
+      "description": "Ensure links are distinguished from surrounding text in a way that does not rely on color",
+      "help": "Links must be distinguishable without relying on color",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.8/link-in-text-block?application=axeAPI",
+      "nodes": []
+    },
+    {
+      "id": "link-name",
+      "impact": null,
+      "tags": [
+        "cat.name-role-value",
+        "wcag2a",
+        "wcag244",
+        "wcag412",
+        "section508",
+        "section508.22.a",
+        "TTv5",
+        "TT6.a",
+        "EN-301-549",
+        "EN-9.2.4.4",
+        "EN-9.4.1.2",
+        "ACT"
+      ],
+      "description": "Ensures links have discernible text",
+      "help": "Links must have discernible text",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.8/link-name?application=axeAPI",
+      "nodes": []
+    },
+    {
+      "id": "list",
+      "impact": null,
+      "tags": [
+        "cat.structure",
+        "wcag2a",
+        "wcag131",
+        "EN-301-549",
+        "EN-9.1.3.1"
+      ],
+      "description": "Ensures that lists are structured correctly",
+      "help": "<ul> and <ol> must only directly contain <li>, <script> or <template> elements",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.8/list?application=axeAPI",
+      "nodes": []
+    },
+    {
+      "id": "listitem",
+      "impact": null,
+      "tags": [
+        "cat.structure",
+        "wcag2a",
+        "wcag131",
+        "EN-301-549",
+        "EN-9.1.3.1"
+      ],
+      "description": "Ensures <li> elements are used semantically",
+      "help": "<li> elements must be contained in a <ul> or <ol>",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.8/listitem?application=axeAPI",
+      "nodes": []
+    },
+    {
       "id": "marquee",
       "impact": null,
       "tags": [
@@ -994,7 +1063,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<body class=\"sb-show-errordisplay\">",
+          "html": "<body class=\"sb-main-centered sb-show-main\">",
           "target": [
             "body"
           ]
@@ -1048,12 +1117,47 @@
           "target": [
             "table"
           ]
+        },
+        {
+          "any": [],
+          "all": [
+            {
+              "id": "focusable-modal-open",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "No focusable elements while a modal is open"
+            },
+            {
+              "id": "focusable-disabled",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "No focusable elements contained within element"
+            },
+            {
+              "id": "focusable-not-tabbable",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "No focusable elements contained within element"
+            }
+          ],
+          "none": [],
+          "impact": null,
+          "html": "<button type=\"button\" class=\"storybook-button storybook-button--medium storybook-button--secondary\" aria-hidden=\"true\" tabindex=\"-1\" style=\"background-color: rgb(153, 153, 153); color: rgb(136, 136, 136);\">",
+          "target": [
+            ".storybook-button"
+          ]
         }
       ]
-    },
+    }
+  ],
+  "incomplete": [],
+  "violations": [
     {
       "id": "color-contrast",
-      "impact": null,
+      "impact": "serious",
       "tags": [
         "cat.color",
         "wcag2aa",
@@ -1073,734 +1177,36 @@
             {
               "id": "color-contrast",
               "data": {
-                "fgColor": "#000000",
-                "bgColor": "#ffffff",
-                "contrastRatio": 21,
-                "fontSize": "16.5pt (22px)",
-                "fontWeight": "normal",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 21"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<h1 id=\"error-message\">Couldn't find story matching 'button-components-button--default'.</h1>",
-          "target": [
-            "#error-message"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#000000",
-                "bgColor": "#ffffff",
-                "contrastRatio": 21,
-                "fontSize": "10.5pt (14px)",
-                "fontWeight": "normal",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 21"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<p>\n      The component failed to render properly, likely due to a configuration issue in Storybook.\n      Here are some common causes and how you can address them:\n    </p>",
-          "target": [
-            ".sb-errordisplay_main > p"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#000000",
-                "bgColor": "#ffffff",
-                "contrastRatio": 21,
-                "fontSize": "10.5pt (14px)",
-                "fontWeight": "normal",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 21"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<li>",
-          "target": [
-            "ol > li:nth-child(1)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#000000",
-                "bgColor": "#ffffff",
-                "contrastRatio": 21,
-                "fontSize": "10.5pt (14px)",
+                "fgColor": "#888888",
+                "bgColor": "#999999",
+                "contrastRatio": 1.24,
+                "fontSize": "7.5pt (10px)",
                 "fontWeight": "bold",
+                "messageKey": null,
                 "expectedContrastRatio": "4.5:1"
               },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 21"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<strong>Missing Context/Providers</strong>",
-          "target": [
-            "li:nth-child(1) > strong"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#000000",
-                "bgColor": "#ffffff",
-                "contrastRatio": 21,
-                "fontSize": "10.5pt (14px)",
-                "fontWeight": "normal",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 21"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<a href=\"https://storybook.js.org/docs/writing-stories/decorators\">Decorators documentation</a>",
-          "target": [
-            "li:nth-child(1) > a"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#000000",
-                "bgColor": "#ffffff",
-                "contrastRatio": 21,
-                "fontSize": "10.5pt (14px)",
-                "fontWeight": "normal",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 21"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<li>",
-          "target": [
-            "ol > li:nth-child(2)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#000000",
-                "bgColor": "#ffffff",
-                "contrastRatio": 21,
-                "fontSize": "10.5pt (14px)",
-                "fontWeight": "bold",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 21"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<strong>Misconfigured Webpack or Vite</strong>",
-          "target": [
-            "li:nth-child(2) > strong"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#000000",
-                "bgColor": "#ffffff",
-                "contrastRatio": 21,
-                "fontSize": "10.5pt (14px)",
-                "fontWeight": "normal",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 21"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<a href=\"https://storybook.js.org/docs/builders/webpack\">Webpack</a>",
-          "target": [
-            "li:nth-child(2) > a:nth-child(2)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#000000",
-                "bgColor": "#ffffff",
-                "contrastRatio": 21,
-                "fontSize": "10.5pt (14px)",
-                "fontWeight": "normal",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 21"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<a href=\"https://storybook.js.org/docs/builders/vite\">Vite</a>",
-          "target": [
-            "a:nth-child(3)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#000000",
-                "bgColor": "#ffffff",
-                "contrastRatio": 21,
-                "fontSize": "10.5pt (14px)",
-                "fontWeight": "normal",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 21"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<li>",
-          "target": [
-            "li:nth-child(3)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#000000",
-                "bgColor": "#ffffff",
-                "contrastRatio": 21,
-                "fontSize": "10.5pt (14px)",
-                "fontWeight": "bold",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 21"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<strong>Missing Environment Variables</strong>",
-          "target": [
-            "li:nth-child(3) > strong"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#000000",
-                "bgColor": "#ffffff",
-                "contrastRatio": 21,
-                "fontSize": "10.5pt (14px)",
-                "fontWeight": "normal",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 21"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<a href=\"https://storybook.js.org/docs/configure/environment-variables\">Environment Variables documentation</a>",
-          "target": [
-            "li:nth-child(3) > a"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "color-contrast",
-              "data": {
-                "fgColor": "#c6c6c6",
-                "bgColor": "#242424",
-                "contrastRatio": 9.08,
-                "fontSize": "10.5pt (14px)",
-                "fontWeight": "normal",
-                "expectedContrastRatio": "4.5:1"
-              },
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has sufficient color contrast of 9.08"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<code id=\"error-stack\">- Are you sure a story with that id exists?\n- Please check your stories field of your main.js config.\n- Also check the browser console and terminal for error messages.</code>",
-          "target": [
-            "#error-stack"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "link-in-text-block",
-      "impact": null,
-      "tags": [
-        "cat.color",
-        "wcag2a",
-        "wcag141",
-        "TTv5",
-        "TT13.a",
-        "EN-301-549",
-        "EN-9.1.4.1"
-      ],
-      "description": "Ensure links are distinguished from surrounding text in a way that does not rely on color",
-      "help": "Links must be distinguishable without relying on color",
-      "helpUrl": "https://dequeuniversity.com/rules/axe/4.8/link-in-text-block?application=axeAPI",
-      "nodes": [
-        {
-          "any": [
-            {
-              "id": "link-in-text-block",
-              "data": null,
               "relatedNodes": [
                 {
-                  "html": "<li>",
+                  "html": "<button type=\"button\" class=\"storybook-button storybook-button--medium storybook-button--secondary\" aria-hidden=\"true\" tabindex=\"-1\" style=\"background-color: rgb(153, 153, 153); color: rgb(136, 136, 136);\">",
                   "target": [
-                    "ol > li:nth-child(1)"
+                    ".storybook-button"
                   ]
                 }
               ],
               "impact": "serious",
-              "message": "Links can be distinguished from surrounding text in some way other than by color"
-            },
-            {
-              "id": "link-in-text-block-style",
-              "data": null,
-              "relatedNodes": [
-                {
-                  "html": "<li>",
-                  "target": [
-                    "ol > li:nth-child(1)"
-                  ]
-                }
-              ],
-              "impact": "serious",
-              "message": "Links can be distinguished from surrounding text by visual styling"
+              "message": "Element has insufficient color contrast of 1.24 (foreground color: #888888, background color: #999999, font size: 7.5pt (10px), font weight: bold). Expected contrast ratio of 4.5:1"
             }
           ],
           "all": [],
           "none": [],
-          "impact": null,
-          "html": "<a href=\"https://storybook.js.org/docs/writing-stories/decorators\">Decorators documentation</a>",
+          "impact": "serious",
+          "html": "<span style=\"font-size: 10px;\">Button</span>",
           "target": [
-            "li:nth-child(1) > a"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "link-in-text-block",
-              "data": null,
-              "relatedNodes": [
-                {
-                  "html": "<li>",
-                  "target": [
-                    "ol > li:nth-child(2)"
-                  ]
-                }
-              ],
-              "impact": "serious",
-              "message": "Links can be distinguished from surrounding text in some way other than by color"
-            },
-            {
-              "id": "link-in-text-block-style",
-              "data": null,
-              "relatedNodes": [
-                {
-                  "html": "<li>",
-                  "target": [
-                    "ol > li:nth-child(2)"
-                  ]
-                }
-              ],
-              "impact": "serious",
-              "message": "Links can be distinguished from surrounding text by visual styling"
-            }
+            ".storybook-button > span"
           ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<a href=\"https://storybook.js.org/docs/builders/webpack\">Webpack</a>",
-          "target": [
-            "li:nth-child(2) > a:nth-child(2)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "link-in-text-block",
-              "data": null,
-              "relatedNodes": [
-                {
-                  "html": "<li>",
-                  "target": [
-                    "ol > li:nth-child(2)"
-                  ]
-                }
-              ],
-              "impact": "serious",
-              "message": "Links can be distinguished from surrounding text in some way other than by color"
-            },
-            {
-              "id": "link-in-text-block-style",
-              "data": null,
-              "relatedNodes": [
-                {
-                  "html": "<li>",
-                  "target": [
-                    "ol > li:nth-child(2)"
-                  ]
-                }
-              ],
-              "impact": "serious",
-              "message": "Links can be distinguished from surrounding text by visual styling"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<a href=\"https://storybook.js.org/docs/builders/vite\">Vite</a>",
-          "target": [
-            "a:nth-child(3)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "link-in-text-block",
-              "data": null,
-              "relatedNodes": [
-                {
-                  "html": "<li>",
-                  "target": [
-                    "li:nth-child(3)"
-                  ]
-                }
-              ],
-              "impact": "serious",
-              "message": "Links can be distinguished from surrounding text in some way other than by color"
-            },
-            {
-              "id": "link-in-text-block-style",
-              "data": null,
-              "relatedNodes": [
-                {
-                  "html": "<li>",
-                  "target": [
-                    "li:nth-child(3)"
-                  ]
-                }
-              ],
-              "impact": "serious",
-              "message": "Links can be distinguished from surrounding text by visual styling"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<a href=\"https://storybook.js.org/docs/configure/environment-variables\">Environment Variables documentation</a>",
-          "target": [
-            "li:nth-child(3) > a"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "link-name",
-      "impact": null,
-      "tags": [
-        "cat.name-role-value",
-        "wcag2a",
-        "wcag244",
-        "wcag412",
-        "section508",
-        "section508.22.a",
-        "TTv5",
-        "TT6.a",
-        "EN-301-549",
-        "EN-9.2.4.4",
-        "EN-9.4.1.2",
-        "ACT"
-      ],
-      "description": "Ensures links have discernible text",
-      "help": "Links must have discernible text",
-      "helpUrl": "https://dequeuniversity.com/rules/axe/4.8/link-name?application=axeAPI",
-      "nodes": [
-        {
-          "any": [
-            {
-              "id": "has-visible-text",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has text that is visible to screen readers"
-            }
-          ],
-          "all": [],
-          "none": [
-            {
-              "id": "focusable-no-name",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element is not in tab order or has accessible text"
-            }
-          ],
-          "impact": null,
-          "html": "<a href=\"https://storybook.js.org/docs/writing-stories/decorators\">Decorators documentation</a>",
-          "target": [
-            "li:nth-child(1) > a"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "has-visible-text",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has text that is visible to screen readers"
-            }
-          ],
-          "all": [],
-          "none": [
-            {
-              "id": "focusable-no-name",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element is not in tab order or has accessible text"
-            }
-          ],
-          "impact": null,
-          "html": "<a href=\"https://storybook.js.org/docs/builders/webpack\">Webpack</a>",
-          "target": [
-            "li:nth-child(2) > a:nth-child(2)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "has-visible-text",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has text that is visible to screen readers"
-            }
-          ],
-          "all": [],
-          "none": [
-            {
-              "id": "focusable-no-name",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element is not in tab order or has accessible text"
-            }
-          ],
-          "impact": null,
-          "html": "<a href=\"https://storybook.js.org/docs/builders/vite\">Vite</a>",
-          "target": [
-            "a:nth-child(3)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "has-visible-text",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element has text that is visible to screen readers"
-            }
-          ],
-          "all": [],
-          "none": [
-            {
-              "id": "focusable-no-name",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "Element is not in tab order or has accessible text"
-            }
-          ],
-          "impact": null,
-          "html": "<a href=\"https://storybook.js.org/docs/configure/environment-variables\">Environment Variables documentation</a>",
-          "target": [
-            "li:nth-child(3) > a"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "list",
-      "impact": null,
-      "tags": [
-        "cat.structure",
-        "wcag2a",
-        "wcag131",
-        "EN-301-549",
-        "EN-9.1.3.1"
-      ],
-      "description": "Ensures that lists are structured correctly",
-      "help": "<ul> and <ol> must only directly contain <li>, <script> or <template> elements",
-      "helpUrl": "https://dequeuniversity.com/rules/axe/4.8/list?application=axeAPI",
-      "nodes": [
-        {
-          "any": [],
-          "all": [],
-          "none": [
-            {
-              "id": "only-listitems",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "List element only has direct children that are allowed inside <li> elements"
-            }
-          ],
-          "impact": null,
-          "html": "<ol>",
-          "target": [
-            "ol"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "listitem",
-      "impact": null,
-      "tags": [
-        "cat.structure",
-        "wcag2a",
-        "wcag131",
-        "EN-301-549",
-        "EN-9.1.3.1"
-      ],
-      "description": "Ensures <li> elements are used semantically",
-      "help": "<li> elements must be contained in a <ul> or <ol>",
-      "helpUrl": "https://dequeuniversity.com/rules/axe/4.8/listitem?application=axeAPI",
-      "nodes": [
-        {
-          "any": [
-            {
-              "id": "listitem",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "List item has a <ul>, <ol> or role=\"list\" parent element"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<li>",
-          "target": [
-            "ol > li:nth-child(1)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "listitem",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "List item has a <ul>, <ol> or role=\"list\" parent element"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<li>",
-          "target": [
-            "ol > li:nth-child(2)"
-          ]
-        },
-        {
-          "any": [
-            {
-              "id": "listitem",
-              "data": null,
-              "relatedNodes": [],
-              "impact": "serious",
-              "message": "List item has a <ul>, <ol> or role=\"list\" parent element"
-            }
-          ],
-          "all": [],
-          "none": [],
-          "impact": null,
-          "html": "<li>",
-          "target": [
-            "li:nth-child(3)"
-          ]
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.24 (foreground color: #888888, background color: #999999, font size: 7.5pt (10px), font weight: bold). Expected contrast ratio of 4.5:1"
         }
       ]
     }
-  ],
-  "incomplete": [],
-  "violations": []
+  ]
 }

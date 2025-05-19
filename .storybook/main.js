@@ -61,6 +61,10 @@ const config = {
       // "url" : "http://localhost:6006"
       "url" : "https://6811cce941aa148a7430baf9-qxnuyahwcv.chromatic.com/"
     },
+    "vue" : {
+      "title" : 'Story Vue',
+      "url" : "http://localhost:6005"
+    },
   }
 };
 export default config;

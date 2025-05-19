@@ -619,17 +619,41 @@ function updateStoriesFile(componentName, htmlFilePath) {
       }
     }
     
-    // AccessibilityReport 스토리가 있는지 확인
-    if (!storiesContent.includes('export const AccessibilityReport')) {
-      // 마지막 export 문 찾기
-      const lastExportMatch = /export const \w+ =.*?};/s.exec(storiesContent);
+    // title 경로 추출
+    const titleRegex = /title\s*:\s*['"](.+?)['"]/;
+    const titleMatch = titleRegex.exec(storiesContent);
+    let componentTitle = '';
+    
+    if (titleMatch) {
+      componentTitle = titleMatch[1];
       
-      if (lastExportMatch) {
-        const lastExportPosition = lastExportMatch.index + lastExportMatch[0].length;
-        
-        // AccessibilityReport 스토리 추가 (HTML 요소로 렌더링)
-        const newStory = `\n\n// 접근성 보고서 스토리 추가
-export const AccessibilityReport = {
+      // variant가 포함된 경로인지 확인
+      if (componentTitle.endsWith('/variant')) {
+        // /variant를 제거하여 기본 경로 추출
+        componentTitle = componentTitle.replace(/\/variant$/, '');
+      }
+    }
+    
+    // AccessibilityReport 파일 생성
+    const a11yStoryPath = path.join(componentDir, 'accessibility-report.stories.js');
+    
+    const a11yStoryContent = `import a11yReport from './a11y/report.mdx?raw';
+
+export default {
+  title: '${componentTitle}/Accessibility Report',
+  parameters: {
+    viewMode: 'docs',
+    previewTabs: {
+      canvas: { hidden: true }
+    },
+    options: {
+      showPanel: false
+    }
+  }
+};
+
+export const Report = {
+  name: 'Accessibility Report',
   render: () => {
     const container = document.createElement('div');
     container.className = 'a11y-report';
@@ -642,19 +666,13 @@ export const AccessibilityReport = {
       </div>
     \`;
     return container;
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: '컴포넌트 접근성 검사 결과입니다.'
-      }
-    }
   }
-};`;
-        
-        storiesContent = storiesContent.slice(0, lastExportPosition) + newStory + storiesContent.slice(lastExportPosition);
-      }
-    }
+};
+`;
+    
+    // 접근성 보고서 스토리 파일 저장
+    fs.writeFileSync(a11yStoryPath, a11yStoryContent);
+    console.log(chalk.green(`${a11yStoryPath} 파일이 생성되었습니다.`));
     
     // 수정된 내용 저장
     fs.writeFileSync(storiesFilePath, storiesContent);

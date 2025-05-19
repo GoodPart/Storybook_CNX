@@ -23,11 +23,12 @@
     "vite": "^6.2.0"
   },
   "scripts": {
-    "devs": "concurrently \"npm run react-storybook\" \"npm run html-storybook\"",
+    "devs": "concurrently \"npm run react-storybook\" \"npm run html-storybook\" \"npm run vue-storybook\"",
     "start": "npm run devs & npm run wait-for-servers && npm run storybook",
     "storybook": "storybook dev -p 6008",
     "react-storybook": "cd storybook-react && npm run storybook",
     "html-storybook": "cd storybook-core && npm run storybook",
+    "vue-storybook": "cd storybook-vue && npm run storybook",
     "wait-for-servers": "sleep 5",
     "generate:template": "node generator.js",
     "transfer-token_json": "npx token-transformer design_token.json ./src/shared/design_token/token.json",
