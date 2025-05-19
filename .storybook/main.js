@@ -57,6 +57,10 @@ const config = {
       "title" : 'Story Core',
       "url" : "http://localhost:6006"
     },
+    "vue" : {
+      "title" : 'Story Vue',
+      "url" : "http://localhost:6005"
+    },
   }
 };
 export default config;
