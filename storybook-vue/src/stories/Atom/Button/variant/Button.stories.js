@@ -1,5 +1,9 @@
-import Button from './Button.vue';
-import './Button.css';
+// import Button from './Button.vue';
+// import './Button.css';
+
+
+import Button from '../../../../../shared/components/component/vue/atom/Button/variant/Button.vue'
+import '../../../../../shared/components/component/vue/atom/Button/variant/Button.css'
 
 const meta = {
   title: 'Atom/Button/variant',

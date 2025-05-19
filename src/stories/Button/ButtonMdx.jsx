@@ -74,7 +74,8 @@ export default function MdxWrap() {
               ></iframe>
               <iframe
                   className={`${mdxViewItem} ${radioCheck != "Vue" ? 'hide' : ''}`}
-                  src={`http://localhost:6005/iframe.html?id=atom-button-variant--${variantValue}&viewMode=story&refId=react&globals=`}
+                  src={`${import.meta.env.VITE_DEPLOY_VUE_URI}/iframe.html?id=atom-button-variant--${variantValue}&viewMode=story&refId=react&globals=`}
+                  // src={`http://localhost:6005/iframe.html?id=atom-button-variant--${variantValue}&viewMode=story&refId=react&globals=`}
                   width="100%"
               ></iframe>
               

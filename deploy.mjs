@@ -48,9 +48,15 @@ async function exportShared() {
 }
 
 async function updateImport() {
+    
     try{
+        const answer = await input({
+            message : "import 깊이를 변경할 폴더를 선택하세요."
+        })
+        const targetPath = answer
+
         const results = replaceInFileSync({
-            files : `./storybook-react/src/stories/Atom/**/*.stories.*`,
+            files : `./storybook-${targetPath}/src/stories/Atom/**/*.stories.*`,
             from: /\.\.\/\.\.\/\.\.\/\.\.\/\.\.\/\.\.\/shared/g, // 6단계
             to: '../../../../../shared', // 5단계
         })

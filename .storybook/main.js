@@ -63,7 +63,8 @@ const config = {
     },
     "vue" : {
       "title" : 'Story Vue',
-      "url" : "http://localhost:6005"
+      // "url" : "http://localhost:6005"
+      "url" : "https://682ac05a8d778afb4429b1b0-memfefripa.chromatic.com/"
     },
   }
 };

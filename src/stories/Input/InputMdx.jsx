@@ -1,7 +1,8 @@
 import React, {useState, Suspense, useEffect} from "react"
-import {MdxCodeBlock} from "../../shared/components/Mdx/Mdx.tsx"
-import {mdxViewItem, mdxViewStyle, mdxWrapStyle, mdxSwicherGroup, mdxVariantGroup, mdxVariantItem, mdxVariantWrap, mdxVariantLinkGroup} from "../../shared/components/Mdx/Mdx.css"
-import Button from "../../../storybook-react/src/stories/Atom/Button/variant/Button.tsx"
+import {MdxCodeBlock} from "../../../shared/components/Mdx/Mdx.tsx"
+import {mdxViewItem, mdxViewStyle, mdxWrapStyle, mdxSwicherGroup, mdxVariantGroup, mdxVariantItem, mdxVariantWrap, mdxVariantLinkGroup} from "../../../shared/components/Mdx/Mdx.css"
+// import Button from "../../../storybook-react/src/stories/Atom/Button/variant/Button.tsx"
+import Button from "../../../shared/components/component/react/atom/Button/Button.tsx"
 
 import { theme } from "../../../shared/assets/style/theme/theme.css.ts"
 
@@ -74,7 +75,8 @@ export default function MdxWrap() {
               ></iframe>
               <iframe
                   className={`${mdxViewItem} ${radioCheck != "Vue" ? 'hide' : ''}`}
-                  src={`http://localhost:6005/iframe.html?id=atom-input-variant--${variantValue}&viewMode=story&refId=react&globals=`}
+                  src={`${import.meta.env.VITE_DEPLOY_VUE_URI}/iframe.html?id=atom-input-variant--${variantValue}&viewMode=docs&refId=react&globals=`}
+                  // src={`http://localhost:6005/iframe.html?id=atom-input-variant--${variantValue}&viewMode=story&refId=react&globals=`}
                   width="100%"
               ></iframe>
               
