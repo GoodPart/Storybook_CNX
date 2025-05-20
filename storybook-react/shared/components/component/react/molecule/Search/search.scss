@@ -1,0 +1,8 @@
+.search {
+    display: flex;
+    gap: 4px;
+
+    &--reverse {
+        flex-direction: row-reverse;
+    }
+}

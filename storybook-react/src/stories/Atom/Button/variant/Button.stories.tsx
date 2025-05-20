@@ -3,7 +3,7 @@ import { fn } from '@storybook/test';
 
 import Iconimg from "../../../../assets/arrow-left.svg"
 
-import Button from "../../../../../../shared/components/component/react/atom/Button/Button";
+import Button from "../../../../../shared/components/component/react/atom/Button/Button";
 
 
 
