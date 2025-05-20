@@ -1,0 +1,36 @@
+// @use "../../../../shared/design_token/variables" as theme;
+@use "../../../../../design_token/variables" as theme;
+input {
+    padding: 4px 12px;
+    border-radius: 12px;
+    border-style: solid;
+    border-width: 1px;
+
+    &:disabled {
+        border-color: theme.$color-primary-primary-600;
+    }
+
+    &.default {
+        border-color: #ccc;
+    }
+    &.primary {
+        border-color: theme.$color-primary-primary-600;
+    }
+    &.warring {
+        border-color: theme.$color-red-red-600;
+    }
+
+    &.s {
+        height: 24px
+    }
+    &.m {
+        height: 28px
+    }
+    &.l {
+        height: 32px
+    }
+    &.xl {
+        height: 36px
+    }
+
+}

@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, userEvent, within } from '@storybook/test';
 
-import { Page } from './Page';
+// import { Page } from './Page';
+import {Page} from "../../../../../../shared/components/component/react/page/Test_page01/Page"
 
 const meta = {
   title: 'Page/Test_page01/document/Page',

@@ -1,5 +1,6 @@
-import Input from './Input.vue';
-import './Input.css';
+// import Input from './Input.vue';
+import Input from "../../../../../../shared/components/component/vue/atom/Input/Input.vue"
+// import './Input.css';
 import { ref } from 'vue';
 
 const meta = {

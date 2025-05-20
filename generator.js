@@ -89,7 +89,8 @@ you should write component name`),
                     },
                     code : [{
                         extention : "tsx",
-                        location : `storybook-react/src/stories/${type}/${comfirmAnswer}/variant/${comfirmAnswer}.tsx`
+                        // location : `storybook-react/src/stories/${type}/${comfirmAnswer}/variant/${comfirmAnswer}.tsx`
+                        location : `shared/components/component/react/${type}/${comfirmAnswer}/${comfirmAnswer}.tsx`
                     }],
                 },
                 {
@@ -121,7 +122,8 @@ you should write component name`),
                     },
                     code : [{
                         extention : "vue",
-                        location : `storybook-vue/src/stories/${type}/${comfirmAnswer}/variant/${comfirmAnswer}.vue`
+                        // location : `storybook-vue/src/stories/${type}/${comfirmAnswer}/variant/${comfirmAnswer}.vue`
+                        location : `shared/components/component/vue/${type}/${comfirmAnswer}/${comfirmAnswer}.vue`
                     }],
                 },
             ]

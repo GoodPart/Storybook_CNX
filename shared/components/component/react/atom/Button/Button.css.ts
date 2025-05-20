@@ -1,6 +1,7 @@
 import { recipe } from "@vanilla-extract/recipes";
 
-import { vars } from "../../../../../../src/shared/assets/style/theme/theme.css";
+// import { vars } from "../../../../../../shared/assets/style/theme/theme.css";
+import {vars} from "../../../../../assets/style/theme/theme.css"
 
 export const ButtonCss = recipe({
     base : {
@@ -8,8 +9,8 @@ export const ButtonCss = recipe({
         padding : "0 16px",
         cursor : "pointer",
         border : 0,
-        borderRadius : "3em",
-        fontWeight : 700,
+        borderRadius : "12px",
+        fontWeight : 500,
         lineHeight : 1,
         selectors : {
             "&:disabled" : {

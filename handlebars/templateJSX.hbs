@@ -1,7 +1,8 @@
 import React, {useState, Suspense, useEffect} from "react"
 import {MdxCodeBlock} from "../../shared/components/Mdx/Mdx.tsx"
 import {mdxViewItem, mdxViewStyle, mdxWrapStyle, mdxSwicherGroup, mdxVariantGroup, mdxVariantItem, mdxVariantWrap, mdxVariantLinkGroup} from "../../shared/components/Mdx/Mdx.css"
-import Button from "../../../storybook-react/src/stories/Atom/Button/variant/Button.tsx"
+import Button from "../../../shared/components/component/react/atom/Button/Button.tsx"
+
 
 import { theme } from "../../shared/assets/style/theme/theme.css.ts"
 
@@ -82,7 +83,7 @@ export default function MdxWrap() {
               {{#each data}}
               {{#if @first}}
               <div className={mdxVariantLinkGroup}>
-                <a href={`${import.meta.env.VITE_LOCAL_{{name}}_URI}/?path=/story/{{path.componentLocation}}--${variantValue}`} target="_blank">[{radioCheck}]{variantValue}컴포넌트 바로가기</a>
+                <a href={`${switcher(radioCheck)}/?path=/story/{{path.componentLocation}}--${variantValue}`} target="_blank">[{radioCheck}]{variantValue}컴포넌트 바로가기</a>
               </div>
               {{/if}}
               {{/each}}

@@ -1,6 +1,7 @@
 import { recipe } from "@vanilla-extract/recipes"
 
-import {vars} from "../../../../../../src/shared/assets/style/theme/theme.css";
+// import {vars} from "../../../../../../shared/assets/style/theme/theme.css";
+import { vars } from "../../../../../assets/style/theme/theme.css"
 
 
 export const InputCss = recipe({

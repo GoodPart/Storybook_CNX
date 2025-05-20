@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import Search from './Search';
+// import Search from './Search';
+import Search from "../../../../../../shared/components/component/react/molecule/Search/Search"
 
 const meta = {
     title: 'Molecule/Search/variant',

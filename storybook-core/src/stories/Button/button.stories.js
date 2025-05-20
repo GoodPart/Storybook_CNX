@@ -1,6 +1,6 @@
 import { Button } from './button.js';
 import buttonHtml from './button.html?raw';
-import buttonCss from './button.css?raw';
+import buttonCss from './button.scss?raw';
 import buttonJs from './button.js?raw';
 import './button.scss';
 

@@ -1,6 +1,6 @@
-
-import {ButtonCss} from "./Button.css.ts";
-import { theme } from '../../../../../../src/shared/assets/style/theme/theme.css';
+import React from "react";
+import { ButtonCss } from "./Button.css";
+import { theme } from "../../../../../assets/style/theme/theme.css.js";
 
 interface ButtonProps {
   variant : "default" | "primary" | "warring";

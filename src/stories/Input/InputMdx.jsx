@@ -1,33 +1,34 @@
 import React, {useState, Suspense, useEffect} from "react"
 import {MdxCodeBlock} from "../../shared/components/Mdx/Mdx.tsx"
 import {mdxViewItem, mdxViewStyle, mdxWrapStyle, mdxSwicherGroup, mdxVariantGroup, mdxVariantItem, mdxVariantWrap, mdxVariantLinkGroup} from "../../shared/components/Mdx/Mdx.css"
-import Button from "../../../storybook-react/src/stories/Atom/Button/variant/Button.tsx"
+import Button from "../../../shared/components/component/react/atom/Button/Button.tsx"
+
 
 import { theme } from "../../shared/assets/style/theme/theme.css.ts"
 
-{/* location of React source */}
-import * as Reacttsx from "../../../storybook-react/src/stories/Atom/Input/variant/Input.tsx?raw";
-{/* location of Core source */}
-import * as Corehtml from "../../../storybook-core/src/stories/Input/input.html?raw";
-import * as Corecss from "../../../storybook-core/src/stories/Input/input.css?raw";
-import * as Corejs from "../../../storybook-core/src/stories/Input/input.js?raw";
-{/* location of Vue source */}
-import * as Vuevue from "../../../storybook-vue/src/stories/Atom/Input/variant/Input.vue?raw";
+{/* location of REACT source */}
+import * as REACTtsx from "../../../shared/components/component/react/Atom/Input/Input.tsx?raw";
+{/* location of CORE source */}
+import * as COREhtml from "../../../storybook-core/src/stories/Input/input.html?raw";
+import * as COREcss from "../../../storybook-core/src/stories/Input/input.css?raw";
+import * as COREjs from "../../../storybook-core/src/stories/Input/input.js?raw";
+{/* location of VUE source */}
+import * as VUEvue from "../../../shared/components/component/vue/Atom/Input/Input.vue?raw";
 
 export default function MdxWrap() {
-    const [radioCheck, setRadioCheck] = useState('React');
-    const [port, setPort] = useState("6007");
+      const [radioCheck, setRadioCheck] = useState('REACT');
+      const [port, setPort] = useState("6007");
     const [variantValue, setVariantValue] = useState("default");
     const [fullScreen, setFullScreen] = useState(false);
 
     const switcher = (target) => {
           switch (target) {
-              case "React":
-              return 6007
-              case "Core":
-              return 6006
-              case "Vue":
-              return 6005
+              case "REACT":
+              return import.meta.env.VITE_LOCAL_REACT_URI
+              case "CORE":
+              return import.meta.env.VITE_LOCAL_CORE_URI
+              case "VUE":
+              return import.meta.env.VITE_LOCAL_VUE_URI
             default:
               break;
           }
@@ -53,18 +54,18 @@ export default function MdxWrap() {
             <div className={`${mdxViewStyle} ${fullScreen ? "full" : ""}`}>
               <Button onClick={() => setFullScreen(!fullScreen) }>{fullScreen ? "축소" : "확대"}</Button>
               <iframe
-                  className={`${mdxViewItem} ${radioCheck != "React" ? 'hide' : ''}`}
-                  src={`http://localhost:6007/iframe.html?id=atom-input-variant--${variantValue}&viewMode=story&refId=react&globals=`}
+                  className={`${mdxViewItem} ${radioCheck != "REACT" ? 'hide' : ''}`}
+                  src={`${import.meta.env.VITE_LOCAL_REACT_URI}/iframe.html?id=atom-input-variant--${variantValue}&viewMode=story&refId=react&globals=`}
                   width="100%"
               ></iframe>
               <iframe
-                  className={`${mdxViewItem} ${radioCheck != "Core" ? 'hide' : ''}`}
-                  src={`http://localhost:6006/iframe.html?id=atom-input-variant--${variantValue}&viewMode=story&refId=react&globals=`}
+                  className={`${mdxViewItem} ${radioCheck != "CORE" ? 'hide' : ''}`}
+                  src={`${import.meta.env.VITE_LOCAL_CORE_URI}/iframe.html?id=atom-input-variant--${variantValue}&viewMode=story&refId=react&globals=`}
                   width="100%"
               ></iframe>
               <iframe
-                  className={`${mdxViewItem} ${radioCheck != "Vue" ? 'hide' : ''}`}
-                  src={`http://localhost:6005/iframe.html?id=atom-input-variant--${variantValue}&viewMode=story&refId=react&globals=`}
+                  className={`${mdxViewItem} ${radioCheck != "VUE" ? 'hide' : ''}`}
+                  src={`${import.meta.env.VITE_LOCAL_VUE_URI}/iframe.html?id=atom-input-variant--${variantValue}&viewMode=story&refId=react&globals=`}
                   width="100%"
               ></iframe>
               
@@ -84,25 +85,25 @@ export default function MdxWrap() {
               
             </div>
             <div className={mdxSwicherGroup} >
-              <Button variant={radioCheck === "React" ? "primary" : ""} onClick={handleChange} value={"React"}>React</Button>
-              <Button variant={radioCheck === "Core" ? "primary" : ""} onClick={handleChange} value={"Core"}>Core</Button>
-              <Button variant={radioCheck === "Vue" ? "primary" : ""} onClick={handleChange} value={"Vue"}>Vue</Button>
+              <Button variant={radioCheck === "REACT" ? "primary" : ""} onClick={handleChange} value={"REACT"}>REACT</Button>
+              <Button variant={radioCheck === "CORE" ? "primary" : ""} onClick={handleChange} value={"CORE"}>CORE</Button>
+              <Button variant={radioCheck === "VUE" ? "primary" : ""} onClick={handleChange} value={"VUE"}>VUE</Button>
               <div className={mdxVariantLinkGroup}>
-                <a href={`http://localhost:${port}/?path=/story/atom-input-variant--${variantValue}`} target="_blank">[{radioCheck}]{variantValue}컴포넌트 바로가기</a>
+                <a href={`${switcher(radioCheck)}/?path=/story/atom-input-variant--${variantValue}`} target="_blank">[{radioCheck}]{variantValue}컴포넌트 바로가기</a>
               </div>
             </div>
 
             <div>
-              <div className={radioCheck == "React" ? `${mdxViewItem}` : `${mdxViewItem} hide`}>
-                <MdxCodeBlock title={"tsx"} code={ Reacttsx.default} />
+              <div className={radioCheck == "REACT" ? `${mdxViewItem}` : `${mdxViewItem} hide`}>
+                <MdxCodeBlock title={"tsx"} code={ REACTtsx.default} />
               </div>
-              <div className={radioCheck == "Core" ? `${mdxViewItem}` : `${mdxViewItem} hide`}>
-                <MdxCodeBlock title={"html"} code={ Corehtml.default} />
-                <MdxCodeBlock title={"css"} code={ Corecss.default} />
-                <MdxCodeBlock title={"js"} code={ Corejs.default} />
+              <div className={radioCheck == "CORE" ? `${mdxViewItem}` : `${mdxViewItem} hide`}>
+                <MdxCodeBlock title={"html"} code={ COREhtml.default} />
+                <MdxCodeBlock title={"css"} code={ COREcss.default} />
+                <MdxCodeBlock title={"js"} code={ COREjs.default} />
               </div>
-              <div className={radioCheck == "Vue" ? `${mdxViewItem}` : `${mdxViewItem} hide`}>
-                <MdxCodeBlock title={"vue"} code={ Vuevue.default} />
+              <div className={radioCheck == "VUE" ? `${mdxViewItem}` : `${mdxViewItem} hide`}>
+                <MdxCodeBlock title={"vue"} code={ VUEvue.default} />
               </div>
             </div>
         </div>

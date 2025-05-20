@@ -1,31 +1,32 @@
 import React, {useState, Suspense, useEffect} from "react"
 import {MdxCodeBlock} from "../../shared/components/Mdx/Mdx.tsx"
 import {mdxViewItem, mdxViewStyle, mdxWrapStyle, mdxSwicherGroup, mdxVariantGroup, mdxVariantItem, mdxVariantWrap, mdxVariantLinkGroup} from "../../shared/components/Mdx/Mdx.css"
-import Button from "../../../storybook-react/src/stories/Atom/Button/variant/Button.tsx"
+import Button from "../../../shared/components/component/react/atom/Button/Button.tsx"
+
 
 import { theme } from "../../shared/assets/style/theme/theme.css.ts"
 
-{/* location of React source */}
-{/* location of Core source */}
-import * as Corehtml from "../../../storybook-core/src/stories/Slider/slider.html?raw";
-import * as Corecss from "../../../storybook-core/src/stories/Slider/slider.css?raw";
-import * as Corejs from "../../../storybook-core/src/stories/Slider/slider.js?raw";
-{/* location of Vue source */}
+{/* location of REACT source */}
+{/* location of CORE source */}
+import * as COREhtml from "../../../storybook-core/src/stories/Slider/slider.html?raw";
+import * as COREcss from "../../../storybook-core/src/stories/Slider/slider.css?raw";
+import * as COREjs from "../../../storybook-core/src/stories/Slider/slider.js?raw";
+{/* location of VUE source */}
 
 export default function MdxWrap() {
-    const [radioCheck, setRadioCheck] = useState('React');
-    const [port, setPort] = useState("6007");
+      const [radioCheck, setRadioCheck] = useState('REACT');
+      const [port, setPort] = useState("6007");
     const [variantValue, setVariantValue] = useState("default");
     const [fullScreen, setFullScreen] = useState(false);
 
     const switcher = (target) => {
           switch (target) {
-              case "React":
-              return 6007
-              case "Core":
-              return 6006
-              case "Vue":
-              return 6005
+              case "REACT":
+              return import.meta.env.VITE_LOCAL_REACT_URI
+              case "CORE":
+              return import.meta.env.VITE_LOCAL_CORE_URI
+              case "VUE":
+              return import.meta.env.VITE_LOCAL_VUE_URI
             default:
               break;
           }
@@ -51,18 +52,18 @@ export default function MdxWrap() {
             <div className={`${mdxViewStyle} ${fullScreen ? "full" : ""}`}>
               <Button onClick={() => setFullScreen(!fullScreen) }>{fullScreen ? "축소" : "확대"}</Button>
               <iframe
-                  className={`${mdxViewItem} ${radioCheck != "React" ? 'hide' : ''}`}
-                  src={`http://localhost:6007/iframe.html?id=atom-slider-variant--${variantValue}&viewMode=story&refId=react&globals=`}
+                  className={`${mdxViewItem} ${radioCheck != "REACT" ? 'hide' : ''}`}
+                  src={`${import.meta.env.VITE_LOCAL_REACT_URI}/iframe.html?id=atom-slider-variant--${variantValue}&viewMode=story&refId=react&globals=`}
                   width="100%"
               ></iframe>
               <iframe
-                  className={`${mdxViewItem} ${radioCheck != "Core" ? 'hide' : ''}`}
-                  src={`http://localhost:6006/iframe.html?id=atom-slider-variant--${variantValue}&viewMode=story&refId=react&globals=`}
+                  className={`${mdxViewItem} ${radioCheck != "CORE" ? 'hide' : ''}`}
+                  src={`${import.meta.env.VITE_LOCAL_CORE_URI}/iframe.html?id=atom-slider-variant--${variantValue}&viewMode=story&refId=react&globals=`}
                   width="100%"
               ></iframe>
               <iframe
-                  className={`${mdxViewItem} ${radioCheck != "Vue" ? 'hide' : ''}`}
-                  src={`http://localhost:6005/iframe.html?id=atom-slider-variant--${variantValue}&viewMode=story&refId=react&globals=`}
+                  className={`${mdxViewItem} ${radioCheck != "VUE" ? 'hide' : ''}`}
+                  src={`${import.meta.env.VITE_LOCAL_VUE_URI}/iframe.html?id=atom-slider-variant--${variantValue}&viewMode=story&refId=react&globals=`}
                   width="100%"
               ></iframe>
               
@@ -76,23 +77,23 @@ export default function MdxWrap() {
               
             </div>
             <div className={mdxSwicherGroup} >
-              <Button onClick={handleChange} value={"React"}>React</Button>
-              <Button onClick={handleChange} value={"Core"}>Core</Button>
-              <Button onClick={handleChange} value={"Vue"}>Vue</Button>
+              <Button variant={radioCheck === "REACT" ? "primary" : ""} onClick={handleChange} value={"REACT"}>REACT</Button>
+              <Button variant={radioCheck === "CORE" ? "primary" : ""} onClick={handleChange} value={"CORE"}>CORE</Button>
+              <Button variant={radioCheck === "VUE" ? "primary" : ""} onClick={handleChange} value={"VUE"}>VUE</Button>
               <div className={mdxVariantLinkGroup}>
-                <a href={`http://localhost:${port}/?path=/story/atom-slider-variant--${variantValue}`} target="_blank">[{radioCheck}]{variantValue}컴포넌트 바로가기</a>
+                <a href={`${import.meta.env.VITE_LOCAL_REACT_URI}/?path=/story/atom-slider-variant--${variantValue}`} target="_blank">[{radioCheck}]{variantValue}컴포넌트 바로가기</a>
               </div>
             </div>
 
             <div>
-              <div className={radioCheck == "React" ? `${mdxViewItem}` : `${mdxViewItem} hide`}>
+              <div className={radioCheck == "REACT" ? `${mdxViewItem}` : `${mdxViewItem} hide`}>
               </div>
-              <div className={radioCheck == "Core" ? `${mdxViewItem}` : `${mdxViewItem} hide`}>
-                <MdxCodeBlock title={"html"} code={ Corehtml.default} />
-                <MdxCodeBlock title={"css"} code={ Corecss.default} />
-                <MdxCodeBlock title={"js"} code={ Corejs.default} />
+              <div className={radioCheck == "CORE" ? `${mdxViewItem}` : `${mdxViewItem} hide`}>
+                <MdxCodeBlock title={"html"} code={ COREhtml.default} />
+                <MdxCodeBlock title={"css"} code={ COREcss.default} />
+                <MdxCodeBlock title={"js"} code={ COREjs.default} />
               </div>
-              <div className={radioCheck == "Vue" ? `${mdxViewItem}` : `${mdxViewItem} hide`}>
+              <div className={radioCheck == "VUE" ? `${mdxViewItem}` : `${mdxViewItem} hide`}>
               </div>
             </div>
         </div>

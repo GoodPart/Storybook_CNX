@@ -1,18 +1,20 @@
 import React, {useState, Suspense, useEffect} from "react"
 import {MdxCodeBlock} from "../../shared/components/Mdx/Mdx.tsx"
 import {mdxViewItem, mdxViewStyle, mdxWrapStyle, mdxSwicherGroup, mdxVariantGroup, mdxVariantItem, mdxVariantWrap, mdxVariantLinkGroup} from "../../shared/components/Mdx/Mdx.css"
-import Button from "../../../storybook-react/src/stories/Atom/Button/variant/Button.tsx"
+import Button from "../../../shared/components/component/react/atom/Button/Button.tsx"
 
 import { theme } from "../../shared/assets/style/theme/theme.css.ts"
 
 {/* location of REACT source */}
-import * as REACTtsx from "../../../storybook-react/src/stories/Atom/Button/variant/Button.tsx?raw";
+// import * as REACTtsx from "../../../storybook-react/src/stories/Atom/Button/variant/Button.tsx?raw";
+import * as REACTtsx from "../../../shared/components/component/react/atom/Button/Button.tsx?raw";
 {/* location of CORE source */}
 import * as COREhtml from "../../../storybook-core/src/stories/Button/button.html?raw";
-import * as COREcss from "../../../storybook-core/src/stories/Button/button.css?raw";
+// import * as COREcss from "../../../storybook-core/src/stories/Button/button.css?raw";
+import * as COREcss from "../../../shared/components/component/core/atom/Button/button.scss?raw";
 import * as COREjs from "../../../storybook-core/src/stories/Button/button.js?raw";
 {/* location of VUE source */}
-import * as VUEvue from "../../../storybook-vue/src/stories/Atom/Button/variant/Button.vue?raw";
+import * as VUEvue from "../../../shared/components/component/vue/atom/Button/Button.vue?raw";
 
 export default function MdxWrap() {
       const [radioCheck, setRadioCheck] = useState('REACT');
@@ -88,7 +90,7 @@ export default function MdxWrap() {
               <Button variant={radioCheck === "CORE" ? "primary" : ""} onClick={handleChange} value={"CORE"}>CORE</Button>
               <Button variant={radioCheck === "VUE" ? "primary" : ""} onClick={handleChange} value={"VUE"}>VUE</Button>
               <div className={mdxVariantLinkGroup}>
-                <a href={`${import.meta.env.VITE_LOCAL_REACT_URI}/?path=/story/atom-button-variant--${variantValue}`} target="_blank">[{radioCheck}]{variantValue}컴포넌트 바로가기</a>
+                <a href={`${switcher(radioCheck)}/?path=/story/atom-button-variant--${variantValue}`} target="_blank">[{radioCheck}]{variantValue}컴포넌트 바로가기</a>
               </div>
             </div>
 

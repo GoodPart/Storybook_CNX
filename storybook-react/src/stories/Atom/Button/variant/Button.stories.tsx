@@ -3,7 +3,8 @@ import { fn } from '@storybook/test';
 
 import Iconimg from "../../../../assets/react.svg"
 
-import Button from './Button';
+// import Button from './Button';
+import Button from "../../../../../../shared/components/component/react/atom/Button/Button";
 
 const meta = {
   title: 'Atom/Button/variant',

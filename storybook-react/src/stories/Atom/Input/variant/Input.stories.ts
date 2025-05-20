@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import Input from './Input.js';
+// import Input from './Input.js';
+import Input from "../../../../../../shared/components/component/react/atom/Input/Input"
 
 const meta = {
     title : 'Atom/Input/variant',
